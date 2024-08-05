@@ -1,0 +1,19 @@
+{
+  "name": "acaptutorials.github.io",
+  "version": "1.0.0",
+  "description": "ACAP Bicol (ACAP 2.0) development tutorials documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acaptutorials/acaptutorials.github.io.git"
+  },
+  "author": "ciatph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acaptutorials/acaptutorials.github.io/issues"
+  },
+  "homepage": "https://github.com/acaptutorials/acaptutorials.github.io#readme"
+}
