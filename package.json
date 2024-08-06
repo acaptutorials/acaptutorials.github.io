@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next build",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix ."
   },
   "repository": {
     "type": "git",
@@ -24,5 +27,9 @@
     "nextra-theme-docs": "^2.13.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.5"
   }
 }
