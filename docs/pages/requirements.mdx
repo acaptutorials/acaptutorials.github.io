@@ -1,0 +1,77 @@
+import { Callout } from 'nextra/components'
+
+# Requirements
+
+This post describes the dependencies and requirements needed to run run ACAP 1.0 (ACAP-Bicol) on a PC or laptop for local development.
+
+### Development Machine
+
+- Windows/Mac PC or laptop
+   - @least 8GB RAM or higher
+
+### Software Installed
+
+1. Visual Studio Code (VSCode) IDE
+   - version: v1.79.2 (any version that can run NodeJS)
+2. nvm
+   - <Callout>
+     **nvm** is optional, if you can install NodeJS LTS version 16.14.2 on **item #3**
+     </Callout>
+   - **For Windows OS**
+      - Install with [nvm-windows](https://github.com/coreybutler/nvm-windows)
+      - version 1.1.12
+   - **For other OS**
+      - _Please refer to guides for installing nvm for your PC or laptop_
+2. NodeJS LTS version 16.14.2
+   - _(preferrably installed using **nvm**)_
+   - node version: 16.14.2
+   - npm version: 8.5.0
+3. Yarn version 1.22.19
+   - (installed using npm)
+4. Git Terminal
+   - For Windows OS: GitBash
+   - For non-Windows OS: (Please refer to the recommended git terminal installation methods for your OS)
+
+### Programming Languages/Services
+
+1. React
+2. NodeJS
+3. JavaScript
+4. GitHub
+5. Firebase
+   - Firebase for Web
+   - Firebase for NodeJS (Firebase Admin)
+   - Firebase Services
+      - Authentication
+      - Firestore
+      - Storage
+
+### Cloud Service Accounts (standard pricing)
+
+1. GitHub (2)
+   - https://github.com
+2. Render (2)
+   - https://render.com
+3. Firebase (1) account
+   - https://firebase.google.com
+4. Semaphore
+   - https://semaphore.co
+
+### Docker
+
+<Callout type="info" emoji="ℹ️">
+ACAP promotes using NodeJS to run on localhost development. Using Docker is optional, since it has Dockerfiles configured for local development and production deployment.
+
+Users are expected to have experience managing installing and setting-up Docker, if they are going to use it for development or production deployment.
+</Callout>
+
+#### Microsoft Windows 10/11
+
+- **Docker Desktop**
+   - Docker Compose version v2.27.1-desktop.1
+   - Docker Engine version 26.1.4, build 5650f9b
+
+#### Ubuntu 22.04.1
+
+- Docker version 23.0.1, build a5eeb1
+- Docker Compose v2.16.0

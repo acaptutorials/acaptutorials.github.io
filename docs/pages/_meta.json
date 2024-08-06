@@ -1,0 +1,27 @@
+{
+  "index" : "Introduction",
+  "requirements": "Requirements",
+  "installation": "Installation and Setup",
+  "post-installation": "Post-Installation Setup",
+  "checklist": "Checklist",
+  "security": "Security",
+  "---": {
+    "type": "separator"
+  },
+  "directories": {
+    "title": "Folder Structure"
+  },
+  "articles": {
+    "title": "Articles"
+  },
+  "troubleshooting": "Troubleshooting",
+  "video": {
+    "title": "Video Tutorials",
+    "type": "page"
+  },
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "references": "References"
+}

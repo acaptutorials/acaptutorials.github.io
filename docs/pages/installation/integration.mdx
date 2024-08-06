@@ -1,0 +1,78 @@
+import { Steps, Callout } from 'nextra/components'
+
+# D. Integration
+
+<Callout type="warning" emoji="⚠️">
+This section requires a successful set-up of the [Client](/installation/client-setup) and [Server](/installation/server-setup) to proceed.
+</Callout>
+
+## Using NodeJS
+
+Do the following steps to run the client and server apps when using NodeJS for local development.
+
+<Steps>
+
+### Run the client app
+
+Navigate to the **client** app using the commandline then run the script:
+
+```bash copy
+cd client
+npm run dev
+```
+
+### Run the server app
+
+Navigate to the **server** app using the commandline then run the script:
+
+```bash copy
+cd server
+npm run dev
+```
+
+### Load the ACAP website
+
+Open a web browser and navigate to this local site to load the ACAP website on localhost:
+
+```bash copy
+http://localhost:3000
+```
+
+</Steps>
+
+## Using Docker
+
+<Callout type="default" emoji="💡">
+ACAP uses Docker to run the server app in Render, using the `Dockerfile`. You can use this, or the `Dockerfile.acap` files in the **/server** directory to run the server app in production mode.
+</Callout>
+
+Do the following steps when using Docker for **localhost development**. Navigate to the project's root directory then:
+
+<Steps>
+
+### Build images
+
+Build the client and server containers for localhost development.
+
+```bash copy
+docker compose -f docker-compose.dev.yml build
+```
+
+### Run containers
+
+Create and start the development client and server containers.
+
+```bash copy
+docker compose -f docker-compose.dev.yml up
+```
+
+### Stop containers
+
+Stop and remove the development containers, networks, images and volumes
+
+```bash copy
+docker compose -f docker-compose.dev.yml down
+```
+
+</Steps>
+
