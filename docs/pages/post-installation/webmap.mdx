@@ -1,0 +1,61 @@
+import { Steps, Callout } from 'nextra/components'
+
+# Web Map on Home Page
+
+Update the Home page's GeoJSON map boundaries
+This step is labelled (Optional) because the SHAPEFILE and new AMIA Villages information of the new target region may yet not be readily available during [Installation](/installation).
+
+### Required Files
+
+These steps require the files:
+
+1. SHAPEFILE (.shp, .shx, .prj, .dbf and .cpg files) of the new region
+2. New AMIA Villages information of the new region in a CSV file, following the format in the
+`/server/src/scripts/data/amia_villages_r5.csv` file.
+
+<Callout>
+Since ACAP uses the provinces and municipality naming conventions from the PAGASA 10-day weather forecast Excel file, please ensure the **SHAPEFILE** and **AMIA Villages CSV file** share similar naming conventions with it.
+</Callout>
+
+<Steps>
+
+### Normalize the SHAPEFILE
+
+1. Convert the SHAPEFILE to a normalized, web-friendly GeoJSON file format. (Recommended GeoJSON file size is approximately less than 500KB).
+
+2. (Optional) Use QGIS to check the SHAPEFILE for errors. Follow steps No. 2, No. 3 and No. 4 described in the URL link to check and fix SHAPEFILE errors.
+   https://github.com/ciatph/ciatph.github.io/issues/33#issuecomment-769405843
+
+3. (Optional) Use the https://github.com/ciatph/shapefile-simplify tool to normalize, simplify and convert the SHAPEFILE to GeoJSON, playing around with PERCENTAGE % values that lead to a small file size with acceptable visual effects when loaded on the Home page.
+
+   ACAP 1.0's GeoJSON file is available in `/server/src/scripts/data/geojson/acap-bicol` geojson file for reference.
+
+### Upload the GeoJSON file
+
+#### MapBox Hosting
+
+Upload the normalized GeoJSON file to MapBox, or any hosting service that allows serving GeoJSON content over HTTP. The original ACAP 1.0 uses MapBox (Datasets) for hosting.
+
+Update the following variables when using MapBox:
+
+```
+MAPBOX_BASEMAP_STYLE_ID
+MAPBOX_DATASET_ID
+MAPBOX_API_KEY
+```
+
+#### Firebase Storage Hosting
+
+You can use Firebase Storage in case a new MapBox account is not readily available.
+
+Replace the `NEXT_PUBLIC_GEOJSON_URL` variable with the GeoJSON file's remote URL after uploading it to Firebase Storage.
+
+### Upload the AMIA Villages Data
+
+1. Upload the new AMIA Villages information (CSV file) to Firestore.
+2. Copy the new CSV file to `/server/src/scripts/data/amia_villages_r5.csv`
+3. Run the server npm script:
+   ```bash copy
+   npm run seed:01_amiavillages
+   ```
+</Steps>

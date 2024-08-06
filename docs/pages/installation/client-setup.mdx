@@ -1,0 +1,54 @@
+import { Callout, Steps } from 'nextra/components'
+
+# C. Client Setup
+
+Please read the client's README file in /client/README.md as reference for more information on the client environment variables.
+
+<Callout emoji="ℹ️">
+The [09 Client setup for localhost development](https://youtu.be/f3icH3jmnTo) video tutorial shows how to initialize the server for localhost development in more detail.
+</Callout>
+
+<Steps>
+
+### Setup environment variables
+
+Update the **client** `.env` file, copying the keys and values from the `.env.example` file. You can leave the default values for now, but be sure to update the following with new values:
+
+```env copy
+REGION_NAME
+DEFAULT_PROVINCE
+DEFAULT_MUNICIPALITY // --> Any municipality under the DEFAULT_PROVINCE
+NEXT_PUBLIC_FIREBASE_WEB_API_KEY
+NEXT_PUBLIC_FIREBASE_WEB_AUTHDOMAIN
+NEXT_PUBLIC_FIREBASE_WEB_PROJECT_ID
+NEXT_PUBLIC_FIREBASE_WEB_STORAGE_BUCKET
+NEXT_PUBLIC_FIREBASE_WEB_MESSAGING_SENDER_ID
+NEXT_PUBLIC_FIREBASE_WEB_APP_ID
+NEXT_PUBLIC_FIREBASE_WEB_MEASUREMENT_ID
+REGION_CODE
+REGION_LAT_AND_LNG
+REGIONAL_FIELD_OFFICE
+REGION_URL
+CROPPING_CALENDAR_RICE_EXCEL_FILE
+CROPPING_CALENDAR_CORN_EXCEL_FILE
+RECOMMENDATIONS_RICE_EXCEL_FILE
+RECOMMENDATIONS_CORN_EXCEL_FILE
+```
+
+### Copy template files
+
+Create a directory named **"files"** under the /client/public directory: **"/client/public/files"**.
+
+1. Copy the Excel files from the **"/server/src/scripts/data/dataset_v2.0"** directory to the **"files"** directory
+2. Copy the the **/server/src/scripts/data/pagasa_seasonal_v2.xlsx** Excel file to the **"files"** directory
+3. Use the **"files"** directory and its contents on localhost development but not push it to the repository.
+
+### Update environment variables after deployment
+
+Certain client environment variables, such as URLs (i.e., `BASE_URL_PROD`) will become available after deployment. Update the rest of the `.env` variables later after:
+
+- Setting-up and deploying the (development and production) servers respectively to their own Render.com cloud services
+- Deploying the development website to Firebase Hosting
+- Deploying the production website to GitHub Pages
+
+</Steps>

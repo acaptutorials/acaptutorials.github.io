@@ -1,0 +1,48 @@
+import { Steps, Callout } from 'nextra/components'
+
+# A. Firebase Initialization
+
+<Steps>
+
+### Checkout the latest ACAP 2.0 source codes
+
+Fork the latest repository to get the latest updates and bug fixes, if you haven't already done so.
+
+Read about the latest repository version and forking notes in the [Installation and Setup](/installation) section for more information.
+
+### Create a new Firebase Project for the new Region
+
+Create a new Firebase project for the development environment of the new region. Follow the steps in the [03 Create Firebase Projects](https://www.youtube.com/watch?v=CgN--jl_zJ0) video tutorial for more information.
+
+### Initialize the Firebase Storage
+
+- Copy the contents of the /client/storage.rules file to the Rules tab
+- Set the Firebase Storage's **Cross Origin Resource Sharing (CORS)** permissions using the **Google Cloud Shell**.
+   - Go to your Firebase project’s google cloud console on https://console.cloud.google.com/home.
+   - Activate the cloud shell by clicking the Activate Cloud Shell button on the upper right menu.
+   - Create a cors.json file on the cloud shell using any of it's cloud-based text editors. Copy and paste the following contents to the JSON file:
+       ```json copy
+       [
+         {
+             "origin": ["*"],
+             "method": ["GET"],
+             "maxAgeSeconds": 3600
+           }
+       ]
+       ```
+    - Run the command on cloud shell. Replace BUCKET_NAME with your Firebase Storage bucket name.
+       ```bash copy
+       gsutil cors set cors.json gs://<FIREBASE_PROJECT_ID>.appspot.com
+       ```
+    - View the current cors configuration of a bucket:
+       ```bash copy
+       gsutil cors get gs://<FIREBASE_PROJECT_ID>.appspot.com
+       ```
+### Initialize the Firestore Database
+
+   - Copy the contents of the `/client/firestore.rules` file to the Firestore **Rules** tab
+
+### Initialize the Firebase Authentication
+   - Enable Email/Password Authentication
+</Steps>
+
