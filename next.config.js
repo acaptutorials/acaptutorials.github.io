@@ -1,4 +1,5 @@
 const withNextra = require('nextra')({
+  reactStrictMode: true,
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.jsx'
 })
@@ -6,6 +7,7 @@ const withNextra = require('nextra')({
 module.exports = withNextra({
   output: 'export',
   images: {
+    // Use unoptimized for static hosting
     unoptimized: true
   }
 })
