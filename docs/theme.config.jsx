@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import Image from 'next/image'
 
+import BannerText from '@/components/BannerText'
+
 export default {
   logo: (
     <>
@@ -41,12 +43,8 @@ export default {
     )
   },
   banner: {
-    key: 'v10.1.0-alpha.6-release',
-    text: (
-      <a href="#" target="_blank">
-        🎉 acap-v2 v10.1.0-alpha.6, dev branch @e2df7bf is released. Read more →
-      </a>
-    )
+    key: process.env.RELEASE_VERSION ?? 'v10.1.0-alpha.6-release',
+    text: <BannerText />
   },
   sidebar: {
     defaultMenuCollapseLevel: 1

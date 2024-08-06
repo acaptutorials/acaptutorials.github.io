@@ -10,6 +10,10 @@ module.exports = withNextra({
   images: {
     // Use unoptimized for static hosting
     unoptimized: true
+  },
+  env: {
+    RELEASE_VERSION: process.env.RELEASE_VERSION,
+    COMMIT_ID: process.env.COMMIT_ID
   }
 })
 

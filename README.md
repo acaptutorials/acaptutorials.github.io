@@ -33,6 +33,13 @@ The app depends these libraries and frameworks.
    cd docs
    npm install
    ```
+3. Set up the environment variables. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
+
+   | Variable Name | Description |
+   | --- | --- |
+   | RELEASE_VERSION | Latest respository Release (Tag) number |
+   | RELEASE_PAGE | Latest GitHub release page |
+   | COMMIT_ID | Default branch's commit sha related to the `RELEASE_VERSION` |
 
 ## Usage
 
