@@ -1,0 +1,42 @@
+import { Steps, Callout } from 'nextra/components'
+
+# E. Accounts
+
+Create ACAP admin accounts to use for testing. You may create other accounts later for RFO's to use with signing-in to ACAP's admin dashboard. The following methods require a successfully running ACAP client + server app, carrying on from IV. Integration.
+
+<Steps>
+
+### Login as Superadmin
+
+1. Login as a superadmin to create an admin account. Open a new browser tab to:
+
+```bash copy
+http://localhost:3001/superadmin
+```
+
+2. Login using the superadmin login credentials:
+
+```
+username: superadmin@gmail.com
+p/w: -
+```
+
+<Callout type="info">
+Use the random password from the [**Server Setup**](/server-setup) step. If yop didn't change it, see the default acap superadmin password in the `(server/src/scripts/seeders/00_superadmin/index.js)` file for reference.
+</Callout>
+
+### Create a new Admin account
+
+1. Press the CREATE USER button.
+2. Follow the UI input prompts for creating a new Admin account.
+
+### Sign-in using the Admin account
+
+1. Sign-out from the superadmin account.
+2. Open the browser to:
+   ```bash copy
+   http://localhost:3001/admin
+   ```
+3. Use the Admin account created in **step #2** to sign-in
+
+</Steps>

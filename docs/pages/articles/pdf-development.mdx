@@ -1,0 +1,104 @@
+import { Callout, Steps } from 'nextra/components'
+
+# PDF Development
+
+## PDF Bulletin Process Flow
+
+![pdf-process](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fla11qNSxCH88jASOnkfd_thumbnail?alt=media&token=3a305baf-1b7f-4d62-a56c-7b0657567044)
+
+## Development Requirements
+
+- [Yarn](https://yarnpkg.com/)
+   - **Note:** the project uses the classic stable version [v1.22.22](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+   - Installed with "npm install -g yarn"
+- [Gulp](https://gulpjs.com/)
+   - Installed during dependencies installation
+
+
+### Libraries Used
+
+- [Puppeteer](https://pptr.dev/) v14.3.0
+- [EJS](https://ejs.co/) v3.1.8
+
+## Main Flow
+
+1. Request bulletin PDF from API endpoint
+2. Backend (NodeJS)
+   - Fetch data from database
+   - Transform data
+   - Feed transformed data to the PDF generator scripts
+   - Render/upload PDF
+   - Return PDF/report
+
+## PDF Bulletin Development
+
+The PDF development and technical approach were strongly influenced by the requirements, particularly the need to achieve a 1:1 layout consistency with the complex bulletin images (JPEG), and to contain all text in one (1) PDF page regardless of recommendations content length. This level of precision was challenging to attain using NodeJS-compatible programmable PDF generator libraries like [React-pdf](https://react-pdf.org/), [pdfmake](https://www.npmjs.com/package/pdfmake) or [pdfkit](https://pdfkit.org/).
+
+## Development Process
+
+<Steps>
+
+### Install dependencies
+
+1. Go to the `/server/src/utils/pdf/livereload` directory.
+2. Install dependencies using yarn, `"yarn install"`
+
+### Run the development website
+
+1. Run `"yarn dev"`. Wait for index page to display
+2. View the sample HTML sites (these translates to the PDF layout design)
+3. i.e. to view the 10-day HTML:
+   - Click the URL link: **"10-Day Farm Weather Outlook and Advisory Bulletin"**
+
+### Adjust the HTML layout design
+
+1. Create new or update existing vanilla HTML/CSS/JS files
+2. i.e., for 10-day PDF, edit the file: `/utils/pdf/livereload/public/tenday/index.html`
+3. Modify the `index.html`, `section-00.css` (other CSS), or `main.js` files to create a simple HTML page that closely matches the reference bulletin image (JPEG).
+
+<Callout type="info">
+NOTE: Ensure that certain text content is placed within `<div>` elements with fixed width and fixed height to keep everything contained on a single PDF page.
+Use CSS styles for printing
+</Callout>
+
+<Callout>
+For guidance on how text and elements should be resized, refer to the **"adjustText()"** function in the `/utils/pdf/livereload/public/tenday/main.js file`
+</Callout>
+
+### Update Assets
+
+Add/delete new assets following the pattern (relative to the current directory, i.e., in `/utils/pdf/livereload/public/tenday/`)
+
+- CSS/JS files
+- Picture files
+- Use mid-resolution pictures ideally having small size in KB (kilobytes) but still looks neat in the PDF, to achieve optimized, small-size network-friendly PDF files for downloading
+View the updated HTML page, re-loaded with live reload in the web browser
+
+### Update the EJS file
+
+1. Copy + paste updates in the HTML file to its EJS file counterpart
+2. i.e. for 10-day: `/utils/pdf/livereload/templates/pdf-tenday.ejs`
+
+<Callout type="info">
+Take note of EJS syntax for new data arrays and variables
+Take note and adjust relative URL links to new or deleted pictures
+</Callout>
+
+### Check the bulletin PDF script
+
+1. i.e., for 10-day PDF: open the file: `/utils/pdf/livereload/pdf-tenday.js`
+2. Update this file to sync or connect new PDF pictures, CSS, and JS files from the `/utils/pdf/livereload/public/tenday/` directory
+3. Note: The API endpoint script for creating 10-day bulletin calls this script from the controller file `/controllers/report/tenday.js`
+
+### Check the API endpoint controller script
+
+1. i.e., for 10-day: open the file: `/server/src/controllers/report/tenday.js`
+2. Fetch / query and transform data required by the bulletin PDF script (**#6**) here
+3. Check and review how it uses puppeteer to create a PDF file, combining the EJS file and the vanilla CSS and JS files, returned by the **`"tendayTemplatePDF()"`** function.
+
+### Trigger PDF preview
+
+1. Trigger PDF preview to view the new PDF layout from the frontend (i.e, Admin - Create 10-Day Bulletin PDF page)
+2. Observe the rendered PDF preview
+
+</Steps>

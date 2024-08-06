@@ -1,0 +1,107 @@
+import { FileTree, Callout } from 'nextra/components'
+
+# Client
+
+The **client** directory contains codes and configurations/settings for the (React) NextJS frontend and Firebase. The folder tree displays the relevant files and folders.
+
+The NextJS frontend uses the **pages router**, since this is suitable for generating static pages to host on GitHub Pages. It uses the `"container-component"` as a dominant pattern, distinguising between logic (container) and UI (component).
+
+<Callout type="info" emoji="ℹ️">
+This documentation only contains information about relevant files and directories within the **client** directory. For more information about NextJS-specific files and configurations (such as the `next.config.js`, `_app.js`, or `document.js` files), please head over to the [NextJS documentation](https://nextjs.org/docs/pages/building-your-application/routing) for **Pages Router**.
+</Callout>
+
+## Files
+
+- **.env.example** - example keys and values to put in the `.env` file
+- **.firebaserc** - Firebase configuration file
+- **firebase.json** - Firebase configuration file
+- **firestore.rules** - Firestore Rules definitions to publish in a Firebase project's Firestore Rules settings
+- **storage.rules** - Firebase Storage Rules definitions to publish in a Firebase project's Storage settings
+- **Dockerfile.acap** - multi-stage build Dockerfile definition for running the client on localhost development or as "built" static files for production deployment running on nginx.
+
+## Folders
+
+### /pages
+
+- Components here serves as the "container" components in the container-component pattern, mmostly component logic
+- ex: "pages/admin", "pages/admin/reports",
+"pages/bulletins", "pages/home"
+
+### /components
+
+- Components defined here serves as the "UI" counterpart of each "page" in the container components
+- They can contain nested UI components
+- ex: "components/admin", "components/admin/reports",
+components/bulletins", "components/home"
+
+### /components/common/ui
+
+- Common UI used everywhere
+- ex: loading spinners, modal, snackbar, skeleton loaders, fileuploader
+
+### /components/layout
+
+- UI for massive page-wide layouting
+
+### /components/entities
+
+- (main) UI with processing functions
+- ex: login, searchbar, auth hoc
+
+### /domain
+
+- UI subcomponents of main UI/features stored in the /components or /pages directory
+
+### /src/hooks
+
+- Custom hooks used for main objects
+
+### /src/services
+
+- Firebase API calls for main objects
+- ex: reports, bulletins, provinces, atbp
+
+### /src/store
+
+- Redux (toolkit) stores and slices
+- Used for tracking and passing heavy-weight main objects data
+- ex: reports, recommendations, municipalities
+
+## File Tree
+
+<FileTree>
+  <FileTree.Folder name="client" defaultOpen>
+    <FileTree.Folder name="components">
+      <FileTree.Folder name="admin" />
+      <FileTree.Folder name="superadmin" />
+    </FileTree.Folder>
+    <FileTree.Folder name="config" />
+    <FileTree.Folder name="domain" />
+    <FileTree.Folder name="pages">
+      <FileTree.Folder name="admin" />
+      <FileTree.Folder name="superadmin" />
+    </FileTree.Folder>
+    <FileTree.Folder name="public">
+      <FileTree.File name="test" />
+    </FileTree.Folder>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="firebase">
+        <FileTree.File name="firebase.config.js" />
+      </FileTree.Folder>
+      <FileTree.Folder name="hooks" />
+      <FileTree.Folder name="mui" />
+      <FileTree.Folder name="services" />
+      <FileTree.Folder name="store" />
+      <FileTree.Folder name="utils" />
+    </FileTree.Folder>
+    <FileTree.Folder name="styles">
+      <FileTree.File name="test" />
+    </FileTree.Folder>
+    <FileTree.File name=".env.example" />
+    <FileTree.File name=".firebaserc" />
+    <FileTree.File name="Dockerfile.acap" />
+    <FileTree.File name="firebase.json" />
+    <FileTree.File name="firestore.rules" />
+    <FileTree.File name="storage.rules" />
+  </FileTree.Folder>
+</FileTree>

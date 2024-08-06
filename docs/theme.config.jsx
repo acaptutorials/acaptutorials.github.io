@@ -14,7 +14,7 @@ export default {
   project: {
     link: 'https://github.com/acaptutorials/acaptutorials.github.io'
   },
-  docsRepositoryBase: 'https://github.com/acaptutorials/acaptutorials.github.io',
+  docsRepositoryBase: 'https://github.com/acaptutorials/acaptutorials.github.io/tree/dev/docs',
   useNextSeoProps: () => {
     return {
       titleTemplate: 'ACAP Tutorials - %s'
