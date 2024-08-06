@@ -25,8 +25,10 @@ export default {
     const { frontMatter } = useConfig()
     const title = 'ACAP Tutorials'
 
-    const url = 'https://localhost:3000' +
+    const url = 'https://acaptutorials.github.io' +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+
+    console.log('---url', url)
 
     return (
       <>
