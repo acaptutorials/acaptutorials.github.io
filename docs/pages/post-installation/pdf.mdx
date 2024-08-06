@@ -1,1 +1,158 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
 # PDF Bulletins
+
+![pdf-header-footer](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FwAbBX9BNLmLRihukTtSi_thumbnail?alt=media&token=b6608772-524d-4e29-bf1b-f6034cdfcc27)
+
+ACAP's bulletin PDFs use hard-coded Bicol-related text in their headers and footers to allow flexible manual layout adjustments. These static elements should be updated with text relevant to the new region.
+
+<Callout>
+This section covers how to update the **static text content** within the PDF bulletin layouts. To **edit** or **create new** PDF layouts, refer to the [PDF Development](/articles/pdf-development) layout guide.
+</Callout>
+
+## Edit the Logos
+
+Replace the Region 5 logos with new region-related logos in these directories:
+
+1. `/server/src/utils/pdf/livereload/public/common/images`
+2. `/server/src/utils/pdf/livereload/public/tenday/images`
+3. `/server/src/utils/pdf/livereload/public/special-signal/images`
+
+<FileTree>
+  <FileTree.Folder name="pdf" defaultOpen>
+    <FileTree.Folder name="livereload" defaultOpen>
+      <FileTree.Folder name="public" defaultOpen>
+        <FileTree.Folder name="common" defaultOpen>
+          <FileTree.Folder name="images">
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+        <FileTree.Folder name="seasonal" defaultOpen>
+          <FileTree.Folder name="images">
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+          <FileTree.File name="index.html" />
+        </FileTree.Folder>
+        <FileTree.Folder name="special-signal" defaultOpen>
+          <FileTree.Folder name="images">
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+          <FileTree.File name="index.html" />
+        </FileTree.Folder>
+        <FileTree.Folder name="tenday" defaultOpen>
+          <FileTree.Folder name="images">
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+          <FileTree.File name="index.html" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+    <FileTree.Folder name="templates" defaultOpen>
+      <FileTree.File name="pdf-seasonal.ejs" />
+      <FileTree.File name="pdf-special-signal.ejs" />
+      <FileTree.File name="pdf-tenday.ejs" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+## Seasonal Bulletin PDF
+
+<Steps>
+
+### Edit the Seasonal HTML File
+
+1. Open the seasonal PDF's **HTML** layout:<br />`/server/src/utils/pdf/livereload/public/seasonal/index.html`
+
+2. Replace Region 5's **header** text with new region text.
+   ```text copy
+   REGIONAL FIELD OFFICE NO. 5
+   San Agustin, Pili, Camarines Sur, 4418
+   http://bicol.da.gov.ph
+   ```
+3. Replace Region 5's **footer** text with new region text.
+   ```text copy
+   DEPARTMENT OF AGRICULTURE SUPPORTS
+   - Pre-positioned planting materials and other farm inputs
+   - Research station available for livestock evacuations
+   - Availability of ropes, power sprayer, mist blowers, laminated sacks and  water drums
+   - Drugs and biologics for livestocks
+   - Farm machineries stationed in the DA RFO 5 and Research Outreach Station in every province
+   - Technical assistance for farm operations
+   - Climate Information services
+   ```
+
+### Edit the Seasonal EJS File
+
+1. Open the seasonal PDF's **EJS** layout file in <br /> `/server/src/utils/pdf/livereload/templates/pdf-seasonal.ejs`
+
+2. Apply the **header** and **footer** text updates similar with [**Edit the Seasonal HTML File**](#edit-the-seasonal-html-file) steps **#2** and **#3** in this file.
+
+</Steps>
+
+## 10-Day Bulletin PDF
+
+<Steps>
+
+### Edit the 10-day HTML File
+
+1. Open the 10-day PDF's **HTML** layout:<br />`/server/src/utils/pdf/livereload/public/tenday/index.html`
+
+2. Replace Region 5's **header** text with new region text.
+   ```text copy
+   REGIONAL FIELD OFFICE NO. 5
+   San Agustin, Pili, Camarines Sur, 4418
+   http://bicol.da.gov.ph
+   ```
+3. Replace Region 5's **footer** text with new region text.
+   ```text copy
+   DEPARTMENT OF AGRICULTURE SUPPORTS
+   - Pre-positioned planting materials and other farm inputs
+   - Research station available for livestock evacuations
+   - Availability of ropes, power sprayer, mist blowers, laminated sacks and  water drums
+   - Drugs and biologics for livestocks
+   - Farm machineries stationed in the DA RFO 5 and Research Outreach  Station in every province
+   - Technical assistance for farm operations
+   - Climate Information services
+   ```
+
+### Edit the 10-day EJS File
+
+1. Open the 10-day PDF's **EJS** layout file in <br /> `/server/src/utils/pdf/livereload/templates/pdf-tenday.ejs`
+
+2. Apply the **header** and **footer** text updates similar with [**Edit the 10-day HTML File**](#edit-the-10-day-html-file) steps **#2** and **#3** in this file.
+
+</Steps>
+
+## Special Weather Bulletin PDF
+
+<Steps>
+
+### Edit the Special HTML File
+
+1. Open the special weather PDF's **HTML** layout:<br />`/server/src/utils/pdf/livereload/public/special-signal/index.html`
+
+2. Replace Region 5's **header** text with new region text.
+   ```text copy
+   REGIONAL FIELD OFFICE NO. 5
+   San Agustin, Pili, Camarines Sur, 4418
+   http://bicol.da.gov.ph
+   ```
+3. Replace Region 5's **footer** text with new region text.
+   ```text copy
+   DEPARTMENT OF AGRICULTURE SUPPORTS
+   - Pre-positioned planting materials and other farm inputs
+   - Research station available for livestock evacuations
+   - Availability of ropes, power sprayer, mist blowers, laminated sacks and  water drums
+   - Drugs and biologics for livestocks
+   - Farm machineries stationed in the DA RFO 5 and Research Outreach Station in every province
+   - Technical assistance for farm operations
+   - Climate Information services
+   ```
+
+### Edit the Special EJS File
+
+1. Open the special weather PDF's **EJS** layout file in <br /> `/server/src/utils/pdf/livereload/templates/pdf-special-signal.ejs`
+
+2. Apply the **header** and **footer** text updates similar with [**Edit the Special Weather HTML File**](#edit-the-special-html-file) steps **#2** and **#3** in this file.
+
+</Steps>

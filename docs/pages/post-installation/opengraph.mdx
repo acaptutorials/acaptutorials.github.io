@@ -1,3 +1,118 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
 # Opengraph Settings
 
-_(docs for this section is under construction)_
+OpenGraph is a protocol used by websites to control how their content is displayed when shared on social media platforms and messaging apps.
+
+This section contains notes on updating the thumbnail-like images that appears when sharing the ACAP website URLs in social media like Meta and Twitter.
+
+![opengraph](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fc7AY9auOR2eWKe50teiX_thumbnail?alt=media&token=e1f2152e-a093-47f8-82d2-1acbcf36a801)
+
+## OpenGraph / Meta Description
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.File name="assets_dev.csv" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+1. Open the `/server/src/scripts/data/assets_dev.csv` file.
+2. Select the row whose `filename` column is equals to `"og_home"`.
+   - Replace all `"Bicol"` text with the new region name in it's **description** column.
+
+## OpenGraph Thumbnails
+
+<Steps>
+
+### Create New OpenGraph Images
+
+1. Take note of ACAP's **public pages**. These are pages which do not require login.
+   - **Home Page** - `/` (index page)
+   - **ACAP Services** - `/weather-services`
+   - **Cropping Calendar** - `/cropping-calendar-v2`
+   - **Seasonal / 10-Day Recommendations** - `/agroclimatic-services`
+   - **Bulletins PDF Download** - `/bulletins`
+   - **Sesaonal Bulletins PDF Download** - `/bulletins/seasonal-outlook`
+   - **10-Day Bulletins PDF Download** - `/bulletins/weather`
+   - **Special Bulletins PDF Download** - `/special-weather-forecast`
+   - **Admin Login** - `/admin/login`
+   - **Superadmin Login** - `/superadmin/login`
+
+2. Create `1200 x 600` pixel picture banners for each of the public pages mentioned in step **#1**.
+
+3. (Optional) For reference, you can use ACAP's opengraph Photoshop PSD template to create new OpenGraph images. Press the (left) DOWNLOAD button to download the file.
+
+<iframe
+  src="https://acaptutorials.github.io/assets-cms/cards/embed?id=1AzipjfUV5G4rNyYnE6h&ts=1722964533"
+  width="200"
+  height="250"
+/>
+
+4. A total of ten (10) new thumbnail files should be created, continuing from **step #2**. Let us use region 6 for example. Press the (left) DOWNLOAD button to download and view the picture files.
+
+<iframe
+  src="https://acaptutorials.github.io/assets-cms/cards/embed?id=l8K7JfYhPcD7LUu26EmJ&ts=1722965055"
+  width="200"
+  height="250"
+/>
+
+### Upload the OpenGraph Images
+
+1. Upload the ten (10) new OpenGraph to an online storage or hosting site. Their online URL should be publicly accessible after upload.
+
+   <Callout>
+   ACAP uploaded its OpenGraph images in Firebase Storage.
+   </Callout>
+
+2. Take note of the images' online URL after upload.
+
+### Replace the OpenGraph URLs
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.File name="assets_dev.csv" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+1. Open the `/server/src/scripts/data/assets_dev.csv` file.
+
+2. Replace the `url` column of the rows with column `page = "og"` and whose `filename` column starts with `"og_"` with the new OpenGraph image URLs from [**Upload the OpenGraph Images - step #2**](#upload-the-opengraph-images)
+
+| filename | page name | public page route |
+| --- | --- | --- |
+| og_home | Home Page | `/` |
+| og_services | ACAP Services | `/weather-services` |
+| og_calendar | Cropping Calendar | `/cropping-calendar-v2` |
+| og_recommendations | Seasonal / 10-Day Recommendations | `/agroclimatic-services` |
+| og_bulletins | Bulletins PDF Download | `/bulletins` |
+| og_bulletins_10day | 10-Day Bulletins PDF Download | `/bulletins/weather` |
+| og_bulletins_seasonal | Sesaonal Bulletins PDF Download | `/bulletins/seasonal-outlook` |
+| og_bulletins_typhoon | Special Bulletins PDF Download | `/special-weather-forecast` |
+| og_admin | Admin Login | `/admin/login` |
+| og_superadmin | Superadmin Login  | `/superadmin/login` |
+
+### Upload the New OpenGraph URLs
+
+Upload the new OpenGraph URLs (in the `assets_dev.csv` CSV file) to the `development` and `production` Firestore database.
+
+1. Update the server `.env` file with the **production** Firebase variables: `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY`.
+2. Run the server NPM script:
+   ```bash copy
+   npm run seed:11_assets
+   ```
+3. Update the server `.env` file with the **development** Firebase variables: `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY`.
+4. Re-run the NPM script on **step #2**.
+
+</Steps>

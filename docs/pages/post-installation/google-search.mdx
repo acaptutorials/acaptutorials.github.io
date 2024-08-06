@@ -1,3 +1,88 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
 # SEO with Google Search Console
 
-_(docs for this section is under construction)_
+[Google Search Console](https://search.google.com/search-console/about) helps with Search Engine Optimization (SEO), helping websites become discoverable in search engines like Google, Bing or Yahoo Search, along with other factors and best practices for achieving good SEO performance.
+
+> _**Note** however, that Google Search Console alone won't drive up a website's SEO ranking. Visibility and popularity in search engines also depends on other SEO best practices, such as writing semantic, meaningful content on each page and building external links from external sources like social media, among others._
+
+<Callout>
+This is an **optional** update for ACAP introduced in its 2.0 version, should developers want to slightly increase their ACAP's rank and visibility in the Google Search results.
+</Callout>
+
+<Callout type="info">
+This requires the latest updates from the **acap-v2** repository at release [**v10.1.0-alpha.6**](https://github.com/amia-cis/acap-v2/releases/tag/v10.1.0-alpha.6), dev branch commit **@e2df7bf** or later.
+</Callout>
+
+![google-search-results](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fe6zX1JgvhYfyASqvzXTh_thumbnail?alt=media&token=b5561bfc-b9ce-4a41-82c3-da0618206e59)
+
+## Requirements
+
+1. ACAP website running in its production GitHub Pages i.e.,<br />https://acap-bicol.github.io
+2. Google Account
+
+## Register with Google Search Console
+
+<Steps>
+
+### Login to Google
+
+Login to a Google account.
+
+### Register Site to Google Search Console
+
+1. Navigate to the [Google Search Console](https://search.google.com/search-console/welcome?utm_source=about-page) website registration page.
+
+2. Select the **URL prefix** option. Enter the root domain name of the ACAP website. For example,<br /> `https://acap-bicol.github.io`.
+   ![url-prefix](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FF2qEJAFShv6E2r065h0v_thumbnail?alt=media&token=b37f9dc8-2dfd-46da-8788-c104d2884c7b
+   )
+
+3. Press the CONTINUE button.
+
+4. Download the HTML file in the resulting **Verify ownership** window. For example, the HTML file's name is `"google9e24fb24f7c185b4.html"`
+   ![verification-file](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Ful05X04I2X8s8aeE0cqR_thumbnail?alt=media&token=ce1bde38-bc2f-454e-8e4f-8812b7b61a01)
+
+### Upload HTML Verification File
+
+<FileTree>
+  <FileTree.Folder name="client" defaultOpen>
+    <FileTree.Folder name="config" defaultOpen>
+      <FileTree.File name="google9e24fb24f7c185b4.html" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+1. Put the `"google9e24fb24f7c185b4.html"` file under the `/client/config` directory.
+2. Commit and push the file to the forked repository.
+3. Deploy the ACAP website to the **production** GitHub Pages website to upload the verification file.
+   - The `"google9e24fb24f7c185b4.html"` should become available from the production website's root URL after a successful deploy.
+   - For reference, the ACAP-Bicol's google verification file is available at:<br /> https://acap-bicol.github.io/google9e24fb24f7c185b4.html
+
+### Authenticate the HTML Verification File
+
+1. Press the AUTHENTICATE button in the **Verify ownership** window after uploading the HTML verification file in the production website's root URL.
+
+2. In case you have closed the window, search for the registered URL in the upper left **"Search for property"** search bar.
+
+3. Steps **#1** or **#2** should authenticate the HTML verification file, if its successfully uploaded to the website's root directory.
+
+### Submit a Sitemap
+
+
+<Callout>
+A `sitemap.txt` file should be available in the ACAP production GitHub Pages website if it was deployed with the latest updates from the **acap-v2** repository at release [**v10.1.0-alpha.6**](https://github.com/amia-cis/acap-v2/releases/tag/v10.1.0-alpha.6), dev branch commit **@e2df7bf** or later.
+</Callout>
+
+1. Click the **Sitemaps** tab in the Google Search Console dashboard.
+2. Enter the ACAP's sitemap URL in its input prompt for example:
+   ```bash copy
+   https://<REGION_N_ACAP>.github.io/sitemap.txt
+   ```
+3. Submit the sitemap.
+4. Wait for several days to up 1 - 2 weeks after a successful submission for the sitemap pages to become indexed and to receive feedback in the Google Search Console dashbboard - **Overview**, **Pages**, **Performace**, and others.
+   ![sitemap-submit-success](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2F0OyRX0CFP4qZ58GpgQKL_thumbnail?alt=media&token=6f2b6b9f-2c5b-4af1-84a1-26303b6aff41)
+5. While waiting, observe and resolve errors that the Google Search Console may display in the dashboard - **Pages** tab.
+6. After a few days up to several weeks after a successful page indexing, search for your website in Google Search and observe if it will be among the top search results.
+
+
+</Steps>

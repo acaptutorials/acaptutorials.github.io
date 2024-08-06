@@ -37,6 +37,8 @@ jobs:
         run: |
           cd docs
           npm run export
+          cp config/*.html out/
+          cp config/sitemap.txt out/
       - name: Disable Jekyll
         run: touch docs/out/.nojekyll
       - name: Archive Development Artifact

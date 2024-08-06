@@ -1,4 +1,4 @@
-import { Callout, Steps } from 'nextra/components'
+import { Callout, Steps, FileTree } from 'nextra/components'
 
 # C. Client Setup
 
@@ -13,6 +13,10 @@ The [09 Client setup for localhost development](https://youtu.be/f3icH3jmnTo) vi
 ### Setup environment variables
 
 Update the **client** `.env` file, copying the keys and values from the `.env.example` file. You can leave the default values for now, but be sure to update the following with new values:
+
+<Callout type="info" emoji="ℹ️">
+The **client** `REGION_NAME` should be similar with the **server** `REGION_NAME` value.
+</Callout>
 
 ```env copy
 REGION_NAME
@@ -37,11 +41,35 @@ RECOMMENDATIONS_CORN_EXCEL_FILE
 
 ### Copy template files
 
-Create a directory named **"files"** under the /client/public directory: **"/client/public/files"**.
+1. Create a directory named **"files"** under the /client/public directory: **"/client/public/files"**.
+  <FileTree>
+    <FileTree.Folder name="client" defaultOpen>
+      <FileTree.Folder name="public" defaultOpen>
+        <FileTree.Folder name="files" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree>
 
-1. Copy the Excel files from the **"/server/src/scripts/data/dataset_v2.0"** directory to the **"files"** directory
-2. Copy the the **/server/src/scripts/data/pagasa_seasonal_v2.xlsx** Excel file to the **"files"** directory
-3. Use the **"files"** directory and its contents on localhost development but not push it to the repository.
+2. Copy the Excel files from the **"/server/src/scripts/data/dataset_v2.0"** directory to the **"files"** directory
+  <FileTree>
+    <FileTree.Folder name="server" defaultOpen>
+      <FileTree.Folder name="src" defaultOpen>
+        <FileTree.Folder name="scripts" defaultOpen>
+          <FileTree.Folder name="data" defaultOpen>
+            <FileTree.Folder name="dataset_v2.0" defaultOpen>
+              <FileTree.File name="corn_cropping_calendar.xlsx" />
+              <FileTree.File name="corn_recommendations_v3.xlsx" />
+              <FileTree.File name="rice_cropping_calendar.xlsx" />
+              <FileTree.File name="rice_recommendations_v4.xlsx" />
+            </FileTree.Folder>
+            <FileTree.File name="pagasa_seasonal_v2.xlsx" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree>
+3. Copy the the **/server/src/scripts/data/pagasa_seasonal_v2.xlsx** Excel file to the **"files"** directory
+4. Use the **"files"** directory and its contents on localhost development but not push it to the repository.
 
 ### Update environment variables after deployment
 
