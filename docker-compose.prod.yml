@@ -1,0 +1,22 @@
+version: "3"
+services:
+  # NextJS exported app running on an nginx webserver
+  acaptutorials.github.io-prod:
+    container_name: acaptutorials.github.io-prod
+    image: acaptutorials.github.io:prod
+    restart: always
+    env_file:
+      - ./docs/.env
+    build:
+      context: ./docs
+      dockerfile: Dockerfile
+      target: production
+    networks:
+      - acaptutorials.github.io-prod
+    ports:
+      - "3000:3000"
+
+networks:
+  acaptutorials.github.io-prod:
+    name: acaptutorials.github.io-prod
+    external: false

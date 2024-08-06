@@ -1,0 +1,25 @@
+version: "3"
+services:
+  # NextJS v13 app running on development mode
+  acaptutorials.github.io-dev:
+    container_name: acaptutorials.github.io-dev
+    image: acaptutorials.github.io:dev
+    env_file:
+      - ./docs/.env
+    build:
+      context: ./docs
+      dockerfile: Dockerfile
+      target: development
+    networks:
+      - acaptutorials.github.io-dev
+    volumes:
+      - ./docs:/opt/docs
+      - /opt/docs/node_modules
+      - /opt/docs/.next
+    ports:
+      - "3000:3000"
+
+networks:
+  acaptutorials.github.io-dev:
+    name: acaptutorials.github.io-dev
+    external: false
