@@ -28,8 +28,6 @@ export default {
     const url = 'https://acaptutorials.github.io' +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
 
-    console.log('---url', url)
-
     return (
       <>
         <meta property="og:url" content={url} />
