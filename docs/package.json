@@ -2,7 +2,11 @@
   "name": "acaptutorials.github.io",
   "version": "1.0.0",
   "description": "ACAP Bicol (ACAP 2.0) development tutorials documentation",
-  "main": "",
+  "private": true,
+  "engines": {
+    "node": "20.15.0",
+    "npm": "10.7.0"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",

@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "acaptutorials-dev"
+  },
+  "targets": {
+    "acaptutorials-dev": {
+      "hosting": {
+        "dev": [
+          "acaptutorials"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
