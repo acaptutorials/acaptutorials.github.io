@@ -1,11 +1,11 @@
-import { Callout, Steps } from 'nextra/components'
+import { Callout, FileTree, Steps } from 'nextra/components'
 
 # PDF Development
 
 ## PDF Bulletin Process Flow
 
-<Callout type="info" emoji="ℹ️">
-This process flow is used by **ACAP 1.0**. Further enhancements or updates may use new processing flows and design, which should be documented here.
+<Callout type="warning">
+This is the process flow used by **ACAP 1.0** for generating bulletin PDFs. Further enhancements or updates may use new processing flows and design, which should be documented here.
 </Callout>
 
 ![pdf-process](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fla11qNSxCH88jASOnkfd_thumbnail?alt=media&token=3a305baf-1b7f-4d62-a56c-7b0657567044)
@@ -43,6 +43,36 @@ The PDF development and technical approach were strongly influenced by the requi
 <Steps>
 
 ### Install dependencies
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="utils" defaultOpen>
+        <FileTree.Folder name="pdf" defaultOpen>
+          <FileTree.Folder name="livereload" defaultOpen>
+            <FileTree.Folder name="public">
+              <FileTree.Folder name="common" />
+              <FileTree.Folder name="seasonal">
+                <FileTree.File name="index.html" />
+              </FileTree.Folder>
+              <FileTree.Folder name="special-signal">
+                <FileTree.File name="index.html" />
+              </FileTree.Folder>
+              <FileTree.Folder name="tenday">
+                <FileTree.File name="index.html" />
+              </FileTree.Folder>
+            </FileTree.Folder>
+            <FileTree.Folder name="templates">
+              <FileTree.File name="pdf-seasonal.ejs" />
+              <FileTree.File name="pdf-special-signal.ejs" />
+              <FileTree.File name="pdf-tenday.ejs" />
+            </FileTree.Folder>
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
 
 1. Go to the `/server/src/utils/pdf/livereload` directory.
 2. Install dependencies using yarn, `"yarn install"`

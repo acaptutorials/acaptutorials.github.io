@@ -1,4 +1,4 @@
-import { Callout, Steps } from 'nextra/components'
+import { Callout, FileTree, Steps } from 'nextra/components'
 
 # Opengraph Settings
 
@@ -9,6 +9,18 @@ This section contains notes on updating the thumbnail-like images that appears w
 ![opengraph](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fc7AY9auOR2eWKe50teiX_thumbnail?alt=media&token=e1f2152e-a093-47f8-82d2-1acbcf36a801)
 
 ## OpenGraph / Meta Description
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.File name="assets_dev.csv" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
 
 1. Open the `/server/src/scripts/data/assets_dev.csv` file.
 2. Select the row whose `filename` column is equals to `"og_home"`.
@@ -34,7 +46,7 @@ This section contains notes on updating the thumbnail-like images that appears w
 
 2. Create `1200 x 600` pixel picture banners for each of the public pages mentioned in step **#1**.
 
-3. (Optional) For Reference, you can use ACAP's opengraph Photoshop PSD template. Press the (left) DOWNLOAD button to download the file.
+3. (Optional) For reference, you can use ACAP's opengraph Photoshop PSD template to create new OpenGraph images. Press the (left) DOWNLOAD button to download the file.
 
 <iframe
   src="https://acaptutorials.github.io/assets-cms/cards/embed?id=1AzipjfUV5G4rNyYnE6h&ts=1722964533"
@@ -61,6 +73,18 @@ This section contains notes on updating the thumbnail-like images that appears w
 2. Take note of the images' online URL after upload.
 
 ### Replace the OpenGraph URLs
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.File name="assets_dev.csv" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
 
 1. Open the `/server/src/scripts/data/assets_dev.csv` file.
 

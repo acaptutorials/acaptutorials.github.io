@@ -1,4 +1,4 @@
-import { Steps, Callout } from 'nextra/components'
+import { FileTree, Steps, Callout } from 'nextra/components'
 
 # Web Map on Home Page
 
@@ -16,6 +16,21 @@ These steps require the files:
 2. New AMIA Villages information of the new region in a CSV file, following the format in the
 `/server/src/scripts/data/amia_villages_r5.csv` file.
 
+  <FileTree>
+    <FileTree.Folder name="server" defaultOpen>
+      <FileTree.Folder name="src" defaultOpen>
+        <FileTree.Folder name="scripts" defaultOpen>
+          <FileTree.Folder name="data" defaultOpen>
+            <FileTree.File name="amia_villages_r5.csv" />
+            <FileTree.Folder name="geojson" defaultOpen>
+              <FileTree.File name="acap-bicol.geojson" />
+            </FileTree.Folder>
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree>
+
 <Callout>
 Since ACAP uses the provinces and municipality naming conventions from the PAGASA 10-day weather forecast Excel file, please ensure the **SHAPEFILE** and **AMIA Villages CSV file** share similar naming conventions with it.
 </Callout>
@@ -31,7 +46,7 @@ Since ACAP uses the provinces and municipality naming conventions from the PAGAS
 
 3. (Optional) Use the https://github.com/ciatph/shapefile-simplify tool to normalize, simplify and convert the SHAPEFILE to GeoJSON, playing around with PERCENTAGE % values that lead to a small file size with acceptable visual effects when loaded on the Home page.
 
-   ACAP 1.0's GeoJSON file is available in `/server/src/scripts/data/geojson/acap-bicol` geojson file for reference.
+   ACAP 1.0's GeoJSON file is available in `/server/src/scripts/data/geojson/acap-bicol.geojson` file for reference.
 
 ### Upload the GeoJSON file
 

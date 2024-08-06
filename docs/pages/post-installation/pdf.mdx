@@ -1,4 +1,4 @@
-import { Callout, Steps } from 'nextra/components'
+import { Callout, FileTree, Steps } from 'nextra/components'
 
 # PDF Bulletins
 
@@ -12,8 +12,48 @@ This section covers how to update the **static text content** within the PDF bul
 
 ## Edit the Logos
 
-Replace the Region 5 logos with new region-related logos in this directory:<br />
-`/server/src/utils/pdflivereload/public/seasonal/images`
+Replace the Region 5 logos with new region-related logos in these directories:
+
+1. `/server/src/utils/pdf/livereload/public/common/images`
+2. `/server/src/utils/pdf/livereload/public/tenday/images`
+3. `/server/src/utils/pdf/livereload/public/special-signal/images`
+
+<FileTree>
+  <FileTree.Folder name="pdf" defaultOpen>
+    <FileTree.Folder name="livereload" defaultOpen>
+      <FileTree.Folder name="public" defaultOpen>
+        <FileTree.Folder name="common" defaultOpen>
+          <FileTree.Folder name="images" defaultOpen>
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+        <FileTree.Folder name="seasonal" defaultOpen>
+          <FileTree.Folder name="images" defaultOpen>
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+          <FileTree.File name="index.html" />
+        </FileTree.Folder>
+        <FileTree.Folder name="special-signal" defaultOpen>
+          <FileTree.Folder name="images" defaultOpen>
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+          <FileTree.File name="index.html" />
+        </FileTree.Folder>
+        <FileTree.Folder name="tenday" defaultOpen>
+          <FileTree.Folder name="images" defaultOpen>
+            <FileTree.File name="da-logo.png" />
+          </FileTree.Folder>
+          <FileTree.File name="index.html" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+    <FileTree.Folder name="templates" defaultOpen>
+      <FileTree.File name="pdf-seasonal.ejs" />
+      <FileTree.File name="pdf-special-signal.ejs" />
+      <FileTree.File name="pdf-tenday.ejs" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
 
 ## Seasonal Bulletin PDF
 
@@ -21,7 +61,7 @@ Replace the Region 5 logos with new region-related logos in this directory:<br /
 
 ### Edit the Seasonal HTML File
 
-1. Open the seasonal PDF's **HTML** layout:<br />`/server/src/utils/pdflivereload/public/seasonal/index.html`
+1. Open the seasonal PDF's **HTML** layout:<br />`/server/src/utils/pdf/livereload/public/seasonal/index.html`
 
 2. Replace Region 5's **header** text with new region text.
    ```text copy
@@ -43,7 +83,7 @@ Replace the Region 5 logos with new region-related logos in this directory:<br /
 
 ### Edit the Seasonal EJS File
 
-1. Open the seasonal PDF's **EJS** layout file in <br /> `/server/src/utils/pdflivereload/templates/pdf-seasonal.ejs`
+1. Open the seasonal PDF's **EJS** layout file in <br /> `/server/src/utils/pdf/livereload/templates/pdf-seasonal.ejs`
 
 2. Apply the **header** and **footer** text updates similar with [**Edit the Seasonal HTML File**](#edit-the-seasonal-html-file) steps **#2** and **#3** in this file.
 
@@ -55,7 +95,7 @@ Replace the Region 5 logos with new region-related logos in this directory:<br /
 
 ### Edit the 10-day HTML File
 
-1. Open the 10-day PDF's **HTML** layout:<br />`/server/src/utils/pdflivereload/public/tenday/index.html`
+1. Open the 10-day PDF's **HTML** layout:<br />`/server/src/utils/pdf/livereload/public/tenday/index.html`
 
 2. Replace Region 5's **header** text with new region text.
    ```text copy
@@ -77,7 +117,7 @@ Replace the Region 5 logos with new region-related logos in this directory:<br /
 
 ### Edit the 10-day EJS File
 
-1. Open the 10-day PDF's **EJS** layout file in <br /> `/server/src/utils/pdflivereload/templates/pdf-tenday.ejs`
+1. Open the 10-day PDF's **EJS** layout file in <br /> `/server/src/utils/pdf/livereload/templates/pdf-tenday.ejs`
 
 2. Apply the **header** and **footer** text updates similar with [**Edit the 10-day HTML File**](#edit-the-10-day-html-file) steps **#2** and **#3** in this file.
 
@@ -89,7 +129,7 @@ Replace the Region 5 logos with new region-related logos in this directory:<br /
 
 ### Edit the Special HTML File
 
-1. Open the special weather PDF's **HTML** layout:<br />`/server/src/utils/pdflivereload/public/special-signal/index.html`
+1. Open the special weather PDF's **HTML** layout:<br />`/server/src/utils/pdf/livereload/public/special-signal/index.html`
 
 2. Replace Region 5's **header** text with new region text.
    ```text copy
@@ -111,7 +151,7 @@ Replace the Region 5 logos with new region-related logos in this directory:<br /
 
 ### Edit the Special EJS File
 
-1. Open the special weather PDF's **EJS** layout file in <br /> `/server/src/utils/pdflivereload/templates/pdf-special-signal.ejs`
+1. Open the special weather PDF's **EJS** layout file in <br /> `/server/src/utils/pdf/livereload/templates/pdf-special-signal.ejs`
 
 2. Apply the **header** and **footer** text updates similar with [**Edit the Special Weather HTML File**](#edit-the-special-html-file) steps **#2** and **#3** in this file.
 
