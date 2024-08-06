@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
+import Image from 'next/image'
 
 export default {
   logo: (
     <>
-      <img src="/images/logos/logo-acaptutorials.png" width="24" height="24" />&nbsp;
+      <Image src="/images/logos/logo-acaptutorials.png" width="24" height="24" alt="logo" />&nbsp;
       <span>ACAP Development Docs</span>
     </>
   ),
@@ -17,7 +18,7 @@ export default {
       titleTemplate: 'ACAP Tutorials - %s'
     }
   },
-  head: () => {
+  head: function Head () {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
 
@@ -32,6 +33,10 @@ export default {
           property="og:description"
           content={frontMatter.description || 'Development notes'}
         />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </>
     )
   },
@@ -50,7 +55,7 @@ export default {
     text: (
       <span>
         ACAP Dev Documentation {new Date().getFullYear()} ©{' '}
-        <a href="https://github.com/acaptutorials" target="_blank">
+        <a href="https://github.com/acaptutorials" target="_blank" rel="noreferrer">
           acaptutorials
         </a>
       </span>
