@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - dev
-      - feat/acaptutorials-1
 
 jobs:
   lint-client:
