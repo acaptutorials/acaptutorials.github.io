@@ -1,0 +1,64 @@
+name: Deploy to Development Environment
+
+# /client app - deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  lint-client:
+    name: Lint and Export client
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_BASE_PATH: ""
+      RELEASE_VERSION: ${{ secrets.RELEASE_VERSION }}
+      RELEASE_PAGE: ${{ secrets.RELEASE_PAGE }}
+      COMMIT_ID: ${{ secrets.COMMIT_ID }}
+      OPENGRAPH_IMAGE_URL: ${{ secrets.OPENGRAPH_IMAGE_URL }}
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Use NodeJS v20.15.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.15.0
+      - name: Install Dependencies
+        run: |
+          cd docs
+          npm install
+      - name: Lint
+        run: |
+          cd docs
+          npm run lint
+      - name: Export static files
+        run: |
+          cd docs
+          npm run export
+          touch out/.nojekyll
+      - name: Archive Development Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dev-out
+          path: |
+            docs/out
+            docs/.firebaserc
+            docs/firebase.json
+          retention-days: 3
+
+  deploy-client:
+    name: Deploy Client to Firebase Hosting
+    needs: lint-client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dev-out
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:dev
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
