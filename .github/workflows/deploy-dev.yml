@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_BASE_PATH: ""
+      RELEASE_VERSION: ${{ secrets.RELEASE_VERSION }}
+      RELEASE_PAGE: ${{ secrets.RELEASE_PAGE }}
+      COMMIT_ID: ${{ secrets.COMMIT_ID }}
+      OPENGRAPH_IMAGE_URL: ${{ secrets.OPENGRAPH_IMAGE_URL }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3

@@ -40,6 +40,7 @@ The app depends these libraries and frameworks.
    | RELEASE_VERSION | Latest respository Release (Tag) number |
    | RELEASE_PAGE | Latest GitHub release page |
    | COMMIT_ID | Default branch's commit sha related to the `RELEASE_VERSION` |
+   | OPENGRAPH_IMAGE_URL | URL link to a 1200 x 630 picture image to use as an opengraph thumbnail |
 
 ## Usage
 

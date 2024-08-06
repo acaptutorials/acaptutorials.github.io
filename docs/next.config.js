@@ -12,8 +12,10 @@ module.exports = withNextra({
     unoptimized: true
   },
   env: {
+    RELEASE_PAGE: process.env.RELEASE_PAGE,
     RELEASE_VERSION: process.env.RELEASE_VERSION,
-    COMMIT_ID: process.env.COMMIT_ID
+    COMMIT_ID: process.env.COMMIT_ID,
+    OPENGRAPH_IMAGE_URL: process.env.OPENGRAPH_IMAGE_URL
   }
 })
 
