@@ -42,6 +42,7 @@ The app depends these libraries and frameworks.
    | COMMIT_ID | Default branch's commit sha related to the `RELEASE_VERSION` |
    | OPENGRAPH_IMAGE_URL | URL of a 1200x630 image to be used as an OpenGraph thumbnail |
    | BASE_URL | The base URL for the frontend of the documentation website. |
+   | WATCHPACK_POLLING | Enables hot reload on NextJS apps running inside Docker containers on a Windows host. Set it to true if running Docker Desktop with WSL2 on a Windows OS. |
 
 ## Usage
 
@@ -50,8 +51,38 @@ The app depends these libraries and frameworks.
    cd docs
    npm run dev
    ```
-2. Add or edit MDX files in the `/pages` directory, or add React components in the `/components` directory.
+2. (Optional) Run the app for local development using Docker. Navigate to the project's root directory then run:<br>
+   ```
+   # 2.1. Build the client and server containers for localhost development.
+   docker compose -f docker-compose.dev.yml build
+
+   # 2.2. Create and start the development client and server containers
+   docker compose -f docker-compose.dev.yml up
+
+   # 2.3. Stop and remove the development containers, networks, images and volumes
+   docker compose -f docker-compose.dev.yml down
+   ```
+
+3. Add or edit MDX files in the `/pages` directory, or add React components in the `/components` directory.
    - View the [**nextra**](https://nextra.site/docs) (docs-theme) documentation for more information on using nextra to add content.
+
+## Available Scripts
+
+### `npm run dev`
+
+Starts the local NextJS / Nextra app in development mode on localhost.
+
+### `npm run build`
+
+Builds the static site into the `"out"` directory.
+
+### `npm run lint`
+
+Checks lint errors.
+
+### `npm run lint:fix`
+
+Fixes lint errors.
 
 @acaptutorials<br>
 20240806
