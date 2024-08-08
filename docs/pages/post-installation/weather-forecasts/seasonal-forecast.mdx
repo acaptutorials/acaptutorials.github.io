@@ -67,3 +67,13 @@ Developers (or Admins) can use the default seasonal weather forecast Excel file 
 Add, edit or delete items under the **Weather Systems that May Affect the Region** section in the **ACAP Settings** → **SEASONAL** tab.
 
 </Steps>
+
+## El Nino / La Nina Data
+
+ACAP displays El Nino / La Nina information with data sourced from the PAGASA **El Niño / La Niña Monitoring** web page at https://www.pagasa.dost.gov.ph/climate/el-nino-la-nina/monitoring.
+
+It updates the data using a cron job, running in a GitHub Actions Scheduled Workflow every Sunday.
+
+<Callout type="info" emoji="ℹ️">
+Manual mechanisms for triggering the update are currently not available.
+</Callout>
