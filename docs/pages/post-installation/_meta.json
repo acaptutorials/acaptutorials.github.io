@@ -1,6 +1,8 @@
 {
   "webmap": "Web Map / AMIA Villages",
   "pdf": "PDF Bulletins",
+  "weather-forecasts": "PAGASA Weather Forecasts",
+  "recommendations": "Crop Recommendations",
   "opengraph": "Opengraph Settings",
   "google-search": "Google Search Console",
   "acap-rcmas-api": "ACAP-RCMAS REST APIs"
