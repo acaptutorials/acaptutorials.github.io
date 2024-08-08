@@ -7,10 +7,12 @@ import { Callout, FileTree, Steps } from 'nextra/components'
 ## Introduction
 
 <Callout type="warning">
-This section describes methods for uploading the cropping calendar for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** repository.
+This section describes methods for uploading the cropping calendar for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
 
 Follow this [link](/post-installation/cropping-calendar/calendar-v2) to view cropping calendar upload instructions for the latest **ACAP 2.0**.
 </Callout>
+
+### Data Format
 
 ACAP 1.0 uses a cropping calendar with only **one (1) group of crop stages**, supporting only **one (1) type of crop (Rice)**. View its raw CSV data file in the `/server/src/scripts/data/cropping_calendar_v2.csv` file for more information about its contents and data structure.
 
@@ -27,6 +29,10 @@ ACAP 1.0 uses a cropping calendar with only **one (1) group of crop stages**, su
 </FileTree>
 
 ### Crop Stage Codes and Labels
+
+<Callout type="warning">
+The **crop stage codes** should match with the **crop stage codes** defined in the **crop recommendations** raw Excel file to ensure the correct association of crop stages with target recommendations.
+</Callout>
 
 | Crop Stage Code | Crop Stage Label |
 | --- | --- |
