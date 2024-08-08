@@ -42,6 +42,10 @@ This method is an alternate option for running the NPM script aside from **step
 
 </Steps>
 
+## ACAP REST API
+
+Seasonal weather forecast data is available in the `GET /api/weatherforecast?type=special` REST API endpoint (plus other query parameters) if the [ACAP-RCMAS REST APIs](/post-installation/acap-rcmas-api) are active.
+
 ## Recommendations
 
 Since the special weather forecast updater runs in an NPM script, options are available for running it in OS-native cron or task schedulers as an alternative to using GitHub Actions Scheduled Workflow.
