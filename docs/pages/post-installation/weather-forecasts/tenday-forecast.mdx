@@ -13,7 +13,7 @@ ACAP's initialization steps from the [Installation and Setup](/installation) sec
 </Callout>
 
 <Callout>
-After confirming successful initialization and deployment setup, ACAP's cron script, running in a GitHub Actions Scheduled Workflow, will regularly sync this data daily with the latest posted PAGASA 10-data weather forecast once between 9:30 AM - 12:00 PM.
+After confirming successful initialization and deployment setup, ACAP's cron script, running in a GitHub Actions Scheduled Workflow, will regularly sync with the latest posted PAGASA 10-data weather forecast daily once between 9:30 AM - 12:00 PM.
 </Callout>
 
 ## Update Steps
@@ -32,6 +32,15 @@ Open the server `.env` file. Update the `FIREBASE_SERVICE_ACC` and `FIREBASE_PRI
    ```bash copy
    npm run cron:tenday
    ```
+
+### Re-run on GitHub Actions
+
+This method is an alternate option for running the NPM script aside from **step #2**, available after confirming a successful setup and deployment of the GitHub Actions cron jobs.
+
+1. Go to the forked repository's **Actions** tab.
+2. Select the **CRON Download, Parse and Upload Excel Files** workflow in the left-side menu.
+3. Select and click one of the latest successful workflow runs.
+4. Press the button on the upper right with the label **"Re-run all jobs."**
 
 </Steps>
 
