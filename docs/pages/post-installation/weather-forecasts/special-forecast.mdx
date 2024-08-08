@@ -31,13 +31,6 @@ Open the server `.env` file. Update the `FIREBASE_SERVICE_ACC` and `FIREBASE_PRI
    npm run cron:cyclone
    ```
 
-### Trigger Update in ACAP Settings
-
-1. Sign in as an Admin to the ACAP website.
-2. Go to the **ACAP Settings** → **TROPICAL CYCLONE** tab.
-3. Press the SYNC button.
-4. Wait for the update success or fail status response to appear. A successful trigger will display an updated **"Date synced"** field in the **Current Data Update Summary** section, displaying the latest time and date of the successful update.
-
 ### Re-run on GitHub Actions
 
 This method is an alternate option for running the NPM script aside from **step #2**, available after confirming a successful setup and deployment of the GitHub Actions cron jobs.
@@ -46,6 +39,13 @@ This method is an alternate option for running the NPM script aside from **step
 2. Select the **CRON Scrape and Update Cyclone Information** workflow in the left-side menu.
 3. Select and click one of the latest successful workflow runs.
 4. Press the button on the upper right with the label **"Re-run all jobs."**
+
+### Trigger Update in ACAP Settings
+
+1. Sign in as an Admin to the ACAP website.
+2. Go to the **ACAP Settings** → **TROPICAL CYCLONE** tab.
+3. Press the SYNC button.
+4. Wait for the update success or fail status response to appear. A successful trigger will display an updated **"Date synced"** field in the **Current Data Update Summary** section, displaying the latest time and date of the successful update.
 
 </Steps>
 
