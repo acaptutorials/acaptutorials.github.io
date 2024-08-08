@@ -80,4 +80,11 @@ Manual mechanisms for triggering the update are currently not available.
 
 ## ACAP REST API
 
-Seasonal weather forecast data is available in the `GET /api/weatherforecast?type=seasonal` REST API endpoint (plus other query parameters) if the [ACAP-RCMAS REST APIs](/post-installation/acap-rcmas-api) are active.
+Seasonal weather forecast data is available in the REST API endpoints (plus other query parameters) if the [ACAP-RCMAS REST APIs](/post-installation/acap-rcmas-api) are active:
+
+- **Current data:** `GET /api/weatherforecast?type=seasonal`
+- **Historical data:** `GET /api/weatherforecast/archives?type=seasonal`
+
+## Recommendations
+
+PAGASA has discussed creating a REST API for sharing weather forecast data. ACAP should integrate with this API after becoming available as an upgrade to its [semi-automatic method](#upload-the-seasonal-weather-forecast-excel-file) of uploading PAGASA-shared seasonal weather forecast Excel files.
