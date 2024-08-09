@@ -10,6 +10,10 @@ The NextJS frontend uses the **pages router**, since this is suitable for genera
 This documentation only contains information about relevant files and directories within the **client** directory. For more information about NextJS-specific files and configurations (such as the `next.config.js`, `_app.js`, or `document.js` files), please head over to the [NextJS documentation](https://nextjs.org/docs/pages/building-your-application/routing) for **Pages Router**.
 </Callout>
 
+<Callout type="warning">
+Developers should take care not to "bake" or "build" sensitive data and information into the frontend build during the NextJS static build time with `"next export"`, as part of [Security - Sensitive Data Management](/security/#sensitive-data-management).
+</Callout>
+
 ## Files
 
 - **.env.example** - example keys and values to put in the `.env` file
