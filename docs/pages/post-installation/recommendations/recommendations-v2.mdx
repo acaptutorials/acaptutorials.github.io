@@ -1,3 +1,69 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
 # ACAP 2.0 Crop Recommendations
 
-_(docs for this section is under construction)_
+## Introduction
+
+<Callout type="info" emoji="ℹ️">
+This section describes methods for uploading the **ACAP 2.0** recommendations dataset, whose latest stable version is Release/Tag version <a href={process.env.RELEASE_PAGE ?? "#"} target="_blank" rel="noreferrer"><b>{process.env.RELEASE_VERSION}</b></a>, accessible in the **acap-v2** repository.
+
+Follow this [link](/post-installation/recommendations/recommendations-v1) to view upload instructions for the older **ACAP 1.0** recommendations dataset.
+</Callout>
+
+## Data Format
+
+ACAP 2.0 uses recommendations data similar to the ACAP 1.0 raw data, added with climate risk information and exclusion of several Excel columns. View its raw EXCEL data files in the `/server/src/scripts/data/dataset_v2.0` directory to gain insight into its new contents and data structure.
+
+The samples only display the ACAP 2.0 recommendations dataset for the Rice and Corn crops.
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.Folder name="dataset_v2" defaultOpen>
+            <FileTree.File name="rice_cropping_calendar.xlsx" />
+            <FileTree.File name="corn_recommendations_v3.xlsx" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="warning">
+The **crop stage codes** should match the **crop stage codes** defined in the [ACAP 2.0 cropping calendar](/post-installation/cropping-calendar/calendar-v2#crop-stage-codes-and-labels) raw CSV files specific to target crops to ensure the correct association of crop stages with target recommendations.
+</Callout>
+
+<Callout>
+**Support for Multiple Crops** <br />
+Developers can add crop stages and labels for other crops, following the crop stages code and label format in the `/client/src/utils/constants.js` file and by creating recommendations datasets for other crops similar to the sample recommendations Excel files described in the [Data Format](#data-format) section as a reference.
+</Callout>
+
+## Upload Recommendations
+
+**ACAP 2.0** uploads its recommendations dataset using an upload form on the **Manage Recommendations** page, requiring Admin login.
+
+<Callout type="warning">
+The **crop stage codes** should match the **crop stage codes** defined in the **crop recommendations** raw Excel files specific to target crops to ensure the correct association of crop stages with target recommendations.
+</Callout>
+
+<Steps>
+
+### Prepare the frontend / backend
+
+Update the frontend and backend codes with necessary data for supporting other crops, with data formats described in the [Data Format](#data-format) and [Crop Stage Codes and Labels](#crop-stage-codes-and-labels) section.
+
+### Login as Admin
+
+Login as an ACAP admin, then, navigate to the **Recommendations Management** page in the `/admin/manage-recommendations` route.
+
+### Upload Recommendations
+
+1. **Upload Recommendations:** Select a "Crop Type" from the available crops list and select options.
+2. **Upload an Excel file:** Press the SEARCH icon.
+3. Browse for a recommendations Excel dataset that corresponds to the selected **Crop Type** in **step #1**.
+4. Press the UPLOAD button.
+5. Wait for the update success or fail status response to appear.
+
+</Steps>
