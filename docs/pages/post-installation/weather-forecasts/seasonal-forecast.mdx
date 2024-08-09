@@ -85,6 +85,15 @@ Seasonal weather forecast data is available in the REST API endpoints (plus othe
 - **Current data:** `GET /api/weatherforecast?type=seasonal`
 - **Historical data:** `GET /api/weatherforecast/archives?type=seasonal`
 
+## Tools
+
+### pagasaexcel
+
+- A Node Package Manager (NPM) script that parses, validates, extracts, and formats data from the PAGASA seasonal Excel file (`"pagasa_seasonal_v2.xlsx"`) into a JavaScript object, ready for upload to the Firestore database.
+- Available in the `/server/src/scripts/pagasaexcel` directory.
+
 ## Recommendations
 
 PAGASA has discussed creating a REST API for sharing weather forecast data. ACAP should integrate with this API after becoming available as an upgrade to its [semi-automatic method](#upload-the-seasonal-weather-forecast-excel-file) of uploading PAGASA-shared seasonal weather forecast Excel files.
+
+
