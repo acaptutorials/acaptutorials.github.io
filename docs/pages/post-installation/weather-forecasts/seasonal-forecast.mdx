@@ -1,0 +1,90 @@
+import { FileTree, Steps, Callout } from 'nextra/components'
+
+# PAGASA Seasonal Weather Forecast
+
+## Introduction
+
+After achieving a successful initialization from following the steps in the [Installation](/installation) section, developers will notice a blank, default Seasonal weather forecast table in the public **ACAP Services → Seasonal Forecast** page.
+
+![seasonal-init](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FxHwCJYnRqaxO4eKjjXPV_thumbnail?alt=media&token=e25471b0-6855-4dc6-b021-7674b3b6faa9)
+
+Follow these steps to update it with the latest PAGASA seasonal weather forecast data.
+
+
+## PAGASA Seasonal Weather Forecast Excel File
+
+ACAP Bicol, having a Memorandum of Agreement (MOA) with PAGASA, regularly receives PASAGSA seasonal weather forecast data in Excel file format through email. ACAP Bicol Admins upload these to the portal to update the seasonal weather forecast data.
+
+<Callout type="warning">
+For consistency, ACAP's seasonal weather forecast processing scripts _expect_ an Excel data format similar to the `"/server/src/scripts/data/pagasa_seasonal_v2.xlsx"` Excel file. PAGASA shared this file for Bicol's **November 2022 - April 2023** seasonal weather forecast.
+</Callout>
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.File name="pagasa_seasonal_v2.xlsx" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+For reference, the data in the seasonal weather forecast Excel file is also available in JPEG/picture format at the PAGASA **Seasonal Forecast** web page at https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast under the **Forecast Rainfall Analysis** section.
+
+## Update the Seasonal Weather Forecast
+
+<Steps>
+
+### Obtain Seasonal Weather Forecast Data
+
+Obtain the latest PAGASA seasonal weather forecast Excel file.
+
+Developers (or Admins) can use the default seasonal weather forecast Excel file described in the [PAGASA Seasonal Weather Forecast Excel File](#pagasa-seasonal-weather-forecast-excel-file), using values for their respective region, if the PAGASA-shared seasonal weather forecast Excel file is not readily available.
+
+### Upload the Seasonal Weather Forecast Excel File
+
+1. Sign in as an ACAP Admin, then go to the **ACAP Settings** → **SEASONAL** tab. This page is accessible in the localhost route:
+   ```bash copy
+   https://localhost:3000/admin/weather/
+   ```
+
+2. Press the **SEARCH** icon button under the **Upload an Excel file** label. Look for and select the target PAGASA seasonal weather forecast Excel file from the local hard drive.
+
+   ![search-excel](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FCcnoVvo5Eh7Jp3HnpJ3B_thumbnail?alt=media&token=1e019579-cb34-4943-a90f-7fe2abaf7d28)
+
+3. Fill in the input values under the **Tropical Cyclone Input** section. Refer to the seasonal Excel file's 3rd tab, which contains pictures of the expected number of tropical cyclones in JPEG/picture format to populate these values. This step is required to upload the Excel file on **step #4**.
+
+   ![tropica-cyclone-count](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FSWft12B3Olh52MASPYZ3_thumbnail?alt=media&token=6364d5ff-0721-41c3-9ca9-c8e2c48a2222)
+
+4. Press the **UPLOAD** button beside the **SEARCH** icon to upload the Excel file. A successful upload should update the default seasonal weather forecast data with new data defined in the Excel file.
+
+   ![seaonal-upload-success](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fr3eKqHtFf39IZblyPXHT_thumbnail?alt=media&token=f51db117-6ca9-4591-ac42-987c7b218699)
+
+### Update Weather Systems Data
+
+Add, edit or delete items under the **Weather Systems that May Affect the Region** section in the **ACAP Settings** → **SEASONAL** tab.
+
+</Steps>
+
+## El Nino / La Nina Data
+
+ACAP displays El Nino / La Nina information with data sourced from the PAGASA **El Niño / La Niña Monitoring** web page at https://www.pagasa.dost.gov.ph/climate/el-nino-la-nina/monitoring.
+
+It updates the data using a cron job, running in a GitHub Actions Scheduled Workflow every Sunday.
+
+<Callout type="info" emoji="ℹ️">
+Manual mechanisms for triggering the update are currently not available.
+</Callout>
+
+## ACAP REST API
+
+Seasonal weather forecast data is available in the REST API endpoints (plus other query parameters) if the [ACAP-RCMAS REST APIs](/post-installation/acap-rcmas-api) are active:
+
+- **Current data:** `GET /api/weatherforecast?type=seasonal`
+- **Historical data:** `GET /api/weatherforecast/archives?type=seasonal`
+
+## Recommendations
+
+PAGASA has discussed creating a REST API for sharing weather forecast data. ACAP should integrate with this API after becoming available as an upgrade to its [semi-automatic method](#upload-the-seasonal-weather-forecast-excel-file) of uploading PAGASA-shared seasonal weather forecast Excel files.

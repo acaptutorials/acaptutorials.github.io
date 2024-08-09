@@ -1,0 +1,79 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
+# ACAP 1.0 Crop Recommendations
+
+## Introduction
+
+ACAP 1.0 uses **NPM scripts** to parse, validate, and upload recommendations data from a local Excel file. Similar to the [ACAP 1.0 cropping calendar data](/post-installation/cropping-calendar/calendar-v1), only developers can upload recommendations by running the NPM script on a terminal.
+
+<Callout type="warning">
+This section describes methods for uploading the local recommendations dataset for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
+
+Follow this [link](/post-installation/recommendations/recommendations-v2) to view recommendations dataset upload instructions for the latest **ACAP 2.0**.
+</Callout>
+
+## Data Format
+
+ACAP 1.0 requires initial recommendations data in an Excel file, following the format and structure defined in the `/server/src/scripts/data/recommendations_html_acap_bicol.xlsx` or the `mock_recommendations_html_v2.xlsx` samples. This Excel file has tabs containing formatted recommendations data, with crop stages and weather forecast rainfall conditions, for the seasonal, 10-day, and severe cyclone weather crop recommendations.
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.File name="recommendations_html_acap_bicol.xlsx" />
+          <FileTree.File name="mock_recommendations_html_v2.xlsx" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="warning">
+The **crop stage codes** in the Excel columns should match the **crop stage codes** defined in the [ACAP 1.0 cropping calendar](/post-installation/cropping-calendar/calendar-v1##data-format) raw CSV file to ensure the correct association of crop stages with target recommendations.
+</Callout>
+
+## Upload Recommendations
+
+<Callout type="info" emoji="ℹ️">
+**ACAP 1.0** uploads its recommendations dataset to the Firestore database using **NPM scripts**, accessible only to developers.
+</Callout>
+
+<Steps>
+
+### Prepare recommendations data
+
+1. Prepare the recommendations dataset in an Excel file similar to the recommendations samples described in the [Data Format](#data-format) section.
+
+2. Put the EXCEL file in the `/server/src/scripts/uploaders/recommendations` directory.
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="uploaders" defaultOpen>
+          <FileTree.Folder name="recommendations" defaultOpen>
+            <FileTree.File name="recommendations_html_acap_bicol.xlsx" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+### Use a target environment
+
+Open the server `.env` file. Update the `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY` keys with the **development** or **production** key values.
+
+### Run the NPM Script
+
+1. Navigate to the `/server` directory from a terminal.
+
+2. Run the command, replacing `recommendations_html_acap_bicol.xlsx` with the filename of a recommendations EXCEL file:
+   ```bash copy
+   npm run upload:calendar --localfilename=recommendations_html_acap_bicol.xlsx
+   ```
+
+3. Ensure running the script from **step #3** is completed successfully.
+
+</Steps>

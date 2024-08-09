@@ -1,6 +1,8 @@
 ## acaptutorials.github.io
 
-ACAP Bicol (ACAP 2.0) Development Documentation
+ACAP Bicol (ACAP 2.0) development documentation.
+
+Built with [Nextra](https://nextra.site/), a modern static site generation framework running on NextJS.
 
 ### Requirements
 

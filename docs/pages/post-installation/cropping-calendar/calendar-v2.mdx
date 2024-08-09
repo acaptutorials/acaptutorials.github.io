@@ -1,0 +1,97 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
+# ACAP 2.0 Cropping Calendar
+
+![cropping-calendar-v2](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FDquztsSIzGwlamp1LCcw_thumbnail?alt=media&token=489eaafa-2f15-4cf2-852f-fffd3ddc5eaa)
+
+## Introduction
+
+<Callout type="info" emoji="ℹ️">
+This section describes methods for uploading cropping calendars for the latest **ACAP 2.0**, whose latest stable version is Release/Tag version <a href={process.env.RELEASE_PAGE ?? "#"} target="_blank" rel="noreferrer"><b>{process.env.RELEASE_VERSION}</b></a>, accessible in the **acap-v2** repository.
+
+Follow this [link](/post-installation/cropping-calendar/calendar-v1) to view cropping calendar upload instructions for the older **ACAP 1.0**.
+</Callout>
+
+### Data Format
+
+ACAP 2.0 uses cropping calendars with _**two (2) groups of crop stages**_ supporting _**one (1) or more types of crops**_. View its raw EXCEL data files in the `/server/src/scripts/data/dataset_v2.0` directory for more information about its contents and data structure.
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="data" defaultOpen>
+          <FileTree.Folder name="dataset_v2" defaultOpen>
+            <FileTree.File name="rice_cropping_calendar.xlsx" />
+            <FileTree.File name="corn_cropping_calendar.xlsx" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+### Crop Stage Codes and Labels
+
+This section only displays the ACAP 2.0 crop stage codes and labels for the Rice and Corn crops.
+
+<Callout type="warning">
+The **crop stage codes** should match the **crop stage codes** defined in the **crop recommendations** raw Excel files specific to target crops to ensure the correct association of crop stages with target recommendations.
+</Callout>
+
+<Callout>
+**Support for Multiple Crops** <br />
+Developers can add crop stages and labels for other crops, following the crop stages code and label format in the `/client/src/utils/constants.js` file and by creating cropping calendars similar to the sample cropping calendar Excel files described in the [Data Format](#data-format) section as a reference.
+</Callout>
+
+#### Rice
+
+| Crop Stage Code | Crop Stage Label |
+| --- | --- |
+| prep | Preparation Stage |
+| seed | Seedling Stage |
+| plant | Newly Planted |
+| vegat | Vegetative (Active Tillering) |
+| vegpi | Reproductive (Panicle Initiation) |
+| repro | Reproductive (Flowering) |
+| mat | Maturing |
+
+#### Corn
+
+| Crop Stage Code | Crop Stage Label |
+| --- | --- |
+| prep | Preparation Stage |
+| seed | Seedling Stage |
+| vegleaf | Vegetative (Leaf Stages) |
+| vegtass | Vegetative (Tasseling) |
+| repro | Reproductive |
+| mat | Maturing |
+
+
+## Upload Crop Calendar Data
+
+**ACAP 2.0** uploads its cropping calendars using an upload form on the **Cropping Calendars** page, requiring Admin login.
+
+<Callout type="warning">
+The **crop stage codes** should match the **crop stage codes** defined in the **crop recommendations** raw Excel files specific to target crops to ensure the correct association of crop stages with target recommendations.
+</Callout>
+
+<Steps>
+
+### Prepare the frontend / backend
+
+Update the frontend and backend codes with necessary data for supporting other crops, with data formats described in the [Data Format](#data-format) and [Crop Stage Codes and Labels](#crop-stage-codes-and-labels) section.
+
+### Login as Admin
+
+Login as an ACAP admin, then, navigate to the **Cropping Calendar Management** page in the `/admin/cropping-calendars` route.
+
+### Upload Cropping Calendars
+
+1. **Upload Cropping Calendar:** Select a "Crop Type" from the available crops list and select options.
+2. **Upload an Excel file:** Press the SEARCH icon.
+3. Browse for a cropping calendar that corresponds to the selected **Crop Type** in **step #1**.
+4. Press the UPLOAD button.
+5. Wait for the upload success or fail status response to appear.
+
+</Steps>

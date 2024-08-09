@@ -1,0 +1,61 @@
+import { Callout, Steps } from 'nextra/components'
+
+# PAGASA Special (Severe Cyclone) Weather Forecast
+
+![pagasa-special](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FBNtOxjNrZXTLQf045M8e_thumbnail?alt=media&token=53bdc0b7-9ef0-4c6c-b734-cef0a44baad2)
+
+## Introduction
+
+ACAP displays tropical cyclone data sourced from PAGASA's **Tropical Cyclone Bulletin** web page at https://www.pagasa.dost.gov.ph/tropical-cyclone/severe-weather-bulletin.
+
+<Callout>
+It regularly syncs with data from the PAGASA web page using a cron job that runs every two (2) hours in a GitHub Actions Scheduled Workflow, following a successful initialization and deployment setup.
+</Callout>
+
+## Manual Update
+
+These steps describe running the cron script to trigger a manual update to ACAP's Special (Severe Cyclone) Weather Forecast data.
+
+<Steps>
+
+### Use a target environment
+
+Open the server `.env` file. Update the `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY` keys with the **development** or **production** key values.
+
+### Run the NPM Script
+
+1. Navigate to the `/server` directory from a terminal.
+
+2. Run the command:
+   ```bash copy
+   npm run cron:cyclone
+   ```
+
+### Re-run on GitHub Actions
+
+This method is an alternate option for running the NPM script aside from **step #2**, available after confirming a successful setup and deployment of the GitHub Actions cron jobs.
+
+1. Go to the forked repository's **Actions** tab.
+2. Select the **CRON Scrape and Update Cyclone Information** workflow in the left-side menu.
+3. Select and click one of the latest successful workflow runs.
+4. Press the button on the upper right with the label **"Re-run all jobs."**
+
+### Trigger Update in ACAP Settings
+
+1. Sign in as an Admin to the ACAP website.
+2. Go to the **ACAP Settings** → **TROPICAL CYCLONE** tab.
+3. Press the SYNC button.
+4. Wait for the update success or fail status response to appear. A successful trigger will display an updated **"Date synced"** field in the **Current Data Update Summary** section, displaying the latest time and date of the successful update.
+
+</Steps>
+
+## ACAP REST API
+
+Special weather forecast data is available in the REST API endpoints (plus other query parameters) if the [ACAP-RCMAS REST APIs](/post-installation/acap-rcmas-api) are active:
+
+- **Current data:** `GET /api/weatherforecast?type=special`
+- **Historical data:** `GET /api/weatherforecast/archives?type=special`
+
+## Recommendations
+
+Since the special weather forecast updater runs in an NPM script, options are available for running it in OS-native cron or task schedulers as an alternative to using GitHub Actions Scheduled Workflow.
