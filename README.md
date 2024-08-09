@@ -68,6 +68,15 @@ The app depends these libraries and frameworks.
 3. Add or edit MDX files in the `/pages` directory, or add React components in the `/components` directory.
    - View the [**nextra**](https://nextra.site/docs) (docs-theme) documentation for more information on using nextra to add content.
 
+## Usage with GitHub Actions
+
+1. Add the environment variables described in the [Installation - step # 2](#installation) section to GitHub Secrets.
+2. Create a Release to deploy the site to the production environment (GitHub Pages).
+3. To update the banner content while there are no code or content updates:
+   - Update the GitHub Secrets: `RELEASE_VERSION`, `COMMIT_ID` and `RELEASE_PAGE`
+4.  Re-deploy the latest production environment workflow from the GitHub Actions tab.
+
+
 ## Available Scripts
 
 ### `npm run dev`
