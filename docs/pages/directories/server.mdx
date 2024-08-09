@@ -1,3 +1,134 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
 # Server
 
-_(docs for this section is under construction)_
+The **server** directory contains backend JavaScript (NodeJS/Express) codes for running and managing ACAP's REST APIs.
+
+ACAP promotes using REST APIs running on the backend to securely perform mutative "WRITE" operations in the Firestore database to allow the creation of more robust server-side input validation scripts for simple to complex input data than relying alone on limited [Firestore Rules](https://firebase.google.com/docs/firestore/security/get-started) for access checks and data validation.
+
+Maintaining a separate backend for securely performing database WRITE operations also syncs with ACAP's requirements to host its frontend UI in GitHub Pages while having access to a secure, remote backend protected by established [Security](/security) guidelines and adhering to best practices in enforcing web security to maintain sensitive data protection and integrity.
+
+<Callout type="warning">
+While using the [Firestore WEB APIs](https://firebase.google.com/docs/firestore/quickstart) _**"directly"**_ instead of going through the backend is also an alternate option, developers should be aware of possible security attack vectors that could open up and how to counter them by having a thorough understanding of how the [Firebase Authentication](https://firebase.google.com/docs/auth/), [Firebase Custom Claims](https://firebase.google.com/docs/auth/admin/custom-claims) and [Firestore Rules](https://firebase.google.com/docs/firestore/security/get-started) work in sync to keep sensitive user information safe and secure.
+</Callout>
+
+<Callout>
+One of the key things to note here is that using the serverless [Firestore WEB APIs](https://firebase.google.com/docs/firestore/quickstart) to manage data _**"directly"**_ in the Firestore database through the frontend UI with client-side validation logic, where we install its JavaScript APIs, also enables the [Firestore REST APIs](https://firebase.google.com/docs/firestore/use-rest-api) along with it, which is accessible on other clients, such as a browser console, or Postman, outside the _**"safety"**_ confines of the frontend UI.
+
+Knowing that there are two (2) points of data entry to anticipate should enable developers to make informed decisions about when to use the [Firestore WEB APIs](https://firebase.google.com/docs/firestore/quickstart) (preferably with fool-proof [Firestore Rules](https://firebase.google.com/docs/firestore/security/get-started)) directly or if they need to delegate operations in a more secure environment, such as the backend server.
+</Callout>
+
+## Files
+
+- **.env** - Dotenv: NodeJS library that loads configuration files from a `.env` file
+- **.env.example** - example keys and values to put in the server `.env` file
+- **Dockerfile.acap** - multi-stage build Dockerfile definition for running the **server** on localhost development with livereload using the nodemon library, or built to run for production deployment without livereload
+- **Dockerfile** - Used for running the server production deployment on Render
+- **package.json / package-lock.json** - Contains definitions of the server's NodeJS dependency libraries
+- **/src/index.js** - server program entry point
+
+## Folders
+
+### /api
+
+- Contains the `index.js` file that converts the stand-alone Express app into a single serverless function format recognized by Vercel.
+- This option only becomes available if deployment to Vercel is activated.
+
+## Express server (Folder)
+
+### /middleware
+
+- contains scripts that handles Cross-Origin Requests (CORS), router-level data validation and user authentication
+
+### /controllers/index.js
+
+- contains routing scripts that associates URLs with controller actions
+
+### /controllers
+
+- contains scripts that handles requests, mapping them to target models (classes) and returns success or error responses
+- These sripts, along with the `/middleware` and `/models` make up the REST APIs.
+
+### /models (classes)
+
+- provides methods, organized into categories (classes) for interacting with the database
+
+## /scripts (Folder)
+
+The `scripts` directory contains a large collection of Node Package Manager (NPM) scripts used for data processing, uploading and cleanup functions. More information about these scripts are available in the `/server/README.md` file's **Available Scripts - server** section.
+
+### /scripts/cron
+
+- contains NPM scripts that run as cron jobs in GitHub Actions Scheduled Workflows
+
+### /scripts/data
+
+- contains sample data files in JSON, CSV and EXCEL formats for reference on established data structures and formatting
+
+### /scripts/seeders
+
+- contains NPM scripts for initializing the Firestore database with default data
+
+### /scripts/uploaders
+
+- contains NPM scripts for facilitating raw data file uploads to the Firestore database
+
+### /scripts/generate-docs
+
+- contains scripts for generating ACAP's REST API documentation
+
+### /scripts/tools
+
+- contains functions for archiving and deleting old PAGASA weather forecast data
+
+## /utils (Folder)
+
+- contains various utility helper functions i.e., for date, processing strings, and others
+
+### /utils/pdf
+
+- contains scripts that manages the [bulletin PDF layouts](/articles/pdf-development) for seasonal, 10-day and special bulletins
+
+
+## File Tree
+
+This tree shows only the relevant server files and directories.
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="api">
+      <FileTree.File name="index.js" />
+    </FileTree.Folder>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="classes" />
+      <FileTree.Folder name="controllers" />
+      <FileTree.Folder name="middleware" />
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="cron" />
+        <FileTree.Folder name="data" />
+        <FileTree.Folder name="generate-docs" />
+        <FileTree.Folder name="pagasaexcel" />
+        <FileTree.Folder name="page_indexer" />
+        <FileTree.Folder name="seeders" />
+        <FileTree.Folder name="tools" />
+        <FileTree.Folder name="uploaders" />
+      </FileTree.Folder>
+      <FileTree.Folder name="utils" defaultOpen>
+        <FileTree.Folder name="pdf" defaultOpen>
+          <FileTree.Folder name="livereload">
+            <FileTree.Folder name="public" />
+            <FileTree.Folder name="templates" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+      <FileTree.File name="index.js" />
+    </FileTree.Folder>
+    <FileTree.File name=".env" />
+    <FileTree.File name=".env.example" />
+    <FileTree.File name=".dockerignore" />
+    <FileTree.File name="Dockerfile" />
+    <FileTree.File name="Dockerfile.acap" />
+    <FileTree.File name="package-lock.json" />
+    <FileTree.File name="package.json" />
+  </FileTree.Folder>
+</FileTree>

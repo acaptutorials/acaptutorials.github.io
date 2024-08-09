@@ -15,6 +15,7 @@ Other directories within the monorepo include:
 
 - **docs** - Contains the latest software development project planning documentation
 - **scripts** - Has bash scripts for various tasks
+- **.github** - Contains GitHub Actions workflows `.yml` files for deployment to the development and production environments, and for running certain NPM scripts as cron jobs in GitHub Actions Scheduled Workflows.
 
 <br />
 
@@ -22,6 +23,17 @@ Other directories within the monorepo include:
 
 <FileTree>
   <FileTree.Folder name="acap-v2" defaultOpen>
+    <FileTree.Folder name=".github">
+      <FileTree.Folder name="workflows">
+        <FileTree.File name="dev-render.yml" />
+        <FileTree.File name="release.yml" />
+        <FileTree.File name="others.yml" />
+        <FileTree.File name="scheduled-10day.yml" />
+        <FileTree.File name="scheduled-cyclone.yml" />
+        <FileTree.File name="scheduled-scraping.yml" />
+        <FileTree.File name="scheduled-cleanup-seasonal.yml" />
+      </FileTree.Folder>
+    </FileTree.Folder>
     <FileTree.Folder name="client" />
     <FileTree.Folder name="docs" />
     <FileTree.Folder name="scripts" />

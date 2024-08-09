@@ -6,6 +6,12 @@ OpenGraph is a protocol used by websites to control how their content is display
 
 This section contains notes on updating the thumbnail-like images that appears when sharing the ACAP website URLs in social media like Meta and Twitter.
 
+<Callout type="info" emoji="ℹ️">
+ACAP only display OpenGraph images on its **production** website hosted at (GitHub Pages) https://acap-bicol.github.io to differentiate between the `development` and `production` websites.
+</Callout>
+
+<br />
+
 ![opengraph](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Fc7AY9auOR2eWKe50teiX_thumbnail?alt=media&token=e1f2152e-a093-47f8-82d2-1acbcf36a801)
 
 ## OpenGraph / Meta Description
@@ -114,6 +120,27 @@ Upload the new OpenGraph URLs (in the `assets_dev.csv` CSV file) to the `develop
    ```
 3. Update the server `.env` file with the **development** Firebase variables: `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY`.
 4. Re-run the NPM script on **step #2**.
-5. Re-deploy to the `development` and `production` environments to view the updates on the live sites.
+5. Deploy to the `production` environment (after deploying first to the `development` environment since this is part of the deployment process) to view the updates on the live production site.
+
+### Confirm the New OpenGraph Images
+
+1. Load the `production` website on a browser tab after successfully deploying to the production environment on the **Upload the New OpenGraph URLs - step #5**.
+
+2. **Inspect** the web page elements by right-clicking on the page and then selecting the **Inspect** option.
+
+3. Look for the `<meta>` property `property="og:image"` under the `<head>` tag. Its `content` attribute should contain the OpenGraph image URL encoded in the `assets_dev.csv` CSV file. For example:
+   ```html copy
+   <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/amia-cis-dev.appspot.com/o/media%2Fimages%2Fopengraph%2F1200x600%2Fog_home_1200.png?alt=media&token=51f9241c-45da-456e-9906-677c2f8fe93a">
+   ```
+
+   ![opegraph-meta-tag](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FNq40rjtfmn244wdYV6wy_thumbnail?alt=media&token=258e5813-89b5-43cb-88d3-7195e101d31d)
+
+4. Share one of the public web pages in social media, for example, in a Meta (Facebook) post. Observe if the new Opengraph thumbnails are visible.
+
+   ![social-share](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FgvNvEYeKS0HAZNJyqDGb_thumbnail?alt=media&token=5f84128e-7f2c-4882-a270-f432b6b380fe)
+
+   <Callout>
+   New OpenGraph thumbnails may take some time to display the latest pictures from some image hosting providers, such as Firebase Storage, depending on its server settings for `maxAge` in seconds, even if its new OpenGrapgh image URL is already visible in the `<meta>` tag from **step #3**.
+   </Callout>
 
 </Steps>
