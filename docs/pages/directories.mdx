@@ -1,13 +1,8 @@
-import { Cards, Card } from 'nextra/components'
+import { Cards, Card, FileTree } from 'nextra/components'
 
 # Project Folder Structure
 
-The project repository is a monorepo, containing the frontend code in the **client** directory, and the backend code in the **server** directory.
-
-Other directories within the monorepo include:
-
-- **docs** - Software development project planning documentation
-- **scripts** - Bash scripts for various tasks
+The project repository is a monorepo, with frontend code in the **client** directory and the backend code in the **server** directory.
 
 <br />
 
@@ -15,3 +10,24 @@ Other directories within the monorepo include:
   <Card title="client" href="/directories/client" />
   <Card title="server" href="/directories/server" />
 </Cards>
+
+Other directories within the monorepo include:
+
+- **docs** - Contains the latest software development project planning documentation
+- **scripts** - Has bash scripts for various tasks
+
+<br />
+
+**Code repository directory structure**
+
+<FileTree>
+  <FileTree.Folder name="acap-v2" defaultOpen>
+    <FileTree.Folder name="client" />
+    <FileTree.Folder name="docs" />
+    <FileTree.Folder name="scripts" />
+    <FileTree.Folder name="server" />
+    <FileTree.File name="README.md" />
+    <FileTree.File name="docker-compose.dev.yml" />
+    <FileTree.File name="docker-compose.prod.yml" />
+  </FileTree.Folder>
+</FileTree>
