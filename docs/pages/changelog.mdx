@@ -1,0 +1,128 @@
+import { Callout, Steps } from 'nextra/components'
+
+# ACAP Change Log
+
+This page contains summary of features and enhancements on major ACAP versions and their programming-development timelines.
+
+<Steps>
+
+### Version 2 (ACAP 2.0)
+
+_2023 – ongoing_
+
+Version 2.0 summarizes ongoing enhancements and new features added to the initial ACAP version.
+
+<Callout type="info" emoji="ℹ️">
+ACAP 2.0 is the latest ACAP version. It's latest stable version is Release/Tag version <b>{process.env.RELEASE_VERSION ?? '0.0.0'}</b>, dev branch <b>@{process.env.COMMIT_ID ?? '123456'}</b> accessible in **acap-v2** code repository.
+</Callout>
+
+<br />
+
+<div className="text-semibold text-sm text-slate-500 no-underline">
+
+#### Added
+
+1. Integration of climate risk trigger in public/admin crop recommendations and bulletin PDF generation
+2. Support for multiple crops (cropping calendar and crop recommendations)
+   - Support new multiple recommendations/cropping calendar Excel files with new formats and structure
+3. Admin Pages
+   - Cropping Calendar Excel file uploader
+   - Crop Recommendations Excel file uploader
+   - Manage Recommendations
+      - View the uploaded recommendations list
+      - View an uploaded recommendation
+      - Edit an uploaded recommendation
+   - Phonebook: tag a contact to a province/municipality
+4. Use of tropical cyclone wind signals as a trigger for generating special weather recommendations
+5. Allow the creation of "general" special weather recommendations
+6. Optional search engine optimization (SEO) settings with Google Search Console
+7. REST APIs (NodeJS)
+   - New endpoints for processing cropping calendar and recommendations Excel file uploads
+   - Migration of the ACAP-RCMAS APIs from the (forked) mirror environment with optional activation
+
+#### Changed
+
+1. Public/admin seasonal recommendations and bulletin PDF generation: removal of the crop stage/s and rainfall condition as triggers
+2. Public/admin 10-day recommendations and bulletin PDF generation: removal of the crop stage trigger
+3. Deprecation of the **uploaders** group of Node Package Manager (NPM) scripts in favor of cropping calendar/recommendations Excel file upload through the UI
+4. Allow creating seasonal bulletin PDFs with more than one (1) page.
+5. Text blast recipients by province/municipality instead of individual selection
+
+#### Fixed
+
+- Various bug fixes and minor updates with summary in the **acap-v2** Releases [page](https://github.com/amia-cis/acap-v2/releases) for more information.
+</div>
+
+### Version 1 (ACAP 1.0)
+
+_March - December 2022_
+
+<Callout type="info" emoji="ℹ️">
+ACAP 1.0's last stable version is Release/Tag version **9.5.6**, accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
+</Callout>
+
+Version 1.0 marks the initial ACAP Bicol release used as a base model or template for other regions in the succeeding years. It has the following features:
+
+<div className="text-semibold text-sm text-slate-500 no-underline">
+
+#### Added
+
+1. Login and User Authentication
+2. User (Admin) Accounts Management
+3. PDF Bulletins Generator
+   - Generated bulletins matches the given JPEG layout and all content fits in one (1) page
+4. Site Search
+5. Public Pages
+   - Home Page
+   - ACAP Services Page (Weather Services)
+   - 10-Day Weather Forecast Summary
+      - Seasonal Weather Forecast Summary
+      - Special Weather Forecast Summary
+   - Cropping Calendar: support for one (1) crop (Rice)
+   - Crop Recommendations Generator
+      - Seasonal Climate Outlook and Advisory Recommendations (using month, crop stage/s, and rainfall condition as triggers)
+      - 10-Day Farm Weather Outlook and Advisory Recommendations (using current date and crop stage as a trigger)
+   - PDF Bulletins Downloads
+6. Admin Pages
+   - Crop Recommendations Management
+      - Regional Seasonal Climate Outlook and Advisory PDF Bulletins and Reports Creator
+      - 10-Day Farm Outlook and Weather Advisory PDF Bulletins and Reports Creator
+      - Special Weather Forecast PDF Bulletins and Reports Creator
+      - View created reports/bulletins list
+      - View a created report/bulletin
+   - SMS Management
+      - Phonebook
+      - Send SMS
+   - ACAP Settings
+      - Weather Forecast Data Management
+         - PAGASA seasonal weather forecast Excel file uploader
+         - Manual weather systems input editor
+      - 10-Day Weather Forecast Data Management
+         - PAGASA 10-Day weather forecast Excel files uploader
+         - Manual moon phases input editor
+      - Cyclone Typhoon Advisory Data Management
+         - Manual trigger of syncing the PAGASA Severe Tropical Cyclone web page data
+         - Manual wind speed list and affected municipalities editor
+      - User Profile Management
+7. Cloud deployment setup to **development** and **production** environments using GitHub Actions
+   - Automatic deployment to Heroku/Render (backend), and Firebase Hosting/GitHub Pages (frontend)
+8. Docker setup for development and Render deployment
+9. REST API Endpoints
+   - A set of secure and authenticated REST API endpoints for allowing signed-in admins to mutate ACAP data over HTTPS
+   - Processes the seasonal/10-day weather forecast Excel file uploads
+10. Cron Jobs (NPM scripts) for Automatic Weather Forecast Data Syncing to the ACAP Database
+   - Daily 10-Day Weather Forecast Excel Files from PAGASA data syncing
+   - Weekly El Nino/La Nina PAGASA web page contents syncing
+   - Regular daily syncing of PAGASA's Severe Tropical Cyclone Bulletin web page
+11. Data Processing and Upload Scripts
+   - NPM scripts for uploading cropping calendar data (CSV file) and crop recommendations (Excel file) to the database
+   - NPM scripts for seeding the Firestore database with default data
+12. Creation of software development project planning documentation documents (avaliable at [link](https://github.com/amia-cis/acap-v2/tree/dev/docs)).
+
+#### Changed
+
+- Use `.env` variables with region-specific values in the front end, allowing easier regional static text replacement.
+
+</div>
+
+</Steps>
