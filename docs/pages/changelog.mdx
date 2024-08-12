@@ -8,7 +8,7 @@ This page contains summary of features and enhancements on major ACAP versions a
 
 ### Version 2 (ACAP 2.0)
 
-_2023 – ongoing_
+_2024 – ongoing_
 
 Version 2.0 summarizes ongoing enhancements and new features added to the initial ACAP version.
 
@@ -59,17 +59,17 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 
 ### Version 1 (ACAP 1.0)
 
-_March - December 2022_
-
 <Callout type="info" emoji="ℹ️">
 ACAP 1.0's last stable version is Release/Tag version [**9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
 </Callout>
 
-Version 1.0 marks the initial ACAP Bicol release used as a base model or template for other regions in the succeeding years. It has the following features, strictly following and is tested compatible with the recommended [Security](/security) and [Server](/directories/server) guidelines:
+Version 1.0 marks the initial ACAP Bicol release used as a base model or template for other regions in the succeeding years from July 2023. It has the following features, strictly following and is tested compatible with the recommended [Security](/security) and [Server](/directories/server) guidelines:
 
 <div className="text-semibold text-sm text-slate-500 no-underline">
 
 #### Added
+
+_March - December 2022_
 
 1. Login and User Authentication
 2. User (Admin) Accounts Management
@@ -123,9 +123,20 @@ Version 1.0 marks the initial ACAP Bicol release used as a base model or templat
    - NPM scripts for seeding the Firestore database with default data
 12. Software development planning documentation (available at [link](https://github.com/amia-cis/acap-v2/tree/dev/docs)).
 
+
+---
+
+_June 2023 onwards_
+
 #### Changed
 
-- Use `.env` variables with region-specific values in the front end, allowing easier regional static text replacement.
+- Used `.env` variables to manage region-specific static text in the front end, ensuring the base model of the application can be extended and adapted for multiple regions with different (text content) requirements and practices, allowing easier regional static text replacement.
+
+- Use `nda` values for null/empty seasonal weather forecast data in the backend and front end, borrowed from the ongoing ACAP-RCMAS API development.
+
+#### Fixed
+
+- Various bug fixes and minor updates with summary in the **climate-services-webportal-v1** (ACAP 1.0 repository) [Releases](https://github.com/amia-cis/climate-services-webportal-v1/releases) page for more information.
 
 </div>
 
