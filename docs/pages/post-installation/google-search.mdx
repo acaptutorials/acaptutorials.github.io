@@ -68,7 +68,6 @@ Login to a Google account.
 
 ### Submit a Sitemap
 
-
 <Callout>
 A `sitemap.txt` file should be available in the ACAP production GitHub Pages website if it was deployed with the latest updates from the **acap-v2** repository at release [**v10.1.0-alpha.6**](https://github.com/amia-cis/acap-v2/releases/tag/v10.1.0-alpha.6), dev branch commit **@e2df7bf** or later.
 </Callout>
@@ -79,10 +78,75 @@ A `sitemap.txt` file should be available in the ACAP production GitHub Pages web
    https://<REGION_N_ACAP>.github.io/sitemap.txt
    ```
 3. Submit the sitemap.
+
 4. Wait for several days to up 1 - 2 weeks after a successful submission for the sitemap pages to become indexed and to receive feedback in the Google Search Console dashbboard - **Overview**, **Pages**, **Performace**, and others.
    ![sitemap-submit-success](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2F0OyRX0CFP4qZ58GpgQKL_thumbnail?alt=media&token=6f2b6b9f-2c5b-4af1-84a1-26303b6aff41)
-5. While waiting, observe and resolve errors that the Google Search Console may display in the dashboard - **Pages** tab.
-6. After a few days up to several weeks after a successful page indexing, search for your website in Google Search and observe if it will be among the top search results.
 
+</Steps>
+
+
+## URL Inspection
+
+While waiting for the pages to become indexed, inspect each URL defined in the `sitemap.txt` file in the Google Search Console's **URL Inspection** tab once or several times.
+
+<Steps>
+
+### Inspect URLs
+
+1. Press the **URL Inspection** tab in the left navigation menu.
+2. Enter a URL from the `sitemap.txt` file in the upper search bar, i.e.,
+   ```text copy
+   https://acap-bicol.github.io/bulletins/
+   ```
+
+   <Callout>
+   Note that the URL ends with a forward slash `/` as defined in the **sitemap.txt** file.<br />
+   <b>`https://acap-bicol.github.io/weather-services/`</b> and not <br />
+   `"https://acap-bicol.github.io/weather-services"` (without a "/")
+   </Callout>
+
+   ![seo-url-inspection](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FWBnj0xlRlZ8EwwEvsbIc_thumbnail?alt=media&token=01d26488-29ef-4865-be12-0a6d897df505)
+
+   <br />
+
+### Request Page Indexing
+
+1. Press the **Request Indexing** button in the page logs resulting from the [**URL Inspection**](#inspect-urls) step.
+   ![request-indexing](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FOsb3PBuiLSoYBP5od3NB_thumbnail?alt=media&token=2927853e-1faa-4ea6-a092-29a2bbd2ea74)
+
+   <br />
+
+2. Wait until **step #1** finishes successfully with an _"Indexing requested"_ message.
+   ![seo-request-submitted](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FDXoOB9ZcxpjgYCLivIUu_thumbnail?alt=media&token=caef5748-776e-4ac4-a20e-f842c03bb86e)
+
+### Inspect All Sitemap URLs
+
+Repeat the [Inspect URLs](#url-inspection) and [Request Page Indexing](#request-page-indexing) steps for every URL defined in the `sitemap.txt` file.
+
+</Steps>
+
+## Debug and Observe Errors
+
+While waiting, observe and resolve errors that the Google Search Console may display in the dashboard - **Pages** tab.
+
+<Steps>
+
+### Resolve Errors
+
+Navigate to the **Pages** tab and observe page indexing error logs that may appear under the **Pages** → **Why pages aren't indexed** section. Error logs may look like the screenshot:
+
+![seo-error-logs](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2F0jeoz5Ni7sgugjP805SS_thumbnail?alt=media&token=761ebb1c-f4cd-42aa-a73d-5ec1880b06a4)
+
+Inspect and resolve each error log.
+
+
+
+### Confirm Indexed Pages
+
+After a few days up to several weeks after a successful page indexing, view and confirm the list of indexed pages in the Google Search Console's **Pages** → **View data about indexed pages** page.
+
+Search for your website in Google Search and observe if it will be among the top search results.
+
+![seo-success](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FxaOK0JvSTyZltezm9jBl_thumbnail?alt=media&token=02d33519-b355-45aa-a8a4-34a8a95bf05a)
 
 </Steps>
