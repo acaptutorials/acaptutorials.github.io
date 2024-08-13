@@ -50,9 +50,9 @@ ACAP only display OpenGraph images on its **production** website hosted at (GitH
    - **Admin Login** - `/admin/login`
    - **Superadmin Login** - `/superadmin/login`
 
-2. Create `1200 x 600` pixel picture banners for each of the public pages mentioned in step **#1**.
+2. Create `1200 x 600` pixel picture banners for each public page mentioned in step **#1**.
 
-3. (Optional) For reference, you can use ACAP's opengraph Photoshop PSD template to create new OpenGraph images. Press the (left) DOWNLOAD button to download the file.
+3. (Optional) For reference, you can use ACAP's OpenGraph Photoshop PSD template to create new OpenGraph images. Press the (left) DOWNLOAD button to download the file.
 
 <iframe
   src="https://acaptutorials.github.io/assets-cms/cards/embed?id=1AzipjfUV5G4rNyYnE6h&ts=1722964533"
@@ -60,7 +60,11 @@ ACAP only display OpenGraph images on its **production** website hosted at (GitH
   height="250"
 />
 
-4. A total of ten (10) new thumbnail files should be created, continuing from **step #2**. Let us use region 6 for example. Press the (left) DOWNLOAD button to download and view the picture files.
+4. A total of ten (10) new thumbnail files should be created, continuing from **step #2**. Let us use the Region 6 OpenGraph images **only as an example** to have preview samples of different OpenGraph images for each public page aside from Region 5. Press the (left) DOWNLOAD button to download and view the picture files.
+
+   <Callout type="info" emoji="ℹ️">
+   These are only examples. Regions can and should use OpenGrapch images that match and sync with their regions.
+   </Callout>
 
 <iframe
   src="https://acaptutorials.github.io/assets-cms/cards/embed?id=l8K7JfYhPcD7LUu26EmJ&ts=1722965055"
@@ -70,7 +74,7 @@ ACAP only display OpenGraph images on its **production** website hosted at (GitH
 
 ### Upload the OpenGraph Images
 
-1. Upload the ten (10) new OpenGraph to an online storage or hosting site. Their online URL should be publicly accessible after upload.
+1. Upload the ten (10) new OpenGraph to an online storage or hosting site, carrying on from [Create New OpenGraph Images](#create-new-opengraph-images) **step #2**. The online URLs of region-specific thumbnails should be publicly accessible after upload.
 
    <Callout>
    ACAP uploaded its OpenGraph images in Firebase Storage.
@@ -92,22 +96,26 @@ ACAP only display OpenGraph images on its **production** website hosted at (GitH
   </FileTree.Folder>
 </FileTree>
 
-1. Open the `/server/src/scripts/data/assets_dev.csv` file.
+1. Open and edit the `/server/src/scripts/data/assets_dev.csv` CSV file, preferably with Microsoft Excel or other software for editing tabular data, showing a visual overview of tables and columns.
 
-2. Replace the `url` column of the rows with column `page = "og"` and whose `filename` column starts with `"og_"` with the new OpenGraph image URLs from [**Upload the OpenGraph Images - step #2**](#upload-the-opengraph-images)
+2. Replace the URL values under the **`url`** "CSV" column of the rows whose `page` column values are `"og"` and whose `filename` column content starts with `"og_"` prefix with the new OpenGraph image URLs from [**Upload the OpenGraph Images - step #2**](#upload-the-opengraph-images)
 
-| filename | page name | public page route |
-| --- | --- | --- |
-| og_home | Home Page | `/` |
-| og_services | ACAP Services | `/weather-services` |
-| og_calendar | Cropping Calendar | `/cropping-calendar-v2` |
-| og_recommendations | Seasonal / 10-Day Recommendations | `/agroclimatic-services` |
-| og_bulletins | Bulletins PDF Download | `/bulletins` |
-| og_bulletins_10day | 10-Day Bulletins PDF Download | `/bulletins/weather` |
-| og_bulletins_seasonal | Sesaonal Bulletins PDF Download | `/bulletins/seasonal-outlook` |
-| og_bulletins_typhoon | Special Bulletins PDF Download | `/special-weather-forecast` |
-| og_admin | Admin Login | `/admin/login` |
-| og_superadmin | Superadmin Login  | `/superadmin/login` |
+   <Callout type="warning">
+   Refer to the format, content, and structure of the `/server/src/scripts/data/assets_dev.csv` CSV file when replacing values.
+   </Callout>
+
+   | filename | page name | public page route |
+   | --- | --- | --- |
+   | og_home | Home Page | `/` |
+   | og_services | ACAP Services | `/weather-services` |
+   | og_calendar | Cropping Calendar | `/cropping-calendar-v2` |
+   | og_recommendations | Seasonal / 10-Day Recommendations | `/agroclimatic-services` |
+   | og_bulletins | Bulletins PDF Download | `/bulletins` |
+   | og_bulletins_10day | 10-Day Bulletins PDF Download | `/bulletins/weather` |
+   | og_bulletins_seasonal | Sesaonal Bulletins PDF Download | `/bulletins/seasonal-outlook` |
+   | og_bulletins_typhoon | Special Bulletins PDF Download | `/special-weather-forecast` |
+   | og_admin | Admin Login | `/admin/login` |
+   | og_superadmin | Superadmin Login  | `/superadmin/login` |
 
 ### Upload the New OpenGraph URLs
 
