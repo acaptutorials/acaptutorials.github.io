@@ -89,6 +89,7 @@ The PDF development and technical approach were strongly influenced by the requi
 1. Create new or update existing vanilla HTML/CSS/JS files
 2. i.e., for 10-day PDF, edit the file: `/utils/pdf/livereload/public/tenday/index.html`
 3. Modify the `index.html`, `section-00.css` (other CSS), or `main.js` files to create a simple HTML page that closely matches the reference bulletin image (JPEG).
+4. View the updated HTML page, re-loaded with live reload in the web browser.
 
 <Callout type="info">
 NOTE: Ensure that certain text content is placed within `<div>` elements with fixed width and fixed height to keep everything contained on a single PDF page.
@@ -104,9 +105,11 @@ For guidance on how text and elements should be resized, refer to the **"adjustT
 Add/delete new assets following the pattern (relative to the current directory, i.e., in `/utils/pdf/livereload/public/tenday/`)
 
 - CSS/JS files
+- Font files
 - Picture files
-- Use mid-resolution pictures ideally having small size in KB (kilobytes) but still looks neat in the PDF, to achieve optimized, small-size network-friendly PDF files for downloading
-View the updated HTML page, re-loaded with live reload in the web browser
+   <Callout>
+   Use mid-resolution pictures ideally having small size in KB (kilobytes) but still looks neat in the PDF, to achieve optimized, small-size network-friendly PDF files for downloading
+   </Callout>
 
 ### Update the EJS file
 
