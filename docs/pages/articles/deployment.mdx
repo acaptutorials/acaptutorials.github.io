@@ -10,9 +10,14 @@ These videos created for ACAP's initial release (ACAP 1.0) back in **2023** shou
 Follow the steps in the **Render Initial Blueprint Instance** section to sync its Render deployment methods with the ACAP 2.0 updates.
 </Callout>
 
+
 ## Render Initial Blueprint Instance
 
 These steps complement the video tutorials for creating a Blueprint Instance, making them compatible with latest ACAP version (ACAP 2.0).
+
+<Callout type="default" emoji="💡">
+**acap-v2** has updated source codes at Release tag <b>{process.env.RELEASE_VERSION}</b> dev branch @commit <b>{process.env.COMMIT_ID}</b>.
+</Callout>
 
 <Steps>
 
@@ -27,7 +32,7 @@ Follow the video guides for creating a Blueprint Instance for the `development` 
 
 ACAP 2.0 now requires Docker secrets (secret files) in its build stage to build its API documentation, using default values if "secret" files are undefined during the build stage.
 
-<Callout>
+<Callout type="info" emoji="ℹ️">
 Render does not support adding Secrets (Docker secret files) on initial Blueprint creation. Create these Render **Secrets** with appropriate values after launching a Render **Web Service** connected to the **Blueprint Instance** to provide correct values during the succeeding Render build stages.
 </Callout>
 
