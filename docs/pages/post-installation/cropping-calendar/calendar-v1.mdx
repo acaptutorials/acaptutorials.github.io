@@ -7,7 +7,7 @@ import { Callout, FileTree, Steps } from 'nextra/components'
 ## Introduction
 
 <Callout type="warning">
-This section describes methods for uploading the cropping calendar for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
+This section describes methods for uploading the cropping calendar for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**v9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
 
 Follow this [link](/post-installation/cropping-calendar/calendar-v2) to view cropping calendar upload instructions for the latest **ACAP 2.0**.
 </Callout>
@@ -79,6 +79,10 @@ The **crop stage codes** should match with the **crop stage codes** defined i
 Open the server `.env` file. Update the `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY` keys with the **development** or **production** key values.
 
 ### Run the NPM Script
+
+<Callout type="warning">
+This script only works for <u>ACAP 1.0</u>, whose last stable version is **v9.5.6**. It has no backward compatibility for <u>ACAP 2.0</u> and later versions and thus may fail to work as expected.
+</Callout>
 
 1. Navigate to the `/server` directory from a terminal.
 

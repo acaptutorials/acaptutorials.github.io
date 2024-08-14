@@ -7,7 +7,7 @@ import { Callout, FileTree, Steps } from 'nextra/components'
 ACAP 1.0 uses **NPM scripts** to parse, validate, and upload recommendations data from a local Excel file. Similar to the [ACAP 1.0 cropping calendar data](/post-installation/cropping-calendar/calendar-v1), only developers can upload recommendations by running the NPM script on a terminal.
 
 <Callout type="warning">
-This section describes methods for uploading the local recommendations dataset for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
+This section describes methods for uploading the local recommendations dataset for the older **ACAP 1.0**. Its last stable version is Release/Tag version [**v9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
 
 Follow this [link](/post-installation/recommendations/recommendations-v2) to view recommendations dataset upload instructions for the latest **ACAP 2.0**.
 </Callout>
@@ -66,6 +66,10 @@ The **crop stage codes** in the Excel columns should match the **crop stage co
 Open the server `.env` file. Update the `FIREBASE_SERVICE_ACC` and `FIREBASE_PRIVATE_KEY` keys with the **development** or **production** key values.
 
 ### Run the NPM Script
+
+<Callout type="warning">
+This script only works for <u>ACAP 1.0</u>, whose last stable version is **v9.5.6**. It has no backward compatibility for <u>ACAP 2.0</u> and later versions and thus may fail to work as expected.
+</Callout>
 
 1. Navigate to the `/server` directory from a terminal.
 
