@@ -46,7 +46,7 @@ jobs:
           name: dev-out
           path: |
             docs/out
-            docs/.firebaserc
+            docs/*.firebaserc
             docs/firebase.json
           retention-days: 3
 
