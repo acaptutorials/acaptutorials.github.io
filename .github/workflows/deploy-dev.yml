@@ -47,7 +47,7 @@ jobs:
           include-hidden-files: true
           path: |
             docs/out
-            docs/*.firebaserc
+            docs/.firebaserc
             docs/firebase.json
           retention-days: 3
 
