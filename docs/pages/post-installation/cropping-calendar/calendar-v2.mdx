@@ -14,7 +14,7 @@ Follow this [link](/post-installation/cropping-calendar/calendar-v1) to view cr
 
 ### Data Format
 
-ACAP 2.0 uses cropping calendars with _**two (2) groups of crop stages**_ supporting _**one (1) or more types of crops**_. View its raw EXCEL data files in the `/server/src/scripts/data/dataset_v2.0` directory for more information about its contents and data structure.
+ACAP 2.0 uses cropping calendars with _**two (2) groups/rows of crop stages**_ for each municipality supporting _**one (1) or more types of crops**_. View its raw EXCEL data files in the `/server/src/scripts/data/dataset_v2.0` directory for more information about its contents and data structure.
 
 <FileTree>
   <FileTree.Folder name="server" defaultOpen>
@@ -74,6 +74,8 @@ Developers can add crop stages and labels for other crops, following the crop st
 
 <Callout type="warning">
 The **crop stage codes** should match those defined in the [ACAP 2.0 crop recommendations](/post-installation/recommendations/recommendations-v2/#data-format) raw Excel files crop stages specific to target crops to ensure the correct association of crop stages with target recommendations.
+
+*Each municipality should have two (2) rows of crop stages each, following the format of the new cropping calendar Excel templates in the `/server/src/scripts/data/dataset_v2.0` directory.
 </Callout>
 
 <Steps>

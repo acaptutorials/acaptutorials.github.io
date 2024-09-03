@@ -74,7 +74,7 @@ The app depends these libraries and frameworks.
 2. Create a Release to deploy the site to the production environment (GitHub Pages).
 3. To update the banner content while there are no code or content updates:
    - Update the GitHub Secrets: `RELEASE_VERSION`, `COMMIT_ID` and `RELEASE_PAGE`
-4.  Re-deploy the latest production environment workflow from the GitHub Actions tab.
+   - Re-deploy the latest production environment workflow from the GitHub Actions tab.
 
 
 ## Available Scripts
