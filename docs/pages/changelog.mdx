@@ -46,8 +46,11 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 
 #### Changed
 
-1. Public/admin seasonal recommendations and bulletin PDF generation: removal of the crop stage/s and rainfall condition as triggers
-2. Public/admin 10-day recommendations and bulletin PDF generation: removal of the crop stage trigger
+1. Public/admin seasonal recommendations and bulletin PDF generation
+   - Removal of the month trigger for determining the crop stage/s
+   - Removal of the rainfall condition trigger
+2. Public/admin 10-day recommendations and bulletin PDF generation
+   - Removal of the dates trigger for determining the crop stage/s
 3. Deprecation of the **uploaders** group of Node Package Manager (NPM) scripts in favor of cropping calendar/recommendations Excel file upload through the UI
 4. Allow creating seasonal bulletin PDFs with more than one (1) page.
 5. Text blast recipients by province/municipality instead of individual selection
@@ -132,7 +135,7 @@ _June 2023 onwards_
 
 #### Changed
 
-- Used `.env` variables to manage region-specific static text in the front end, ensuring the base model of the application can be extended and adapted for multiple regions with different (text content) requirements and practices, allowing easier regional static text replacement.
+- Used `.env` variables to manage region-specific static text in the front end, ensuring the base model of the application can be extended and adapted for multiple regions with different (text content) requirements, allowing easier regional static text replacement.
 
 - Use `nda` values for null/empty seasonal weather forecast data in the backend and front end, borrowed from the ongoing ACAP-RCMAS API development.
 

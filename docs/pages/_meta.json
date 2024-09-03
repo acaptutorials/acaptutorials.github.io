@@ -15,6 +15,12 @@
     "title": "Articles"
   },
   "troubleshooting": "Troubleshooting",
+  "acap-bicol": {
+    "title": "ACAP Bicol",
+    "href": "https://acap-bicol.github.io",
+    "type": "page",
+    "newWindow": true
+  },
   "video": {
     "title": "Video Tutorials",
     "type": "page"
