@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - dev
+      - fix/acaptutorials-31
 
 jobs:
   lint-client:
@@ -40,9 +41,10 @@ jobs:
           npm run export
           touch out/.nojekyll
       - name: Archive Development Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dev-out
+          include-hidden-files: true
           path: |
             docs/out
             docs/.firebaserc
@@ -55,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dev-out
       - name: Deploy to Firebase
