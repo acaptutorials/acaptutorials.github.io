@@ -1,0 +1,61 @@
+import { Callout, FileTree, Steps } from 'nextra/components'
+
+# Province Codes
+
+Province codes refer to the three-letter or two-letter shortcodes abbreviation for a province. For exampe Region 5 Bicol has:
+
+| Province | Code |
+| --- | --- |
+| Albay | ALB |
+| Camarines Norte | CN |
+| Camarines Sur | CS |
+| Catanduanes | CAT |
+| Masbate | MAS |
+| Sorsogon | SOR |
+
+## Default Values
+
+The seeder scripts assigns the first three letter of a provice for its short code during the [Installation - Seed default data](/installation/server-setup/#seed-default-data) step.
+
+## Update the Default Values
+
+These steps are optional if there is a need to change the default-generated province shortcodes. Follow the steps to update the provinces' default three-letter short code.
+
+<Callout>
+These steps require a successful run of the [Initialization](/initialization) steps before proceeding.
+</Callout>
+
+<Steps>
+
+### Edit the codes JSON file
+
+Open the `/server/src/scripts/uploaders/province_codes/data.json` file.
+
+<FileTree>
+  <FileTree.Folder name="server" defaultOpen>
+    <FileTree.Folder name="src" defaultOpen>
+      <FileTree.Folder name="scripts" defaultOpen>
+        <FileTree.Folder name="uploaders" defaultOpen>
+          <FileTree.Folder name="province_codes" defaultOpen>
+            <FileTree.File name="data.json" />
+          </FileTree.Folder>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+1. Replace the JSON keys with new `"province names"` matching those entered in the server `.env` file.
+2. Replace the `"code"` JSON key values with new two or three-letter province shortcodes.
+3. Update the `"full"` JSON key values with new `"province names."`
+
+### Upload the new province shortcodes
+
+1. Navigate to the server directory using a terminal.
+2. Run this command switching between the **development** and **production** `.env` files.
+
+```bash copy
+npm run upload:province_codes
+```
+
+</Steps>
