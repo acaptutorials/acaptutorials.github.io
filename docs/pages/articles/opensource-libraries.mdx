@@ -1,0 +1,25 @@
+import { Callout } from 'nextra/components'
+
+# Use of Open Source Libraries and Frameworks
+
+## Mainstream Libraries
+
+The ACAP, a web application built with React (NextJS), Node, and Firebase, uses mainstream, community-driven open source, well-tested, and documented Node libraries and frameworks, including but not limited to [React](https://www.npmjs.com/package/react)/[NextJS](https://nextjs.org/), [ExpressJS](https://www.npmjs.com/package/express/), [Firebase](https://www.npmjs.com/package/firebase), [Leaflet](https://www.npmjs.com/package/react-leaflet), [Axios](https://www.npmjs.com/package/axios), and lots more.
+
+A comprehensive list of these libraries and their versions used within the project are available in the [client](/directories/client) and [server](/directories/server) `package.json` files of the ACAP project.
+
+## Other Libraries
+
+Besides using mainstream libraries, ACAP also uses **two (2)** newer, well-tested, and documented open-source libraries to efficiently manage specific low-impact requirements in a focused and easily extendable manner, set apart from ACAP's growing collection of internal libraries and scripts. These libraries used the open-source model to enhance collaboration and foster community contributions, ensuring that ACAP can optionally benefit from ongoing improvements and feedback, with coordination with future ACAP Maintainers.
+
+> These libraries encourage community contributions and feedback, with their main Maintainer overseeing the development process to ensure that all updates and contributions align with the project's goals and standards. Community input is valued and considered, but final decisions regarding updates will rest with the Maintainer.
+
+**One of these libraries**, in particular, has goals of enhancing and thoroughly testing possible [Regional Provinces / Municipalities Inconsistency](/articles/provinces-municipalities/#regional-provinces--municipalities-inconsistency) by offering tailored functionality and methods that will automatically sync PAGASA 10-day region/province/municipality names with PSGC data, resulting in less maintenance (customization) burden which is already beyond the original ACAP project timeline, project scope, and deliverables. _This initiative is essential to enhance the accuracy and reliability of the data used in the ACAP project, which is crucial for its functionality._
+
+> Since library updates and enhancements may extend beyond the ACAP project timeline, future ACAP Maintainers and developers can choose whether to adopt its updates, continue using the current version, or adopt entirely new solutions.
+
+These libraries, designed for compatibility and easy extension, follow semantic versioning. Their codes and logic, following safety and security practices, are available for inspection in the public NPM registry.
+
+<Callout>
+For more information about these open-source libraries and their goals and motivations within the ACAP project, kindly contact the ACAP Maintainers.
+</Callout>

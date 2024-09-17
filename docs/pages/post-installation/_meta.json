@@ -6,5 +6,6 @@
   "recommendations": "Recommendations Dataset",
   "acap-rcmas-api": "ACAP-RCMAS REST APIs",
   "opengraph": "Opengraph Settings",
-  "google-search": "Google Search Console"
+  "google-search": "Google Search Console",
+  "province-codes": "Province Codes"
 }
