@@ -60,6 +60,14 @@ Run ACAP's `"pagasa:municipalities"` NPM script to get a list of the latest  PAG
 3. Replace the `PROVINCES` and `PROVINCES_ARCHIVE` variables with the comma-separated province names of your new target region resulting from **step #2**.
 4. Replace the `DEFAULT_PROVINCE` .env variable with any province name from the `PROVINCES` comma-separated province names.
 
+<Callout type="warning">
+The `"pagasa:municipalities"` NPM script may generate an outdated or incorrect list of provinces of a region depending on several factors.
+
+- Visit the [Provinces and Municipalities FAQs](/articles/provinces-municipalities/#faqs) or the [Regional Provinces / Municipalities Inconsistency](/articles/provinces-municipalities/#regional-provinces--municipalities-inconsistency) sections for more information on why this may happen.
+
+- Refer to the [Updating Regional Provinces](/articles/provinces-municipalities/#updating-regional-provinces) guide for possible troubleshooting methods if you notice missing provinces or municipalities after running this script.
+</Callout>
+
 ### Create new superadmin password
 
 1. Open the the file: `/server/src/scripts/seeders/00_superadmin/index.js`
@@ -91,6 +99,12 @@ Run this server NPM script to fetch and upload the @latest PAGASA 10-day weather
 ```bash copy
 npm run cron:tenday
 ```
+
+<Callout type="warning">
+This script may fail to fetch and parse 10-day weather forecast data of several municipalities linked with _**provinces not available**_ in the 10-day Excel file.
+
+Visit the [Provinces and Municipalities](/articles/provinces-municipalities) article for more information if you notice missing 10-day weather forecast data for several provinces and municipalities.
+</Callout>
 
 ### Build the API docs (Optional)
 

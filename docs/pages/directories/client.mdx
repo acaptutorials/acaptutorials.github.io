@@ -22,6 +22,7 @@ Developers should take care not to "bake" or "build" sensitive data and informat
 - **firestore.rules** - Firestore Rules definitions to publish in a Firebase project's Firestore Rules settings
 - **storage.rules** - Firebase Storage Rules definitions to publish in a Firebase project's Storage settings
 - **Dockerfile.acap** - multi-stage build Dockerfile definition for running the client on localhost development or as "built" static files for production deployment running on nginx.
+- **package.json / package-lock.json** - Contains definitions of the client's NodeJS dependency libraries
 
 ## Folders
 
@@ -86,9 +87,7 @@ components/bulletins", "components/home"
       <FileTree.Folder name="admin" />
       <FileTree.Folder name="superadmin" />
     </FileTree.Folder>
-    <FileTree.Folder name="public">
-      <FileTree.File name="test" />
-    </FileTree.Folder>
+    <FileTree.Folder name="public" />
     <FileTree.Folder name="src" defaultOpen>
       <FileTree.Folder name="firebase">
         <FileTree.File name="firebase.config.js" />
@@ -99,14 +98,14 @@ components/bulletins", "components/home"
       <FileTree.Folder name="store" />
       <FileTree.Folder name="utils" />
     </FileTree.Folder>
-    <FileTree.Folder name="styles">
-      <FileTree.File name="test" />
-    </FileTree.Folder>
+    <FileTree.Folder name="styles" />
     <FileTree.File name=".env.example" />
     <FileTree.File name=".firebaserc" />
     <FileTree.File name="Dockerfile.acap" />
     <FileTree.File name="firebase.json" />
     <FileTree.File name="firestore.rules" />
     <FileTree.File name="storage.rules" />
+    <FileTree.File name="package.json" />
+    <FileTree.File name="package-lock.json" />
   </FileTree.Folder>
 </FileTree>
