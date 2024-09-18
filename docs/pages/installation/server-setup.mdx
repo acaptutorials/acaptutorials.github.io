@@ -45,28 +45,35 @@ Create a `.env` file inside the **/server** directory. Copy the contents of the 
 
 ### Initialize provinces and municipalities
 
-Run ACAP's `"pagasa:municipalities"` NPM script to get a list of the latest  PAGASA-updated municipalities and province names.
+<Callout>
+ACAP refers to the [PAGASA Seasonal Forecast - Forecast Rainfall Analysis Table](https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast) for its regional provinces list, matching the province names with those listed in the [PAGASA 10-day Weather Forecast Excel](https://www.pagasa.dost.gov.ph/climate/climate-prediction/10-day-climate-forecast) files.
 
-1. First navigate to the server directory from the command line then run:
+ACAP expects province naming from the two (2) data sources to match since both are data products produced by PAGASA.
+</Callout>
+
+Run ACAP's `"pagasa:municipalities"` NPM script to get a list of the PAGASA municipalities and province names.
+
+1. First, navigate to the server directory from the command line, then run:
    ```bash copy
    npm run pagasa:municipalities
    ```
-2. Enter PAGASA's 10-day excel file URL when prompted.
-   - These files, updated daily around 8:00 AM are available on https://www.pagasa.dost.gov.ph/climate/climate-prediction/10-day-climate-forecast
-   - Enter a specific PAGASA's 10-day excel file URL when prompted:
+   > **INFO:** The `"pagasa:municipalities"` NPM script uses a static-encoded region/province mapping file, manually encoded in 2024 with reference from the <u>PAGASA Seasonal Forecast - Forecast Rainfall Analysis</u> table.
+2. Enter PAGASA's 10-day Excel file URL when prompted.
+   - These files, updated daily around 8:00 AM, are available on https://www.pagasa.dost.gov.ph/climate/climate-prediction/10-day-climate-forecast
+   - Enter a specific PAGASA's 10-day Excel file URL when prompted:
       ```bash copy
       https://pubfiles.pagasa.dost.gov.ph/pagasaweb/files/climate/tendayweatheroutlook/day1.xlsx
-      ```
-3. Replace the `PROVINCES` and `PROVINCES_ARCHIVE` variables with the comma-separated province names of your new target region resulting from **step #2**.
-4. Replace the `DEFAULT_PROVINCE` .env variable with any province name from the `PROVINCES` comma-separated province names.
+      `````
+3. Double-check the resulting province names from **step #2** with those listed in the latest [PAGASA Seasonal Forecast - Forecast Rainfall Analysis](https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast) table. Take note of **new province(s)** not included in the generated list, or **remove** provinces no longer present in the Forecast Rainfall Analysis table.
+   <Callout type="warning">
+   The `"pagasa:municipalities"` NPM script may generate an outdated or incorrect list of provinces of a region depending on several factors.
 
-<Callout type="warning">
-The `"pagasa:municipalities"` NPM script may generate an outdated or incorrect list of provinces of a region depending on several factors.
+   - Visit the [Provinces and Municipalities FAQs](/articles/provinces-municipalities/#faqs) or the [Regional Provinces / Municipalities Inconsistency](/articles/provinces-municipalities/#regional-provinces--municipalities-inconsistency) sections for more information on why this may happen.
 
-- Visit the [Provinces and Municipalities FAQs](/articles/provinces-municipalities/#faqs) or the [Regional Provinces / Municipalities Inconsistency](/articles/provinces-municipalities/#regional-provinces--municipalities-inconsistency) sections for more information on why this may happen.
-
-- Refer to the [Updating Regional Provinces](/articles/provinces-municipalities/#updating-regional-provinces) guide for possible troubleshooting methods if you notice missing provinces or municipalities after running this script.
-</Callout>
+   - Refer to the [Updating Regional Provinces](/articles/provinces-municipalities/#updating-regional-provinces) guide for possible troubleshooting methods if you notice missing provinces or municipalities after running this script.
+   </Callout>
+4. Replace the `PROVINCES` and `PROVINCES_ARCHIVE` variables with the comma-separated province names of your new target region resulting from **steps #2 and #3**.
+5. Replace the `DEFAULT_PROVINCE` .env variable with any province name from the `PROVINCES` comma-separated province names.
 
 ### Create new superadmin password
 

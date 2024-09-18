@@ -1,24 +1,43 @@
+import { useEffect, useState, useMemo } from 'react'
 import { Callout, FileTree, Steps } from 'nextra/components'
+import { useTheme } from 'next-themes'
 
-export function FAQBox({ title, children, open=false }) {
-  return (
-    <details
-      open={open}
-      className="last-of-type:mb-0 rounded-lg bg-neutral-50 dark:bg-neutral-800 p-2 mt-4"
-    >
-      <summary>
-        <strong className="text-md">{title}</strong>
-      </summary>
-      <div className="nx-p-2">{children}</div>
-    </details>
-  )
+export function FAQBox({ title, children, open = false }) {
+  const [isClient, setIsClient] = useState(false)
+  const { theme, resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const detailsBgStyle = useMemo(() => {
+    const bg = resolvedTheme === 'dark'
+    ? 'bg-neutral-800'
+    : 'bg-neutral-50'
+
+    return `last-of-type:mb-0 rounded-lg ${bg} p-2 mt-4`
+  }, [resolvedTheme])
+
+  return !isClient
+    ? <div>...</div>
+    : (
+      <details
+        open={open}
+        className={detailsBgStyle}
+      >
+        <summary>
+          <strong className="text-md">{title}</strong>
+        </summary>
+        <div className="nx-p-2">{children}</div>
+      </details>
+    )
 }
 
 # Provinces and Municipalities
 
 ## Data Source
 
-ACAP uses a combination of the [PAGASA 10-day weather forecast Excel files](https://www.pagasa.dost.gov.ph/climate/climate-prediction/10-day-climate-forecast) and the [PAGASA Seasonal Forecast- Rainfall Analysis Table](https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast) as a data source for its region, provinces, and municipalities list.
+ACAP uses a combination of the [PAGASA 10-day weather forecast Excel files](https://www.pagasa.dost.gov.ph/climate/climate-prediction/10-day-climate-forecast) and the [PAGASA Seasonal Forecast- Forecast Rainfall Analysis Table](https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast) as a data source for its region, provinces, and municipalities list.
 
 ## FAQs
 
@@ -27,17 +46,19 @@ ACAP uses the provinces and municipalities list defined in the [PAGASA 10-day we
 </FAQBox>
 
 <FAQBox title="The PAGASA 10-day weather forecast Excel files do not have region names. How does ACAP know which provinces belong to a region?">
-ACAP uses the region-province grouping from the [PAGASA Seasonal Forecast](https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast) - Rainfall Analysis Table to determine which provinces belong to a region as a reference since it also processes provincial seasonal weather forecast information from the PAGASA Seasonal Forecast. ACAP expects province naming from the two (2) data sources (PAGASA 10-day and Seasonal weather forecasts) to match since both are data products produced by PAGASA.
+ACAP uses the region-province grouping from the [PAGASA Seasonal Forecast](https://www.pagasa.dost.gov.ph/climate/climate-prediction/seasonal-forecast) - Forecast Rainfall Analysis Table to determine which provinces belong to a region as a reference since it also processes provincial seasonal weather forecast information from the PAGASA Seasonal Forecast. ACAP expects province naming from the two (2) data sources (PAGASA 10-day and Seasonal weather forecasts) to match since both are data products produced by PAGASA.
+
+> Regions with a memorandum of agreement with PAGASA also receive Seasonal Weather Forecast data in an Excel file containing the Seasonal Forecast Rainfall Analysis Table through email.
 
 ACAP initializes its province list during the [Server Setup](/installation/server-setup/#initialize-provinces-and-municipalities) stage.
 </FAQBox>
 
 <FAQBox title="Do province names from the PAGASA Seasonal Forecast data always match with the province names in the PAGASA 10-day Excel files?">
-No. After more recent tests, it came to light that some province names defined in the <u>PAGASA Seasonal Forecast (Rainfall Table)</u> may not always match the province names defined in the <u>PAGASA 10-day Excel</u> files.
+No. After more recent tests, it came to light that some province names defined in the <u>PAGASA Seasonal Forecast (Forecast Rainfall Analysis Table)</u> may not always match the province names defined in the <u>PAGASA 10-day Excel</u> files.
 
-For example, as of _September 17, 2024_, the `"Davao Occidental"` province is present in the PAGASA Seasonal Forecast (Rainfall Table) under **Region XI (Davao Region)**. However, it is missing in the PAGASA 10-Day Excel files.
+For example, as of _September 17, 2024_, the `"Davao Occidental"` province is present in the PAGASA Seasonal Forecast (Forecast Rainfall Analysis Table) under **Region XI (Davao Region)**. However, it is missing in the PAGASA 10-Day Excel files.
 
-Similarly, the `"Shariff Kabunsuan"` province is available in the PAGASA 10-Day Excel files, but it is nowhere to be found in the PAGASA Seasonal Forecast (Rainfall Table).
+Similarly, the `"Shariff Kabunsuan"` province is available in the PAGASA 10-Day Excel files, but it is nowhere to be found in the PAGASA Seasonal Forecast (Forecast Rainfall Analysis Table).
 
 Refer to the [Regional Provinces / Municipalities Inconsistency](#regional-provinces--municipalities-inconsistency) section for more information about possible causes of region/province/municipality naming inconsistencies.
 </FAQBox>
