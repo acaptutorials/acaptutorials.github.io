@@ -61,7 +61,7 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 <FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts:">
 1. **Lenient use of the Firestore database:** Inadvertently allows unvalidated input in new collections via Firestore REST APIs outside the front end. This issue, not present in Version 1.0, began with Version 2.0 using methods to speed up the development process. We are addressing this in future updates.
 2. **Validation of crop recommendations WYSIWYG HTML input:** This is necessary to mitigate Cross-Site Scripting (XSS) attacks (related to the above issue), which also arose from the new approaches in Version 2.0. Enhancements to security will be implemented in future releases.
-3. **Crop recommendations data integrity:** Ensuring unaltered data presentation in PDF bulletins, brought about by items 1 and 2.
+3. **Crop recommendations data integrity:** Ensuring unaltered data presentation in PDF bulletins, resulting from the issues identified in items 1 and 2.
 
 > These issues, brought to the attention of the current active ACAP Maintainer during the early stages of 2.0 development, are to be resolved and addressed within their available time and schedule in the current ACAP timeline or the new ACAP iterations.
 </FAQBoxError>
