@@ -37,12 +37,16 @@ For detailed instructions on these steps, refer to the [Post-Installation](/post
 
 If you are working on a forked repository behind several updates from the parent **`acap-v2`** repository, you can get the latest updates or bug fixes using any of the options:
 
-- "Sync" to the parent repository
-- Create a Pull Request (PR) from the parent repository (**acap-v2**) to your forked repository, then merge/resolve conflicts.
+- "Sync" to the parent repository's `dev` branch.
+   <Callout type="warning">
+   Take care not to "discard" your commits.
+   </Callout>
+- Create a Pull Request (PR) from the parent repository's (**acap-v2**) - **`dev`** branch to your forked repository, then merge/resolve conflicts.
+- `cherry-pick` target commit(s) from the parent `dev` branch to the `dev` branch of your forked repository.
 - Pick only the target updates/fixes, then commit them to your fork.
 
 <Callout type="info" emoji="ℹ️">
 Project Maintainers occasionally update the parent repository **acap-v2** for maintenance, bug fixes, and minor/optional updates. Sometimes, massive new feature updates.
 
-Of the three (3) repository syncing options mentioned, doing the first or second options ensures up-to-date sync with the latest updates and bug fixes.
+Of the four (4) repository syncing options mentioned, doing the first or second options ensures up-to-date sync with the latest updates and bug fixes.
 </Callout>
