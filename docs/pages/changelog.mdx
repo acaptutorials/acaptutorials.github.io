@@ -1,4 +1,42 @@
+import { useEffect, useState, useMemo } from 'react'
 import { Callout, Steps } from 'nextra/components'
+import { useTheme } from 'next-themes'
+
+export function FAQBoxError({ title, children, open = false }) {
+  const [isClient, setIsClient] = useState(false)
+  const { theme, resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const detailsBgStyle = useMemo(() => {
+    const bg = resolvedTheme === 'dark'
+    ? 'nx-bg-red-900/30'
+    : 'nx-bg-red-100'
+
+    return {
+      details: `nx-overflow-x-auto nx-mt-6 nx-flex nx-rounded-lg nx-border nx-py-2 ltr:nx-pr-4 rtl:nx-pl-4 contrast-more:nx-border-current contrast-more:dark:nx-border-current nx-border-red-200 nx-bg-red-100 nx-text-red-900 dark:nx-border-red-200/30 dark:nx-bg-red-900/30 dark:nx-text-red-200`,
+
+      summary: `nx-flex nx-items-center nx-cursor-pointer nx-list-none nx-p-1 nx-transition-colors hover:${resolvedTheme} dark:hover:${resolvedTheme} before:nx-mr-1 before:nx-inline-block before:nx-transition-transform before:nx-content-[''] dark:before:nx-invert before:nx-shrink-0 rtl:before:nx-rotate-180 [[data-expanded]>&]:before:nx-rotate-90`
+    }
+  }, [resolvedTheme])
+
+  return !isClient
+    ? <div>...</div>
+    : (
+      <details
+        open={open}
+        className={detailsBgStyle.details}
+      >
+        <summary className={detailsBgStyle.summary}>
+          <strong className="text-md">{title}</strong>
+        </summary>
+        <div className="nx-p-2">{children}</div>
+      </details>
+    )
+}
+
 
 # ACAP Change Log
 
@@ -16,9 +54,15 @@ Version 2.0 highlights ongoing improvements and newly added features, expanding 
 ACAP 2.0 is the latest ACAP version. It's latest stable version is Release/Tag version <b><a href={process.env.RELEASE_PAGE}><u>{process.env.RELEASE_VERSION ?? '0.0.0'}</u></a></b>, dev branch <b>@{process.env.COMMIT_ID ?? '123456'}</b> accessible in the **acap-v2** code repository.
 </Callout>
 
-<Callout>
+<Callout type="warning">
 Version 2.0 and later versions may have new requirements that will thrive on new development approaches loosely tied to the recommended [Security](/security) and [Server](/directories/server) guidelines of **ACAP 1.0**, requiring thorough testing and validation.
 </Callout>
+
+<FAQBoxError title="💀 Version 2.0 has intentional Security technical debts:">
+1. Lenient use of the Firestore database, inadvertently allowing unvalidated input on new collections using the Firestore REST APIs outside the front end
+2. Validation of What-You-See-Is-What-You-Get (WYSIWYG) HTML input for mitigating Cross-Site Scripting (XSS) attacks (caused by item #1)
+3. Crop recommendations data integrity, ensuring unaltered data presentation in the PDF bulletins
+</FAQBoxError>
 
 <br />
 
@@ -50,7 +94,7 @@ Version 2.0 and later versions may have new requirements that will thrive on new
    - Removal of the single-month selection trigger for determining the crop stage/s
    - Removal of the rainfall condition trigger
 2. Public/admin 10-day recommendations and bulletin PDF generation
-   - Removal of the dates trigger within the active PAGASA 10-day date range for determining the crop stage/s
+   - Removal of the single-date selection trigger within the active PAGASA 10-day date range for determining the crop stage/s
 3. Deprecation of the **uploaders** group of Node Package Manager (NPM) scripts in favor of cropping calendar/recommendations Excel file upload through the UI
 4. Allow creating seasonal bulletin PDFs with more than one (1) page.
 5. Text blast recipients by province/municipality instead of individual selection
@@ -68,7 +112,9 @@ ACAP 1.0's last stable version is Release/Tag version [**v9.5.6**](https://githu
 
 Version 1.0 marks the initial ACAP Bicol release used as a base model and template for subsequent developer training and sharing with other regions in the succeeding years starting on [**July 2023**](https://uplbfi.org/?p=2097).
 
-It has the following features, strictly following and is tested compatible with the recommended [Security](/security) and  [Server](/directories/server) guidelines:
+Developed with a Security-first approach, ACAP 1.0 especially notes common Firestore security pitfalls and keeps a watchful eye on Cross-Site Scripting (XSS) attacks since it uses What-You-See-Is-What-You-Get (WYSIWYG) HTML input for crop recommendations and PDF generation.
+
+It has the following features, strictly following and is tested compatible with the recommended [Security](/security) and [Server](/directories/server) guidelines:
 
 <div className="text-semibold text-sm text-slate-500 no-underline">
 
