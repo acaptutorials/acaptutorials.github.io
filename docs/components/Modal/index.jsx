@@ -8,8 +8,8 @@ function Modal({ title, children, isOpen, onClose }) {
 
   const modalBgStyle = useMemo(() => {
     const bg = resolvedTheme === 'dark'
-    ? 'bg-neutral-800'
-    : 'bg-neutral-50'
+      ? 'bg-neutral-800'
+      : 'bg-neutral-50'
 
     return `${bg} rounded-lg shadow-lg p-6 max-w-md w-full`
   }, [resolvedTheme])

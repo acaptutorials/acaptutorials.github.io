@@ -2,21 +2,21 @@ import { useState } from 'react'
 import Modal from '@/components/Modal'
 
 function AnchorModal({
-   anchorText = 'Click Me',
-   modalTitle,
-   children
+  anchorText = 'Click Me',
+  modalTitle,
+  children
 }) {
   const [isModalOpen, setModalOpen] = useState(false)
 
-   return (
+  return (
     <>
       <a
         href="#"
         className="underline hover:text-blue-600"
         onClick={(e) => {
-         e.preventDefault()
-         setModalOpen(prev => !prev)
-      }}>
+          e.preventDefault()
+          setModalOpen(prev => !prev)
+        }}>
         {anchorText}
       </a>
 
@@ -28,7 +28,7 @@ function AnchorModal({
         {children}
       </Modal>
     </>
-   )
+  )
 }
 
 export default AnchorModal
