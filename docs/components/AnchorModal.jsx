@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
+
 import Modal from '@/components/Modal'
 
 function AnchorModal({
+  children,
   anchorText = 'Click Me',
-  modalTitle,
-  children
+  modalTitle
 }) {
   const [isModalOpen, setModalOpen] = useState(false)
 
@@ -29,6 +31,12 @@ function AnchorModal({
       </Modal>
     </>
   )
+}
+
+AnchorModal.propTypes = {
+  children: PropTypes.node,
+  anchorText: PropTypes.string,
+  modalTitle: PropTypes.string
 }
 
 export default AnchorModal
