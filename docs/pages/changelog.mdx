@@ -12,8 +12,8 @@ export function FAQBoxError({ title, children, open = false }) {
 
   const detailsBgStyle = useMemo(() => {
     const bg = resolvedTheme === 'dark'
-    ? 'nx-bg-red-900/30'
-    : 'nx-bg-red-100'
+      ? 'nx-bg-red-900/30'
+      : 'nx-bg-red-100'
 
     return {
       details: `nx-overflow-x-auto nx-mt-6 nx-flex nx-rounded-lg nx-border nx-py-2 ltr:nx-pr-4 rtl:nx-pl-4 contrast-more:nx-border-current contrast-more:dark:nx-border-current nx-border-red-200 nx-bg-red-100 nx-text-red-900 dark:nx-border-red-200/30 dark:nx-bg-red-900/30 dark:nx-text-red-200`,
@@ -59,11 +59,11 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 </Callout>
 
 <FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts:">
-1. **Lenient use of the Firestore database:** Inadvertently allows unvalidated input in new collections via Firestore REST APIs outside the front end, bypassing the intended front-end controls. This issue, not present in Version 1.0, began with Version 2.0 using methods to speed up the development process and feature delivery. We are addressing this in future updates.
-2. **Validation of crop recommendations WYSIWYG HTML input:** This is necessary to mitigate Cross-Site Scripting (XSS) attacks (related to the above issue), which also arose from new development approaches in Version 2.0. Enhancements to security will be implemented in future releases.
-3. **Crop recommendations data integrity:** Ensuring unaltered data presentation in PDF bulletins, resulting from the issues identified in items 1 and 2.
+1. **Flexible Firestore Database Use:** Version 2.0+ adopted a more flexible approach for handling data management, facilitating faster feature development. However, this shift also introduced the potential for data to enter the database without the usual front-end controls through the Firestore REST APIs. While this was not an issue in Version 1.0, it emerged as part of the effort to enhance development speed and feature delivery starting with Version 2.0.
+2. **Cross-Site Scripting (XSS) Vulnerability in Crop Recommendations:** Related to item 1, the new process for editing WYSIWYG HTML-form crop recommendations input may allow unsafe or inaccurate content due to limited validation. Risks associated with this were recognized early in the process, but the focus on delivering core features led to a delay in integrating security measures. Additionally, the smaller scope of the project contributed to a perception that it might not require the same level of thorough security measures typically expected in larger-scale projects.
+3. **Crop recommendations data integrity:** Ensuring that data presentations in PDF bulletins remain unaltered, trustworthy, and accurate is crucial for users and future developers. This priority stems from the concerns identified in items 1 and 2.
 
-> These issues, brought to the attention of the current active ACAP Maintainer during the early stages of 2.0 development, are to be resolved and addressed within their available time and schedule in the current ACAP timeline or the new ACAP iterations.
+> These issues, raised during the early 2.0 development phase, have been communicated to the new main ACAP Maintainer, who is also the primary developer leading the creation and enhancement of new features for Version 2.0. The Maintainer has made decisions for balancing development speed with feature delivery, reflecting their understanding of the project's scope and the perceived security needs. They are open to addressing these issues as time and priorities allow within the ACAP project timeline.
 </FAQBoxError>
 
 <br />
