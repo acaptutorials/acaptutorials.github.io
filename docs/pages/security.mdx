@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { Callout, Steps } from 'nextra/components'
+import AnchorModal from '@/components/AnchorModal'
 
 # Security Guidelines
 
@@ -13,7 +15,14 @@ ACAP adheres to strict security practices as defined by its technology stack, st
 1. Manually test and ensure using the [Firestore Web API](https://firebase.google.com/docs/firestore/quickstart) and [Firestore REST APIs](https://firebase.google.com/docs/firestore/use-rest-api) that:
    - (a) Signed-in users cannot perform **CREATE/EDIT/DELETE** operations in the Firestore collections and documents defined in the Firestore Rules.
       <Callout type="warning">
-      NOTE: If there is a need to perform **CREATE/EDIT/DELETE** operations _**"directly"**_ in the Firestore collections or documents using the [Firestore Web API](https://firebase.google.com/docs/firestore/quickstart) or [Firestore REST APIs](https://firebase.google.com/docs/firestore/use-rest-api), please ensure the creation and testing of robust, new [Firestore Rules](https://firebase.google.com/docs/firestore/security/get-started) that will meet the "new" requirements (ACAP <span className="text-xl font-bold text-red-600">1.0</span> only performs such operations thru the [backend NodeJS REST APIs](/directories/server), **Database #2**, **Database #3**). This ensures manageable security and safety, preventing security breaches like the cross-site scripting (XSS) attack example detailed [here](https://www.youtube.com/watch?v=b9UZ6_OCTaY).
+      NOTE: If there is a need to perform **CREATE/EDIT/DELETE** operations _**"directly"**_ in the Firestore collections or documents using the [Firestore Web API](https://firebase.google.com/docs/firestore/quickstart) or [Firestore REST APIs](https://firebase.google.com/docs/firestore/use-rest-api), please ensure the creation and testing of robust, new [Firestore Rules](https://firebase.google.com/docs/firestore/security/get-started) that will meet the "new" requirements (ACAP <span className="text-xl font-bold text-red-600">1.0</span> only performs such operations thru the [backend NodeJS REST APIs](/directories/server), **Database #2**, **Database #3**). This ensures manageable security and safety, preventing security breaches like the cross-site scripting (XSS) attack example detailed at:<br /><br />
+      <AnchorModal
+        anchorText="XSS Vulnerability Awareness in ACAP 2.0"
+      >
+         A YouTube video detailing steps for exploiting XSS vulnerabilities in the ACAP 2.0 crop recommendations at https://www.youtube.com/watch?v=b9UZ6_OCTaY has been set to private permissions to limit exposure. This video is a resource for understanding the security challenges associated with these vulnerabilities and ACAP, which occurred starting on <b>version 2.0</b> due to new development approaches and priorities.
+
+         For ACAP Maintainers or developers interested in exploring the content, please contact the current active ACAP Maintainer(s) for an invitation to access the video. Engaging with this material can provide insights into the security considerations that have been acknowledged and inform future enhancements to the system's security measures.
+      </AnchorModal>
       </Callout>
    - (b) Signed-in users cannot **CREATE** new Firestore collections and documents
    - (c) Public users without sign-in authentication cannot **VIEW** sensitive information such as phonebook contacts and email information
