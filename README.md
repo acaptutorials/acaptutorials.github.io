@@ -32,6 +32,8 @@ The app depends these libraries and frameworks.
 - [Usage](#usage)
 - [Available Scripts](#available-scripts)
 - [Usage with Docker](#usage-with-docker)
+   - [Use Pre-Built Development Docker Image](#use-pre-Built-development-docker-image)
+   - [Build the Development Docker Image](#build-the-development-docker-image)
 - [Usage with GitHub Actions](#usage-with-gitHub-actions)
 - [Deployment to Docker Hub](#deployment-to-docker-hub)
 
