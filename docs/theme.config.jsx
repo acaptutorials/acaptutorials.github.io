@@ -28,7 +28,7 @@ export default {
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
 
     const title = 'ACAP Tutorials'
-    const description = "The ACAP Tutorials website offers an organized and structured approach to documenting the software development approaches for the Agro-Climatic Advisory Portal (ACAP), a Climate Information Services (CIS) web application initially piloted in the Bicol region (ACAP Bicol)."
+    const description = "The ACAP Tutorials website offers an organized and structured software development documentation for the Agro-Climatic Advisory Portal (ACAP), a Climate Information Services (CIS) web application initially piloted in the Bicol region (ACAP Bicol)."
 
     return (
       <>
