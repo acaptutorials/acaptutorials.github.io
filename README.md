@@ -141,6 +141,10 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 
 This repository deploys the latest development Docker image `acaptutorials/acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
 
+The Docker Hub image is available at:
+
+https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
+
 #### GitHub Secrets
 
 | GitHub Secret | Description |
