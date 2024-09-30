@@ -8,10 +8,13 @@ on:
     branches:
       - feat/acaptutorials-54
 
+env:
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+
 jobs:
   docker-build-push:
     name: Development Image to Dockerhub
-    if: github.event.release.target_commitish == 'master' && secrets.DOCKERHUB_USERNAME != ''
+    if: github.event.release.target_commitish == 'master' && env.DOCKERHUB_USERNAME != ''
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
