@@ -4,6 +4,16 @@ const withNextra = require('nextra')({
 })
 
 module.exports = withNextra({
+  // Hydration fix: WATCHPACK_POLLING + config if running in Docker and Windows WSL2
+  ...(process.env.WATCHPACK_POLLING && {
+    webpackDevMiddleware: config => {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+      }
+      return config
+    }
+  }),
   reactStrictMode: true,
   trailingSlash: true,
   output: 'export',
