@@ -124,12 +124,16 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 ### Deployment to Docker Hub
 
-This repository deploys the latest development Docker image `acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets to enable deployment to Docker Hub. It requires a Docker Hub account.
+This repository deploys the latest development Docker image `acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
 
 | GitHub Secret | Description |
 | --- | --- |
 | DOCKERHUB_USERNAME | Docker Hub username |
 | DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
+
+| GitHub Variable | Description |
+| --- | --- |
+| DOCKERHUB_USERNAME | Docker Hub username |
 
 @acaptutorials<br>
 20240806
