@@ -101,6 +101,8 @@ Fixes lint errors.
 
 Usage with Docker is an alternate option to using Node directly from the [Usage](#usage) section.
 
+### Use Pre-Built Development Docker Image
+
 1. Pull the development Docker image from Docker Hub using one of the options.<br>
    - `docker pull acaptutorials/acaptutorials.github.io:dev`
    - `docker compose -f docker-compose.dev.yml pull` (using Docker compose from the root project directory)
@@ -113,6 +115,17 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 4. (Optional) Run the development Docker image (from other directories).<br>
 `docker run -it --rm -p 3000:3000 acaptutorials/acaptutorials.github.io:dev`
+
+### Build the Development Docker Image
+
+1. Build the development Docker image on your machine.<br>
+`docker compose -f docker-compose.dev.yml build`
+
+2. Navigate to the project directory using the command line. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
+   - See [Usage](#usage) - **step # 2** for more information.
+
+3. Run the development Docker image.<br>
+`docker compose -f docker-compose.dev.yml up`
 
 ## Usage with GitHub Actions
 
