@@ -23,5 +23,8 @@ jobs:
           git checkout $LATEST_TAG
           echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
 
+      - name: Create temporary env variables
+        run: cp docs/.env.example docs/.env
+
       - name: Pull Development Image
         run: docker compose -f docker-compose.dev.yml pull
