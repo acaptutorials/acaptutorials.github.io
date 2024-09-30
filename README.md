@@ -103,6 +103,8 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 ### Use Pre-Built Development Docker Image
 
+https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
+
 1. Pull the development Docker image from Docker Hub using one of the options.<br>
    - `docker pull acaptutorials/acaptutorials.github.io:dev`
    - `docker compose -f docker-compose.dev.yml pull` (using Docker compose from the root project directory)
@@ -139,10 +141,14 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 This repository deploys the latest development Docker image `acaptutorials/acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
 
+#### GitHub Secrets
+
 | GitHub Secret | Description |
 | --- | --- |
 | DOCKERHUB_USERNAME | Docker Hub username |
 | DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
+
+#### GitHub Variables
 
 | GitHub Variable | Description |
 | --- | --- |
