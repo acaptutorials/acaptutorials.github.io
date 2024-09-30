@@ -9,6 +9,7 @@ on:
 jobs:
   lint-export-client:
     name: Lint and Export client
+    if: github.event.release.target_commitish == 'master'
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_BASE_PATH: ${{ secrets.NEXT_PUBLIC_BASE_PATH }}
@@ -51,6 +52,7 @@ jobs:
 
   deploy-client:
     name: Deploy client to Github Pages
+    if: github.event.release.target_commitish == 'master'
     needs: lint-export-client
     runs-on: ubuntu-latest
     steps:
