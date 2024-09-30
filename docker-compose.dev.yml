@@ -1,8 +1,8 @@
 services:
   # NextJS v13 app running on development mode
   acaptutorials.github.io-dev:
-    container_name: acaptutorials.github.io-dev
-    image: acaptutorials.github.io:dev
+    container_name: acaptutorials-docs-dev
+    image: acaptutorials/acaptutorials.github.io:dev
     env_file:
       - ./docs/.env
     build:

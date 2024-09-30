@@ -1,8 +1,8 @@
 services:
   # NextJS exported app running on an nginx webserver
   acaptutorials.github.io-prod:
-    container_name: acaptutorials.github.io-prod
-    image: acaptutorials.github.io:prod
+    container_name: acaptutorials-docs-prod
+    image: acaptutorials/acaptutorials.github.io:prod
     restart: always
     env_file:
       - ./docs/.env

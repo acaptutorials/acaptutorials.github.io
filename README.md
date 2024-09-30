@@ -112,7 +112,7 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 `docker compose -f docker-compose.dev.yml up`
 
 4. (Optional) Run the development Docker image (from other directories).<br>
-`docker run -it --rm -p 3000:3000 acaptutorials.github.io:dev`
+`docker run -it --rm -p 3000:3000 acaptutorials/acaptutorials.github.io:dev`
 
 ## Usage with GitHub Actions
 
@@ -124,7 +124,7 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 ### Deployment to Docker Hub
 
-This repository deploys the latest development Docker image `acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
+This repository deploys the latest development Docker image `acaptutorials/acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
 
 | GitHub Secret | Description |
 | --- | --- |
