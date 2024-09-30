@@ -9,7 +9,7 @@ on:
 jobs:
   lint-export-client:
     name: Lint and Export client
-    if: github.event.release.target_commitish == 'master'
+    if: github.event.release.target_commitish == 'main'
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_BASE_PATH: ${{ secrets.NEXT_PUBLIC_BASE_PATH }}
@@ -52,7 +52,7 @@ jobs:
 
   deploy-client:
     name: Deploy client to Github Pages
-    if: github.event.release.target_commitish == 'master'
+    if: github.event.release.target_commitish == 'main'
     needs: lint-export-client
     runs-on: ubuntu-latest
     steps:
@@ -71,7 +71,7 @@ jobs:
 
   docker-build-push:
     name: Development Image to Dockerhub
-    if: github.event.release.target_commitish == 'master' && vars.DOCKERHUB_USERNAME != ''
+    if: github.event.release.target_commitish == 'main' && vars.DOCKERHUB_USERNAME != ''
     needs: deploy-client
     runs-on: ubuntu-latest
     steps:
