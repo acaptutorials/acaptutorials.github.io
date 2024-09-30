@@ -1,4 +1,3 @@
-version: "3"
 services:
   # NextJS v13 app running on development mode
   acaptutorials.github.io-dev:
