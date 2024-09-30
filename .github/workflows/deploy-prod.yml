@@ -9,6 +9,7 @@ on:
 jobs:
   lint-export-client:
     name: Lint and Export client
+    if: github.event.release.target_commitish == 'main'
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_BASE_PATH: ${{ secrets.NEXT_PUBLIC_BASE_PATH }}
@@ -51,6 +52,7 @@ jobs:
 
   deploy-client:
     name: Deploy client to Github Pages
+    if: github.event.release.target_commitish == 'main'
     needs: lint-export-client
     runs-on: ubuntu-latest
     steps:
@@ -66,3 +68,29 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           publish_branch: gh-pages
+
+  docker-build-push:
+    name: Development Image to Dockerhub
+    if: github.event.release.target_commitish == 'main' && vars.DOCKERHUB_USERNAME != ''
+    needs: deploy-client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Create env variables
+        run: cp docs/.env.example docs/.env
+
+      - name: Build Image
+        run: docker compose -f docker-compose.dev.yml build
+
+      - name: Push Image to Docker Hub
+        run: docker compose -f docker-compose.dev.yml push

@@ -25,6 +25,16 @@ The app depends these libraries and frameworks.
 - React v18.3.1
 - TailwindCSS v3.4.7
 
+### Table of Contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Scripts](#available-scripts)
+- [Usage with Docker](#usage-with-docker)
+- [Usage with GitHub Actions](#usage-with-gitHub-actions)
+- [Deployment to Docker Hub](#deployment-to-docker-hub)
+
 ## Installation
 
 1. Clone this repository.<br>
@@ -68,14 +78,6 @@ The app depends these libraries and frameworks.
 3. Add or edit MDX files in the `/pages` directory, or add React components in the `/components` directory.
    - View the [**nextra**](https://nextra.site/docs) (docs-theme) documentation for more information on using nextra to add content.
 
-## Usage with GitHub Actions
-
-1. Add the environment variables described in the [Installation - step # 2](#installation) section to GitHub Secrets.
-2. Create a Release to deploy the site to the production environment (GitHub Pages).
-3. To update the banner content while there are no code or content updates:
-   - Update the GitHub Secrets: `RELEASE_VERSION`, `COMMIT_ID` and `RELEASE_PAGE`
-   - Re-deploy the latest production environment workflow from the GitHub Actions tab.
-
 
 ## Available Scripts
 
@@ -94,6 +96,57 @@ Checks lint errors.
 ### `npm run lint:fix`
 
 Fixes lint errors.
+
+## Usage with Docker
+
+Usage with Docker is an alternate option to using Node directly from the [Usage](#usage) section.
+
+### Use Pre-Built Development Docker Image
+
+1. Pull the development Docker image from Docker Hub using one of the options.<br>
+   - `docker pull acaptutorials/acaptutorials.github.io:dev`
+   - `docker compose -f docker-compose.dev.yml pull` (using Docker compose from the root project directory)
+
+2. Navigate to the project directory using the command line. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
+   - See [Usage](#usage) - **step # 2** for more information.
+
+3. Run the development Docker image.<br>
+`docker compose -f docker-compose.dev.yml up`
+
+4. (Optional) Run the development Docker image (from other directories).<br>
+`docker run -it --rm -p 3000:3000 acaptutorials/acaptutorials.github.io:dev`
+
+### Build the Development Docker Image
+
+1. Build the development Docker image on your machine.<br>
+`docker compose -f docker-compose.dev.yml build`
+
+2. Navigate to the project directory using the command line. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
+   - See [Usage](#usage) - **step # 2** for more information.
+
+3. Run the development Docker image.<br>
+`docker compose -f docker-compose.dev.yml up`
+
+## Usage with GitHub Actions
+
+1. Add the environment variables described in the [Installation - step # 2](#installation) section to GitHub Secrets.
+2. Create a Release to deploy the site to the production environment (GitHub Pages).
+3. To update the banner content while there are no code or content updates:
+   - Update the GitHub Secrets: `RELEASE_VERSION`, `COMMIT_ID` and `RELEASE_PAGE`
+   - Re-deploy the latest production environment workflow from the GitHub Actions tab.
+
+### Deployment to Docker Hub
+
+This repository deploys the latest development Docker image `acaptutorials/acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
+
+| GitHub Secret | Description |
+| --- | --- |
+| DOCKERHUB_USERNAME | Docker Hub username |
+| DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
+
+| GitHub Variable | Description |
+| --- | --- |
+| DOCKERHUB_USERNAME | Docker Hub username |
 
 @acaptutorials<br>
 20240806
