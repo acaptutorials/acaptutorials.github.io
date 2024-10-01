@@ -1,0 +1,32 @@
+{
+  "mainTopics": [
+    {
+      "label": "Home",
+      "url": "https://acaptutorials.github.io/"
+    },
+    {
+      "label": "Changelog",
+      "url": "https://acaptutorials.github.io/changelog"
+    },
+    {
+      "label": "Installation and Setup",
+      "url": "/installation"
+    },
+    {
+      "label": "Post-Installation Setup",
+      "url": "/post-installation"
+    },
+    {
+      "label": "Security",
+      "url": "/security"
+    },
+    {
+      "label": "Checklist",
+      "url": "/checklist"
+    },
+    {
+      "label": "References",
+      "url": "/references"
+    }
+  ]
+}
