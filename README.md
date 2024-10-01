@@ -32,6 +32,8 @@ The app depends these libraries and frameworks.
 - [Usage](#usage)
 - [Available Scripts](#available-scripts)
 - [Usage with Docker](#usage-with-docker)
+   - [Use Pre-Built Development Docker Image](#use-pre-Built-development-docker-image)
+   - [Build the Development Docker Image](#build-the-development-docker-image)
 - [Usage with GitHub Actions](#usage-with-gitHub-actions)
 - [Deployment to Docker Hub](#deployment-to-docker-hub)
 
@@ -103,8 +105,10 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 ### Use Pre-Built Development Docker Image
 
+https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
+
 1. Pull the development Docker image from Docker Hub using one of the options.<br>
-   - `docker pull acaptutorials/acaptutorials.github.io:dev`
+   - `docker pull acaptutorials/acaptutorials.github.io:latest`
    - `docker compose -f docker-compose.dev.yml pull` (using Docker compose from the root project directory)
 
 2. Navigate to the project directory using the command line. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
@@ -114,7 +118,7 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 `docker compose -f docker-compose.dev.yml up`
 
 4. (Optional) Run the development Docker image (from other directories).<br>
-`docker run -it --rm -p 3000:3000 acaptutorials/acaptutorials.github.io:dev`
+`docker run -it --rm -p 3000:3000 acaptutorials/acaptutorials.github.io:latest`
 
 ### Build the Development Docker Image
 
@@ -137,12 +141,20 @@ Usage with Docker is an alternate option to using Node directly from the [Usage]
 
 ### Deployment to Docker Hub
 
-This repository deploys the latest development Docker image `acaptutorials/acaptutorials.github.io:dev` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
+This repository deploys the latest development Docker image `acaptutorials/acaptutorials.github.io:latest` to Docker Hub on the creation of new Tags/Releases with GitHub Actions. Supply the following GitHub Secrets and Variable to enable deployment to Docker Hub. It requires a Docker Hub account.
+
+The Docker Hub image is available at:
+
+https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
+
+#### GitHub Secrets
 
 | GitHub Secret | Description |
 | --- | --- |
 | DOCKERHUB_USERNAME | Docker Hub username |
 | DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
+
+#### GitHub Variables
 
 | GitHub Variable | Description |
 | --- | --- |
