@@ -3,6 +3,7 @@ import { useConfig } from 'nextra-theme-docs'
 import Image from 'next/image'
 
 import BannerText from '@/components/BannerText'
+import Footer from '@/components/Footer'
 
 export default {
   logo: (
@@ -65,12 +66,7 @@ export default {
   },
   footer: {
     text: (
-      <span>
-        ACAP Dev Documentation {new Date().getFullYear()} ©{' '}
-        <a href="https://github.com/acaptutorials" target="_blank" rel="noreferrer">
-          acaptutorials
-        </a>
-      </span>
+      <Footer />
     )
   }
 }
