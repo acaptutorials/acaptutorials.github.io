@@ -70,7 +70,7 @@ jobs:
           publish_branch: gh-pages
 
   docker-build-push:
-    name: Development Image to Dockerhub
+    name: Push Image to Docker Hub
     if: github.event.release.target_commitish == 'main' && vars.DOCKERHUB_USERNAME != ''
     needs: lint-export-client
     runs-on: ubuntu-latest
