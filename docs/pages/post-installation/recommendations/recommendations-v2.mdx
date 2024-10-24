@@ -12,6 +12,14 @@ Follow this [link](/post-installation/recommendations/recommendations-v1) to vi
 
 ## Data Format
 
+<Callout type="warning">
+The latest updates for ACAP 2.1, starting with @commit **95a97cd** in the **acap-v2 dev** branch, use a new Crop Recommendations Excel template different from the ones mentioned on this page.
+
+> These Crop Recommendations are only compatible up to @commit **ee49568** in the **acap-v2 dev** branch.
+
+Kindly chat the ACAP group chat for more information about the new Crop Recommendations Excel file for ACAP 2.1.
+</Callout>
+
 ACAP 2.0 uses recommendations data similar to the ACAP 1.0 raw data, added with climate risk information and exclusion of several Excel columns. View its raw EXCEL data files in the `/server/src/scripts/data/dataset_v2.0` directory to gain insight into its new contents and data structure.
 
 The samples only display the ACAP 2.0 recommendations dataset for the Rice and Corn crops.
@@ -22,7 +30,7 @@ The samples only display the ACAP 2.0 recommendations dataset for the Rice and C
       <FileTree.Folder name="scripts" defaultOpen>
         <FileTree.Folder name="data" defaultOpen>
           <FileTree.Folder name="dataset_v2" defaultOpen>
-            <FileTree.File name="rice_cropping_calendar.xlsx" />
+            <FileTree.File name="rice_recommendations_v4.xlsx" />
             <FileTree.File name="corn_recommendations_v3.xlsx" />
           </FileTree.Folder>
         </FileTree.Folder>
@@ -32,7 +40,7 @@ The samples only display the ACAP 2.0 recommendations dataset for the Rice and C
 </FileTree>
 
 <Callout type="warning">
-The **crop stage codes** should match the **crop stage codes** defined in the [ACAP 2.0 cropping calendar](/post-installation/cropping-calendar/calendar-v2#crop-stage-codes-and-labels) raw CSV files specific to target crops to ensure the correct association of crop stages with target recommendations.
+The **crop stage labels** should match the **crop stage codes** defined in the [ACAP 2.0 cropping calendar](/post-installation/cropping-calendar/calendar-v2#crop-stage-codes-and-labels) Excel files specific to target crops to ensure the correct association of crop stages with target recommendations.
 </Callout>
 
 <Callout>
@@ -45,7 +53,7 @@ Developers can add crop stages and labels for other crops, following the crop st
 **ACAP 2.0** uploads its recommendations dataset using an upload form on the **Manage Recommendations** page, requiring Admin login.
 
 <Callout type="warning">
-The **crop stage codes** should match the **crop stage codes** defined in the [ACAP 2.0 cropping calendar](/post-installation/cropping-calendar/calendar-v2#crop-stage-codes-and-labels) raw CSV files specific to target crops to ensure the correct association of crop stages with target recommendations.
+The **crop stage labels** should match the **crop stage codes** defined in the [ACAP 2.0 cropping calendar](/post-installation/cropping-calendar/calendar-v2#crop-stage-codes-and-labels) Excel files specific to target crops to ensure the correct association of crop stages with target recommendations.
 </Callout>
 
 <Steps>
