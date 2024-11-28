@@ -4,19 +4,19 @@ import { Callout } from 'nextra/components'
 
 The **ACAP-RCMAS REST APIs**, aiming to share ACAP's internal PAGASA weather forecast data in a structured, organized format and secure manner to collaborators, are a new addition to ACAP's REST APIs. Merging its feature updates from the forked development repository and environment into the official ACAP Bicol aims to:
 
-- Unify **datadata sources** and **processes**, merging specific updates from the ACAP Bicol's **mirror environment** to the **official** ACAP Bicol environment.
+- Unify **data sources** and **processes**, merging specific updates from the ACAP Bicol's **mirror environment** to the **official** ACAP Bicol environment.
 - Make the APIs readily available for other regions should the DA request its activation and availability.
 
 These APIs, accessible in the `/api/weatherforecast` and `/api/weatherforecast/archives` REST API endpoints, provide GET query methods for retrieving seasonal, 10-day, and severe cyclone weather forecasts. Furthermore, its inclusion in ACAP allowed the archiving of historical weather forecast data, also available by query in these API endpoints.
 
-These APIs are in their prototype stage, currently for use only by the **Bicol** region for sharing structured and organized weather forecast data with IRRI as part of their collaboration project.
+These APIs are in their prototype stage, currently intended for use only by the **Bicol** region for sharing structured and organized weather forecast data with IRRI as part of their collaboration project.
 
 > Activation of the ACAP-RCMAS APIs is made into an optional feature for ACAP 2.0 that can be triggered by supplying certain backend environment variables and GitHub Secrets/Variables to ensure smooth integration with the standardized ACAP 1.0 deployments for other regions, which does not yet require these APIs.
 
 <Callout type="info" emoji="ℹ️">
-**Regions** outside Bicol _are encouraged to **prevent** these APIs and their respective archiving and deletion functions from running and being accessible until further notice by the DA since **ACAP (for other regions) does not yet endorse activating the ACAP-RCMAS REST APIs.**_
+**Regions** outside Bicol _are encouraged to **prevent** these APIs and their respective archiving and deletion functions from running and being accessible until further notice by the DA._
 
-Other regions can also start activating and using it earlier.
+**While ACAP does not yet endorse activating the ACAP-RCMAS REST APIs for other regions**, other regions can also start activating and using it earlier.
 </Callout>
 
 <Callout>
