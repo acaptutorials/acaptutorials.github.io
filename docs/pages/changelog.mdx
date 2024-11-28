@@ -16,7 +16,7 @@ export function FAQBoxError({ title, children, open = false }) {
       : 'nx-bg-red-100'
 
     return {
-      details: `nx-overflow-x-auto nx-mt-6 nx-flex nx-rounded-lg nx-border nx-py-2 ltr:nx-pr-4 rtl:nx-pl-4 contrast-more:nx-border-current contrast-more:dark:nx-border-current nx-border-red-200 nx-bg-red-100 nx-text-red-900 dark:nx-border-red-200/30 dark:nx-bg-red-900/30 dark:nx-text-red-200`,
+      details: `last-of-type:mb-0 p-2 mt-4 nx-rounded-lg nx-border nx-py-2 contrast-more:nx-border-current contrast-more:dark:nx-border-current nx-border-red-200 nx-bg-red-100 nx-text-red-900 dark:nx-border-red-200/30 dark:nx-bg-red-900/30 dark:nx-text-red-200`,
 
       summary: `nx-flex nx-items-center nx-cursor-pointer nx-list-none nx-p-1 nx-transition-colors hover:${resolvedTheme} dark:hover:${resolvedTheme} before:nx-mr-1 before:nx-inline-block before:nx-transition-transform before:nx-content-[''] dark:before:nx-invert before:nx-shrink-0 rtl:before:nx-rotate-180 [[data-expanded]>&]:before:nx-rotate-90`
     }
@@ -58,7 +58,7 @@ ACAP 2.0 is the latest ACAP version. It's latest stable version is Release/Tag v
 Version 2.0 and later versions may have new requirements that will thrive on new development approaches loosely tied to the recommended [Security](/security) and [Server](/directories/server) guidelines of **ACAP 1.0**, requiring thorough testing and validation.
 </Callout>
 
-<FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts:">
+<FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts">
 1. **Flexible Firestore Database Use:** Version 2.0+ adopted a more flexible approach for handling data management, facilitating faster feature development by performing _<u>WRITE operations to the database directly from the web front end</u>_ coupled with more _<u>lenient Firestore database Rules</u>_. However, this shift also introduced the potential for data to enter the database without the usual front-end controls through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). While this was not an issue in Version 1.0, it emerged as part of the effort to enhance development speed and feature delivery starting with Version 2.0.
 2. **Cross-Site Scripting (XSS) Vulnerability in Crop Recommendations:** Related to item 1, the new process for editing WYSIWYG HTML-form crop recommendations input may allow unsafe or inaccurate content due to limited validation through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). Risks associated with this were recognized early in the process, but the focus on delivering core features led to a delay in integrating security measures.
 3. **Crop recommendations data integrity:** Ensuring that data presentations in PDF bulletins remain unaltered, trustworthy, and accurate is crucial for users and future developers. This priority stems from the concerns identified in items 1 and 2.
