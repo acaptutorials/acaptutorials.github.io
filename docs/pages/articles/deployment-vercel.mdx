@@ -1,0 +1,246 @@
+import { Callout, Steps } from 'nextra/components'
+
+# Deployment to Vercel
+
+ACAP Bicol started deploying its Node backend to Vercel along with the official Render deployment starting in its 2.0 version, aiming to achieve faster API response times than its (standard-pricing) Render-deployed APIs that experience 30 secs - 1 minute cold starts specifically for its [ACAP-RMCAS APIs](/post-installation/acap-rcmas-api).
+
+<Callout>
+**ACAP does not officially endorse deployment to Vercel** nor **activation of the ACAP-RMCAS APIs for <u>other regions</u>**. This deployment and new API endpoints (also accessible in the official Render deployment) are only for the prototype development purposes of sharing <u>ACAP Bicol's</u> internal PAGASA-sourced weather forecast data with collaborators, which needed to start using **unified data sources** and **processes** from July 2024.
+
+All ACAP Node REST APIs (except for PDF bulletin creation) are supported in its **Vercel** deployment.
+</Callout>
+
+<Callout type="info" emoji="ℹ️">
+While ACAP does not officially endorse and encourage deployment to Vercel, interested developers can also explore setting up and using its deployment for study purposes.
+</Callout>
+
+To ensure smooth integration with the existing ACAP 1.0 deployments other than ACAP Bicol, the <u>Vercel deployment</u> and <u>activation of the ACAP-RCMAS APIs</u> are made into **optional features** for ACAP 2.0 that can be triggered by supplying certain backend environment variables and GitHub Secrets/Variables.
+
+The following steps describe how ACAP configures the Vercel CLI and GitHub Actions for building and deploying its NodeJS Express server app to Vercel for reference.
+
+## Vercel Requirements
+
+- Vercel account
+   <Callout type="info" emoji="ℹ️">
+   ACAP Bicol uses a standard-tier Vercel account pricing plan, which limits sharing its Vercel apps to only one (1) developer.
+   </Callout>
+- [Vercel CLI](https://vercel.com/docs/cli)
+   - Installed locally
+   - For reference, ACAP is using the v28.16.7 version.
+   - ACAP uses the [Vercel CLI](https://vercel.com/docs/cli#vercel-cli-overview) in GitHub Actions to deploy its Node backend to Vercel to avoid linking the code repository to Vercel. Using the Vercel CLI is one of the [three (3) supported methods](https://vercel.com/guides/using-express-with-vercel#7.-deploy-on-vercel) for deploying apps to Vercel.
+- Node
+   - Node v16.14.2 (or ACAP's latest declared Node version)
+
+## Initialize Dependencies
+
+Prepare the local PC or laptop for Vercel deployment.
+
+1. Create a Vercel Access Token.
+   - Login to Vercel.
+   - Create a Vercel Access Token in **Profile Icon** -> **Account Settings** -> **Tokens** named `VERCEL_TOKEN`, selecting the `"No Expiration"` option.
+
+2. Install Vercel CLI globally if it's not installed on the local development PC or laptop.
+   - You can try installing the `@latest` CLI version and revert to v28.16.7 (used by ACAP) if the steps following the global installation fail.
+   - Install the CLI version used by ACAP.
+      ```bash copy
+      npm i -g vercel@28.16.7
+      ```
+
+## Development App Initialization
+
+<Callout>
+These steps will initialize an ACAP server app for deployment to the **"DEVELOPMENT"** Vercel environment.
+
+Repeat the following steps to initialize an ACAP server app for deployment to the **"PRODUCTION"** Vercel environment under the [Production App Initialization](#production-app-initialization) section.
+</Callout>
+
+<Steps>
+
+### Initialize the ACAP Development Vercel App
+
+1. Login using the Vercel CLI
+   ```bash copy
+   vercel login
+   ```
+
+2. Navigate to the **acap-v2/server** directory using a terminal. Run the command to create a new Vercel project.
+   ```bash copy
+   vercel link
+   ```
+
+3. Answer the required prompts:
+   - **Set up "path/to/acap-v2/server"? [Y/n]:** _Press Enter_
+   - **Which scope should contain your project?** _Press Enter to select the default_
+   - **Link to existing project? [y/N]:** _Press Enter (n)_
+   - **What's your project's name?:** _Type any app name (e.g., "acap-dev") and press Enter_
+   - **In which directory is your code located? ./:** _Press Enter to select the ./ default_
+   - Other info prompts:
+      ```
+      Local settings detected in vercel.json:
+      No framework detected. Default Project Settings:
+      ...
+      ```
+   - **Want to modify these settings? [y/N] n**: *Press Enter (n)*
+
+3. Take note of the `projectId` and `orgId` values from the `project.json` file inside the generated `.vercel` folder.
+
+   <Callout type="info">
+   Add these **"DEVELOPMENT"** Vercel values in the forked ACAPs' GitHub Secrets as:
+
+   ```
+   VERCEL_TOKEN=(Use the VERCEL_TOKEN value from step #1)
+   VERCEL_ORG_ID=(value of orgId)
+   VERCEL_PROJECT_ID_DEV=(value of projectId)
+   VERCEL_APP_DEV=(name of the "DEVELOPMENT" Vercel app)
+   ```
+   </Callout>
+
+4. Confirm the creation of an empty Node app with the **project name** from the prompt in the Vercel project's dashboard.
+
+5. Go to **(Vercel Project)** -> **Settings** -> **Environment Variables**. Set the environment variables similar to the **"DEVELOPMENT"** Render Environment Variables.
+
+   <Callout type="warning">
+   Ensure similar environment variables and values in the **"DEVELOPMENT"** Render deployment with the **Vercel Environment** variables. Set the value:
+   `DEPLOYMENT_PLATFORM=vercel`
+   </Callout>
+
+7. Set the **development** Vercel app's Runtime to **Node 16.x**.
+   - Go to the **(Vercel Project)** -> **Settings** -> **General** -> **Node.js Version** section.
+   - Set the **Node.js Version** to `16.x`
+
+   <Callout type="warning">
+   The Vercel app's **Node.js Version** should be similar to its declared Node version in its server's `engines` section in the `/server/package.json` file. Vercel stops supporting old Node versions after some time, which may cause future deployments to fail.
+   </Callout>
+
+
+### Deploy Development Local App
+
+1. Prepare the local ACAP server directory for Vercel deployment. Confirm that the **acap-v2/server** directory has the following files:
+   - Create a `.vercelignore` file to exclude unnecessary items from being deployed to Vercel.
+      - Copy the contents of the `.gitignore` file into the `.vercelignore` file.
+      - Include all other directories and files to omit in the Vercel deployment in the .vercelignore file.
+   - Make sure that your target project directory has an **/api** directory that:
+      - contains Vercel serverless function files following the Vercel "api" syntax
+      - Or an `index.js` file (for standalone Express apps), minus the `app.listen()` part, with the app exported as `module.exports = app`
+   - Create a `vercel.json` file in the **/acap-v2/server** directory. See the attached `vercel.json` file for reference.
+      ```
+      {
+        "rewrites": [{
+          "source": "/api/(.)",
+          "destination": "/api"
+        }],
+        "redirects": [{
+          "source": "/src(.)",
+          "destination": "/index.html"
+        }]
+      }
+      ```
+
+2. Generate the API documentation for Vercel deployment.
+   ```bash copy
+   npm run gen:docs:vercel
+   ```
+
+3. Deploy the "DEVELOPMENT" Vercel app locally for the first time from a terminal, using the "raw" value of the `VERCEL_TOKEN` variable from step #1.
+   ```
+   vercel pull --yes --environment=production --token=VERCEL_TOKEN
+   vercel build --prod --token=VERCEL_TOKEN
+   vercel deploy --prebuilt --prod --token=VERCEL_TOKEN
+   ```
+
+</Steps>
+
+## Production App Initialization
+
+<Callout>
+These steps will initialize an ACAP server app for deployment to the **"PRODUCTION"** Vercel environment.
+</Callout>
+
+<Steps>
+
+### Initialize the ACAP Production Vercel App
+
+1. Delete the **acap-v2/server/.vercel** directory generated after completing the [ACAP Development App Initialization](#development-app-initialization) steps.
+
+   <Callout type="warning">
+   Delete this folder to avoid conflicts setting up the "PRODUCTION" Vercel app.
+   </Callout>
+
+2. Login using the Vercel CLI if not yet signed in.
+   ```bash copy
+   vercel login
+   ```
+
+3. Navigate to the **acap-v2/server** directory using a terminal. Run the `vercel link` command to create a new Vercel project - for the "PRODUCTION" environment.
+   ```bash copy
+   vercel link
+   ```
+
+4. Answer the required prompts, similar to the [ACAP Development App Initialization](#development-app-initialization). Provide a different project name when prompted with the question:
+   - **What's your project's name?:** _Type a new app name (e.g., "acap-prod") and press Enter_
+
+5. Take note of the **new** `projectId` and `orgId` values from the `project.json` file inside the newly generated **.vercel** folder.
+
+   <Callout type="info">
+   Add these **"PRODUCTION"** Vercel values in the forked ACAPs' GitHub Secrets as:
+
+   ```
+   VERCEL_PROJECT_ID_PROD=(value of new projectId)
+   VERCEL_APP_PROD=(name of the "PRODUCTION" Vercel app)
+   ```
+   </Callout>
+
+6. Confirm the creation of an empty Node app with the "PRODUCTION" project name created by the prompt in the Vercel project's dashboard.
+
+7. Go to the PRODUCTION" **(Vercel Project)** -> **Settings** -> **Environment Variables**. Set the environment variables similar to the "PRODUCTION" Render Environment Variables.
+
+   <Callout>
+    Ensure similar environment variables and values in the **"PRODUCTION"** Render deployment with the **Vercel Environment** variables. Set the value: `DEPLOYMENT_PLATFORM=vercel`
+   </Callout>
+
+8. Set the **production** Vercel app's Runtime to Node **16.x**.
+
+   <Callout type="warning">
+   The Vercel app's **Node.js Version** should be similar to its declared Node version in its server's `engines` section in the `/server/package.json` file. Vercel stops supporting old Node versions after some time, which may cause future deployments to fail.
+   </Callout>
+
+### Deploy Production Local App
+
+1. Generate the API documentation for Vercel deployment.
+   ```bash copy
+   npm run gen:docs:vercel
+   ```
+
+2. Deploy the "PRODUCTION" Vercel app locally for the first time from the terminal. Use the "raw" value of the `VERCEL_TOKEN` variable from step #1.
+   ```
+   vercel pull --yes --environment=production --token=VERCEL_TOKEN
+   vercel build --prod --token=VERCEL_TOKEN
+   vercel deploy --prebuilt --prod --token=VERCEL_TOKEN
+   ```
+
+</Steps>
+
+## GitHub Actions
+
+1. Confirm the creation of the **GitHub Secrets**.
+   - `VERCEL_TOKEN` - Vercel Access Token (from the [Initialize Dependencies](#initialize-dependencies) section, **step #1**)
+   - `VERCEL_ORG_ID`
+      - Vercel Organization ID
+      - Retrieved by answering the prompts from either the [Initialize the ACAP Development Vercel App](#initialize-the-acap-development-vercel-app) or [Initialize the ACAP Production Vercel App](#initialize-the-acap-development-vercel-app) steps
+   - `VERCEL_PROJECT_ID_DEV` - Development Vercel app project ID
+   - `VERCEL_APP_DEV` - Development Vercel app project name
+   - `VERCEL_PROJECT_ID_PROD` - Production Vercel app project ID
+   - `VERCEL_APP_PROD` - Production Vercel app project name
+   - `ROOT_API_URL_VERCEL_DEV` - Development Vercel app website URL
+   - `ROOT_API_URL_VERCEL_PROD` - Production Vercel app website URL
+
+2. Confirm the creation of the **GitHub Variable**.
+   - `DEPLOYMENT_PLATFORM`
+      - Value: `vercel`
+      - Value: Set to `default` or do not include in the GitHub Variables to skip deployment to Vercel
+
+3. Review the contents of the **.github/workflows/deploy-dev.yml** and **.github/workflows/release.yml** files --> `deploy-server-vercel` job for more information about the GitHub Actions workflows for deployment to the "DEVELOPMENT" and "PRODUCTION" Vercel environments.
+
+4. Trigger a deployment to ACAP's development and production environments using GitHub Actions. Observe failure/success logs for the overall deployments, including Vercel.
+
+5. Delete the local **/server/.vercel** folder. Development or production deployments to Vercel should now trigger in GitHub Actions.
