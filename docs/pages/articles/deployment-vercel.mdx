@@ -2,10 +2,12 @@ import { Callout, Steps } from 'nextra/components'
 
 # Deployment to Vercel
 
-ACAP Bicol started deploying its Node backend to Vercel along with the official Render deployment starting in its 2.0 version, aiming to achieve faster API response times than its (standard-pricing) Render-deployed APIs that experience 30 secs - 1 minute cold starts specifically for its [ACAP-RMCAS APIs](/post-installation/acap-rcmas-api).
+ACAP Bicol started deploying its Node backend to Vercel along with the official Render deployment starting in its [2.0](/changelog#version-2-acap-20) version, aiming to achieve faster API response times than its (standard-pricing) Render-deployed APIs that experience 30 secs - 1 minute cold starts specifically for its [ACAP-RMCAS APIs](/post-installation/acap-rcmas-api).
 
 <Callout>
-**ACAP does not officially endorse deployment to Vercel** nor **activation of the ACAP-RMCAS APIs for <u>other regions</u>**. This deployment and new API endpoints (also accessible in the official Render deployment) are only for the prototype development purposes of sharing <u>ACAP Bicol's</u> internal PAGASA-sourced weather forecast data with collaborators, which needed to start using **unified data sources** and **processes** from July 2024.
+**ACAP does not officially endorse deployment to Vercel** nor **activation of the ACAP-RMCAS APIs for <u>other regions</u>**. Therefore, no step-by-step video guides demonstrate its initialization and usage, unlike the supported Render <sup>[[1]](https://youtu.be/IyGmWzoFPZE)</sup> <sup>[[2]](https://youtu.be/_Ese9uCXizE)</sup> deployment.
+
+The Vercel deployment and new API endpoints (also accessible in the official Render deployment, if activated) are only for the prototype development purposes of sharing <u>ACAP Bicol's</u> internal PAGASA-sourced weather forecast data with collaborators, which needed to start using **unified data sources** and **processes** from July 2024, with an option to be activated by other regions upon request by the DA.
 
 All ACAP Node REST APIs (except for PDF bulletin creation) are supported in its **Vercel** deployment.
 </Callout>
@@ -95,7 +97,7 @@ Repeat the following steps to initialize an ACAP server app for deployment to th
    ```
    </Callout>
 
-4. Confirm the creation of an empty Node app with the **project name** from the prompt in the Vercel project's dashboard.
+4. Confirm the creation of an empty Vercel app with the **project name** from the prompt in the Vercel account's projects dashboard.
 
 5. Go to **(Vercel Project)** -> **Settings** -> **Environment Variables**. Set the environment variables similar to the **"DEVELOPMENT"** Render Environment Variables.
 
@@ -190,7 +192,7 @@ These steps will initialize an ACAP server app for deployment to the **"PRODUCTI
    ```
    </Callout>
 
-6. Confirm the creation of an empty Node app with the "PRODUCTION" project name created by the prompt in the Vercel project's dashboard.
+6. Confirm the creation of an empty Vercel app with the "PRODUCTION" project name created by the prompt in the Vercel account's projects dashboard.
 
 7. Go to the PRODUCTION" **(Vercel Project)** -> **Settings** -> **Environment Variables**. Set the environment variables similar to the "PRODUCTION" Render Environment Variables.
 
