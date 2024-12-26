@@ -15,7 +15,7 @@ Follow this [link](/post-installation/cropping-calendar/calendar-v1) to view cr
 ### Data Format
 
 <Callout type="warning">
-The latest updates for ACAP 2.1, starting with @commit **95a97cd** in the **acap-v2  dev** branch, use a new Cropping Calendar Excel template different from the ones mentioned on this page.
+The latest updates for **ACAP 2.1**, starting with @commit **95a97cd** in the **acap-v2  dev** branch, use a new Cropping Calendar Excel template different from the ones mentioned on this page.
 
 > These Cropping Calendars are only compatible up to @commit **ee49568** in the **acap-v2 dev** branch.
 
@@ -91,6 +91,14 @@ The **crop stage codes** should match those defined in the [ACAP 2.0 crop recomm
 ### Prepare the frontend / backend
 
 Update the frontend and backend codes with necessary data for supporting other crops, with data formats described in the [Data Format](#data-format) and [Crop Stage Codes and Labels](#crop-stage-codes-and-labels) section.
+
+<Callout type="info" emoji="ℹ️">
+**Overwrite** and **commit** the sample cropping calendar Excel template files `corn_cropping_calendar.xlsx` and `corn_cropping_calendar.xlsx` in the **server** directory with the **regional cropping calendar files** to change the default sample Excel templates during live deployment.
+
+Also, change the values of the environment variables (`CROPPING_CALENDAR_RICE_EXCEL_FILE`, `CROPPING_CALENDAR_CORN_EXCEL_FILE`) associated with its file names in the **client** `.env` file and **GitHub Secrets** if there is a need to use different file names or add new templates.
+
+> **NOTE**: This step is only compatible until  @commit **ee49568** (pre-ACAP 2.1) in the **acap-v2 dev** branch. Kindly chat the ACAP group chat for more information about the new Cropping Calendar Excel file format and management for ACAP 2.1 if it's missing in the online documentation.
+</Callout>
 
 ### Login as Admin
 
