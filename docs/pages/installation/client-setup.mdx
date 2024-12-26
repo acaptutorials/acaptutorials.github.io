@@ -21,7 +21,7 @@ The **client** `REGION_NAME` should be similar with the **server** `REGION_NAME`
 ```env copy
 REGION_NAME
 DEFAULT_PROVINCE
-DEFAULT_MUNICIPALITY // --> Any municipality under the DEFAULT_PROVINCE
+DEFAULT_MUNICIPALITY // --> Any municipality under the DEFAULT_PROVINCE also among the AMIA Villages
 NEXT_PUBLIC_FIREBASE_WEB_API_KEY
 NEXT_PUBLIC_FIREBASE_WEB_AUTHDOMAIN
 NEXT_PUBLIC_FIREBASE_WEB_PROJECT_ID
@@ -70,6 +70,10 @@ RECOMMENDATIONS_CORN_EXCEL_FILE
   </FileTree>
 3. Copy the the **/server/src/scripts/data/pagasa_seasonal_v2.xlsx** Excel file to the **"files"** directory
 4. Use the **"files"** directory and its contents on localhost development but not push it to the repository.
+
+   <Callout>
+   Follow the steps under the [Cropping Calendar](/post-installation/cropping-calendar/calendar-v2/#prepare-the-frontend--backend) and [Crop Recommendations](/post-installation/recommendations/recommendations-v2/#prepare-the-frontend--backend) Post-Installation steps to change the Excel templates uploaded during live deployment.
+   </Callout>
 
 ### Update environment variables after deployment
 
