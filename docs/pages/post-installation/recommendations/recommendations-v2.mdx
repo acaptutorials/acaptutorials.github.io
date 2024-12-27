@@ -63,11 +63,11 @@ The **crop stage labels** should match the **crop stage codes** defined in the [
 Update the frontend and backend codes with necessary data for supporting other crops, with data formats described in the [Data Format](#data-format) section.
 
 <Callout type="info" emoji="ℹ️">
-**Overwrite** and **commit** the sample cropping calendar Excel template files **`rice_recommendations_v4.xlsx`** and **`corn_recommendations_v3.xlsx`** in the **server** directory with the **regional recommendation files** to change the default sample Excel templates during live deployment.
+**Overwrite** and **commit** the sample cropping calendar Excel template files **`rice_recommendations_v4.xlsx`** and **`corn_recommendations_v3.xlsx`** in the **server** directory with the correct **regional recommendation files** to change the default sample Excel templates during live deployment.
 
 Also, change the values of the environment variables (`RECOMMENDATIONS_RICE_EXCEL_FILE`, `RECOMMENDATIONS_CORN_EXCEL_FILE`) associated with its file names in the **client** `.env` file and **GitHub Secrets** if there is a need to use different file names or add new templates.
 
-> **NOTE:** This step is only compatible until @commit **ee49568** (pre-ACAP 2.1) in the **acap-v2 dev** branch. Kindly chat the ACAP group chat for more information about the new Crop Recommendations Excel file format and management for ACAP 2.1 if it's missing in the online documentation.
+> **NOTE:** This step is compatible until @commit **95a97cd** (latest updates) in the **acap-v2 dev** branch. However, the default crop recommendations Excel templates inside the repository only work until the previous updates @commit **ee49568** (pre-ACAP 2.1). Kindly chat the ACAP group chat for more information about the new Crop Recommendations Excel file format and management for ACAP 2.1 if it's missing in the online documentation.
 </Callout>
 
 ### Login as Admin
