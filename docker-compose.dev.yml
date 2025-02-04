@@ -1,5 +1,5 @@
 services:
-  # NextJS v13 app running on development mode
+  # NextJS v14 app running on development mode
   acaptutorials.github.io-latest:
     container_name: acaptutorials-docs-latest
     image: acaptutorials/acaptutorials.github.io:latest

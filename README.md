@@ -4,6 +4,8 @@ ACAP Bicol (ACAP 2.0) development documentation.
 
 Built with [Nextra](https://nextra.site/), a modern static site generation framework running on NextJS.
 
+> This project uses Nextra [version 2](https://nextra-v2-oe0zrpzjp-shud.vercel.app/).
+
 ### Requirements
 
 The following dependencies are used for this project. Feel free to experiment using other dependencies and versions.
@@ -20,7 +22,7 @@ The following dependencies are used for this project. Feel free to experiment us
 The app depends these libraries and frameworks.
 
 - NextJS v14.2.5
-- Nextra v2.13.4
+- Nextra v2.13.4 [[v2]](https://nextra-v2-oe0zrpzjp-shud.vercel.app/)
 - nextra-theme-docs v2.13.4
 - React v18.3.1
 - TailwindCSS v3.4.7
