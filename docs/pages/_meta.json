@@ -21,6 +21,10 @@
     "type": "page",
     "newWindow": true
   },
+  "announcements": {
+    "title": "Announcements",
+    "type": "page"
+  },
   "video": {
     "title": "Video Tutorials",
     "type": "page"

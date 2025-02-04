@@ -1,0 +1,158 @@
+import { useEffect, useState, useMemo } from 'react'
+import { useTheme } from 'next-themes'
+import { Callout } from 'nextra/components'
+
+export function FAQBox({ title, children, open = false }) {
+  // Copied from /articles/provinces-municipalities.mdx
+  const [isClient, setIsClient] = useState(false)
+  const { theme, resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const detailsBgStyle = useMemo(() => {
+    const bg = resolvedTheme === 'dark'
+      ? 'bg-neutral-800'
+      : 'bg-neutral-50'
+
+    return `last-of-type:mb-0 rounded-lg ${bg} p-2 mt-4`
+  }, [resolvedTheme])
+
+  return !isClient
+    ? <div>...</div>
+    : (
+      <details
+        open={open}
+        className={detailsBgStyle}
+      >
+        <summary>
+          <strong className="text-md">{title}</strong>
+        </summary>
+        <div className="nx-p-2">{children}</div>
+      </details>
+    )
+}
+
+# Firebase Storage Pricing Plan Updates (2024)
+
+> _This article is a recap of the online meeting about changes to the Firebase Storage pricing plan held last October 8, 2024._
+
+Firebase announced a major changes regarding the pricing plan of their **Firebase Storage** service last September 2024. More information about this announcement is available in the [Cloud Storage Documentation for Firebase](https://firebase.google.cn/docs/storage/faqs-storage-changes-announced-sept-2024).
+
+## FAQs
+
+<FAQBox title="What is the Firebase Storage?">
+[Firebase Storage](https://firebase.google.com/docs/storage), also known as _Firebase Cloud Storage_, is an online cloud storage service provided by Google Firebase. It is one (1) of the four (4) major Firebase components used by ACAP aside from the **Firestore Database** <sup>[[1]](https://firebase.google.com/docs/firestore/)</sup>, **Firebase Authentication** <sup>[[3]](https://firebase.google.com/docs/auth/)</sup>, and **Firebase Hosting** <sup>[[4]](https://firebase.google.com/docs/hosting/)</sup>.
+
+ACAP uses the Firebase Storage for:
+
+- Hosting and uploading the generated PDF bulletin recommendations, allowing public PDF downloads in its PDF Bulletins Downloads page.
+- Hosting and storing several frontend picture assets and files or the Home page's GEOJSON map file (as an alternate option for using MapBox).
+</FAQBox>
+
+<FAQBox title="Are there other Firebase components used by ACAP?">
+ACAP uses other Firebase components aside from the Firebase Storage. ACAP only uses the four (4) Firebase components among Firebase's [list of available](https://firebase.google.com/products-build) components/services:
+
+- **Firestore** (Database) <sup>[[1]](https://firebase.google.com/docs/firestore/)</sup>
+- **Cloud Storage** (Firebase Storage) <sup>[[2]](https://firebase.google.com/docs/storage/)</sup>
+- **Authentication** (Email/Password) <sup>[[3]](https://firebase.google.com/docs/auth/)</sup>
+- **Hosting** <sup>[[4]](https://firebase.google.com/docs/hosting/)</sup>
+</FAQBox>
+
+<FAQBox title="What are the notable changes (s) of this announcement?">
+- Firebase will discontinue providing the standard (no-cost) Spark plan for Firebase Storage starting <u><b>October 30, 2024</b></u>
+- More information about this announcement is available at https://firebase.google.cn/docs/storage/faqs-storage-changes-announced-sept-2024.
+</FAQBox>
+
+<FAQBox title="How will changes to Firebase Storage affect ACAP?">
+
+Starting on <span className="font-bold text-md text-green-600">October 30, 2024</span>:
+
+- Initializing new Firebase Storage instances <u><b>will require a payment method</b></u>. It will require new Firebase projects subscribed to the Firebase pay-as-you-go Blaze plan by default.
+- Existing ACAP Firebase Storage, <u><b>created before October 30, 2024</b></u>, will continue to work <u><b>until October 2025</b></u>.
+- ACAP Firebase Storages not subscribed to the Firebase Blaze plan <u><b>after October 2025</b></u> will <u><b>cease to function</b></u> unless they subscribe to the Blaze plan.
+- <u><b>ACAP Video Tutorials</b></u> <sup>[[1]](https://youtu.be/gJESQaT0IBQ?si=fYA19J9OHiZR4V9X&t=127)</sup> regarding the Firebase Storage initialization will not work on Firebase projects subscribed to the standard (no-cost) Firebase plans
+
+</FAQBox>
+
+<FAQBox title="Will the other Firebase components used by ACAP be affected?">
+- No, this announcement only affects the <u>Firebase Storage</u>. Discontinued support of the Firebase standard (no-cost) pricing plan only affects the Firebase Storage.
+- Other Firebase components used by ACAP - the <u>Firestore Database</u>, <u>Firebase Authentication</u>, and <u>Firebase Hosting</u> still retain their standard (no-cost) pricing plans until further announcements or changes by Google Firebase.
+
+<Callout>
+Subscribing to the Firebase Blaze Plan **will automatically enroll** all Firebase components to the pay-as-you-go Blaze plan, not just the Firebase Storage.
+</Callout>
+</FAQBox>
+
+<FAQBox title="Where can I find the Firebase Pricing Plan?">
+The Firebase pricing plan is accessible at https://firebase.google.com/pricing.
+
+<Callout>
+Subscribing to the Firebase Blaze Plan **will automatically enroll** all Firebase components to the pay-as-you-go Blaze plan, <u>including other Firebase components not used by ACAP</u>.
+
+ACAP only uses the following Firebase components among Firebase's [list of available](https://firebase.google.com/products-build) components/services:
+
+- **Firestore** (Database) <sup>[[1]](https://firebase.google.com/docs/firestore/)</sup>
+- **Cloud Storage** (Firebase Storage) <sup>[[2]](https://firebase.google.com/docs/storage/)</sup>
+- **Authentication** (Email/Password) <sup>[[3]](https://firebase.google.com/docs/auth/)</sup>
+- **Hosting** <sup>[[4]](https://firebase.google.com/docs/hosting/)</sup>
+
+_All Firebase components service usage (including those not used by ACAP) will only reflect in the billing <u><b>upon activation</b></u> in the ACAP and <u><b>usage</b></u> beyond the no-cost Firebase plan._
+</Callout>
+</FAQBox>
+
+<FAQBox title="What should I know about subscribing to the Firebase Blaze Plan?">
+
+- Subscribing to the Firebase pay-as-you-go Blaze plan requires creating a Google Cloud billing account and electing credit card information for the Firebase project.
+- Billing subscriptions will only incur beyond standard (no-cost) usage/quotas of <u><b>activated</b></u> and <u><b>used</b></u> Firebase components/services <u>enabled by developers</u>. ACAP only expects usage from the **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting** Firebase services.
+
+   <Callout>
+   Refer to the Firebase Pricing table for more information about the standard (no-cost) billing and usage quotas at
+   https://firebase.google.com/pricing
+   </Callout>
+
+- Firebase usage analytics are accessible at this URL with or without a subscription to the Firebase Blaze plan:
+
+   ```text
+   https://console.firebase.google.com/project/<YOUR_FIREBASE_PROJECT>/usage
+   ```
+
+   This page provides information for monitoring and providing insights, such as detailed pricing and usage of the active Firebase services used by the Firebase project.
+
+   <Callout type="warning">
+   ACAP expects usage only from the following Firebase services: **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting**. [ACAP's Security guidelines](/security) only cover these four (4) Firebase components, aside from general web application security practices and know-how, e.g., stressing the need for data validation <sup>[[1]](/security/#database) [[2]](/directories/server)</sup>.
+
+   > Developers can use other Firebase components as deemed necessary when needed. However, since they are not included originally in the ACAP project Firebase components, developers should care about using them responsibly to avoid incurring Security issues and unexpected billing.
+   </Callout>
+</FAQBox>
+
+<FAQBox title="Are there security considerations that I should be aware of?">
+
+Ensuring **system integrity** and **strong security measures** is critical when handling:
+
+1. Sensitive user information (e.g., full name and contact numbers)
+2. Paid subscription to external services (e.g., Firebase, Semaphore)
+3. Reliable and predictable information output
+
+<Callout type="error">
+Before activating a paid Firebase subscription, consider whether unresolved [ACAP Security Technical Debts](/changelog#acap-2-security-debts) exist. If issues <sup>[[1]](https://github.com/amia-cis/acap-v2/issues/57) [[2]](https://github.com/amia-cis/acap-v2/issues/34)</sup> remain unaddressed, it may be beneficial to consult the lead ACAP programmer responsible for designing and implementing [ACAP 2.0](/changelog/#version-2-acap-20). Key topics to discuss include:
+
+- How security concerns introduced in ACAP 2.0+ are being addressed
+- Plans for improving security and risk mitigation before enabling Firebase
+</Callout>
+
+<Callout type="info">
+ACAP's [Security measures and practices for Firebase](/security) only cover the Firebase components that it actively uses: **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting**.
+
+Developers are encouraged to learn more about responsible Security measures and practices for other Firebase components or services, should they feel the need to use [other Firebase services](https://firebase.google.com/products-build) (e.g., **Firebase ML**, **Cloud Functions**, **Extensions**, etc) for their ACAPs other than **four (4) main Firebase components** used by ACAP.
+</Callout>
+</FAQBox>
+
+## Firebase Storage Alternate Options
+
+The meeting discussed the following alternate options for ACAP's Firebase Storage component, considering the discontinuation of its no-cost pricing plan.
+
+1. Subscribe to the Firebase Blaze Plan
+2. Integrate a new standard plan (free-tier) Cloud Storage Provider to replace Firebase Storage
+3. Use the (Render) server file system for hosting PDFs
