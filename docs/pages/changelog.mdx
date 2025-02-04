@@ -2,6 +2,8 @@ import { useEffect, useState, useMemo } from 'react'
 import { Callout, Steps } from 'nextra/components'
 import { useTheme } from 'next-themes'
 
+import AnchorModal from '@/components/AnchorModal'
+
 export function FAQBoxError({ title, children, open = false }) {
   const [isClient, setIsClient] = useState(false)
   const { theme, resolvedTheme } = useTheme()
@@ -62,10 +64,17 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 <div id="acap-2-security-debts" />
 1. **Flexible Firestore Database Use:** Version 2.0+ adopted a more flexible approach for handling data management, facilitating faster feature development by performing _<u>WRITE operations to the database directly from the web front end</u>_ coupled with more _<u>lenient Firestore database Rules</u>_. However, this shift also introduced the potential for data to enter the database without the usual front-end controls through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). While this was not an issue in Version 1.0, it emerged as part of the effort to enhance development speed and feature delivery starting with Version 2.0.
 2. **Cross-Site Scripting (XSS) Vulnerability in Crop Recommendations:** Related to item 1, the new process for editing WYSIWYG HTML-form crop recommendations input may allow unsafe or inaccurate content due to limited validation through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). Risks associated with this were recognized early in the process, but the focus on delivering core features led to a delay in integrating security measures.
+   <AnchorModal
+     anchorText="XSS Vulnerability Awareness in ACAP 2.0"
+   >
+      A YouTube video detailing steps for exploiting XSS vulnerabilities in the **ACAP 2.0 crop recommendations** at https://www.youtube.com/watch?v=b9UZ6_OCTaY has been set to private permissions to limit exposure. This video is a resource for understanding the security challenges associated with these vulnerabilities and ACAP, which occurred starting on **version 2.0** due to new development approaches and priorities.
+
+     For ACAP Maintainers or developers interested in exploring the content, please contact the current active ACAP Maintainer(s) for an invitation to access the video. Engaging with this material can provide insights into the security considerations that have been acknowledged and inform future enhancements to the system's security measures.
+   </AnchorModal>
 3. **Crop recommendations data integrity:** Ensuring that data presentations in PDF bulletins remain unaltered, trustworthy, and accurate is crucial for users and future developers. This priority stems from the concerns identified in items 1 and 2.
 4. **Firestore database pollution:** Also related to item 1, the new **"Support Services"** data with insufficient validation, if pushed through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/), can potentially allow writing unlimited key-value pairs with unlimited text or Object content length in Firestore Documents or creating Collections/Documents recursively outside the developer's intended schema or structure. If left unchecked, this can speed up the consumption of the Firebase standard plan quota (or drive up the billing if subscribed to the Firebase Blaze plan) in the long run.
 
-> These issues, raised during the early 2.0 development phase, have been communicated to the new main ACAP code Maintainer, who is also the new primary developer/programmer leading the creation and enhancement of new features for Version 2.0. The new code Maintainer has made thoughtful decisions for balancing development speed with feature delivery, reflecting their understanding of the project's scope and the perceived security needs. They are open to addressing these issues as time and priorities allow within the ACAP project timeline.
+> These issues, raised during the early 2.0 development phase (June 2024), have been communicated to the new main ACAP code Maintainer, who is also the new primary developer/programmer leading the creation and enhancement of new features for Version 2.0. The new code Maintainer has made thoughtful decisions for balancing development speed with feature delivery, reflecting their understanding of the project's scope and the perceived security needs. They are open to addressing these issues as time and priorities allow within the ACAP project timeline.
 </FAQBoxError>
 
 <br />
