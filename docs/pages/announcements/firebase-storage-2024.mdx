@@ -129,17 +129,52 @@ _All Firebase components service usage (including those not used by ACAP) will o
 
 <FAQBox title="Are there security considerations that I should be aware of?">
 
-Ensuring **system integrity** and **strong security measures** is critical when handling:
+Yes. Ensuring **system integrity** and **strong security measures** is critical when handling:
 
 1. Sensitive user information (e.g., full name and contact numbers)
 2. Paid subscription to external services (e.g., Firebase, Semaphore)
 3. Reliable and predictable information output
 
+##### Why Security Matters Before Upgrading Firebase
+
+Activating a paid Firebase subscription unlocks advanced features, but security considerations must be addressed first. Unresolved security flaws introduced in the latest major updates for ACAP 2.0+ could lead to <u>data breaches</u>, <u>unauthorized changes</u>, and <u>increased costs</u>.
+
 <Callout type="error">
-Before activating a paid Firebase subscription, consider whether unresolved [ACAP Security Technical Debts](/changelog#acap-2-security-debts) exist. If issues <sup>[[1]](https://github.com/amia-cis/acap-v2/issues/57) [[2]](https://github.com/amia-cis/acap-v2/issues/34)</sup> remain unaddressed, it may be beneficial to consult the lead ACAP programmer responsible for designing and implementing [ACAP 2.0](/changelog/#version-2-acap-20). Key topics to discuss include:
+Before activating a paid Firebase subscription, consider whether unresolved [ACAP Security Technical Debts](/changelog#acap-2-security-debts) exist. **ACAP 2.0+ introduces known security flaws** that may impact user confidentiality, system integrity, and reliability.
+
+#### Key issues include:
+
+1. **Lenient Firestore security rules** – Direct **writes via Firestore REST APIs** bypass front-end controls, potentially allowing unauthorized data entry.
+   ```
+   Temporary Mitigation: Restrict writes using Firestore security rules.
+   Permanent Mitigation: Perform database WRITE operations from the
+      Node backend coupled with data validation.
+   ```
+2. **Cross-Site Scripting (XSS) vulnerability** – **WYSIWYG crop recommendations** (only when editing recommendations) allow unvalidated HTML input, which may lead to stored XSS attacks (malicious scripts that persist in the database and execute when viewed).
+   ```
+   Temporary Mitigation: Implement input sanitization before storage.
+   ```
+3. **Firestore database pollution** – Insufficient validation in **"Support Services"** data allows disorganized writes, which could:
+   - Lead to excessive Firebase usage.
+   - Create unexpected document structures, affecting query performance.
+   ```
+   Temporary Mitigation: Validate schema before database writes.
+   ```
+
+For more details, see [ACAP Security Technical Debts](/changelog/#acap-2-security-debts).
+If these issues with specific information (available at [[1]](https://github.com/amia-cis/acap-v2/issues/57) and [[2]](https://github.com/amia-cis/acap-v2/issues/34)) remain unaddressed, it may be beneficial to consult the lead ACAP programmer responsible for designing and implementing [ACAP 2.0](/changelog/#version-2-acap-20).
+
+Key topics to discuss include:
 
 - How security concerns introduced in ACAP 2.0+ are being addressed
 - Plans for improving security and risk mitigation before enabling Firebase
+
+#### Next Steps for Developers
+
+- **Review the Firestore security rules** to restrict direct database writes.
+- **Check for XSS vulnerabilities** in crop recommendations and apply sanitization.
+- **Monitor database writes** for unstructured or excessive storage.
+- **Consult the lead ACAP programmer for [version 2.0+](/changelog/#version-2-acap-20)** for current mitigation strategies and planned fixes.
 </Callout>
 
 <Callout type="info">
