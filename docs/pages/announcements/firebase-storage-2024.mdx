@@ -133,12 +133,12 @@ _All Firebase components service usage (including those not used by ACAP) will o
 <FAQBox title="Are there security considerations that I should be aware of?">
 <div id="security-considerations" />
 
-Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version **introduced security flaws** not present in the initial ([1.0](/changelog/#version-1-acap-10) ) version, which had strictly followed security guidelines and adhered to best practices in web development security, effectively preventing these issues. Based on the following criteria, the new security flaws introduced in version 2.0 resulted in a **60% reduction in the established security from version 1.0**.
+Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version **introduced security flaws** not present in the initial ([1.0](/changelog/#version-1-acap-10)) version, which had strictly followed [security guidelines](/security) and adhered to best practices in web development security, effectively preventing these issues. Based on the following criteria, the new security flaws introduced in version 2.0 resulted in a **60% reduction in the established security from version 1.0**.
 
 | Criteria | Purpose | ACAP [1.0](/changelog/#version-1-acap-10) | ACAP [2.0](/changelog/#version-2-acap-20) |
 | --- | --- | :---: | :---: |
 | User authentication | Authorized, allowed, and predictable operations access to resources | ✅ | ✅  |
-| Cross-Site Scripting (XSS) Protection | <u>Predictable billing</u>, reliable/authentic website information, <u>user information confidentiality</u>, predictable data manipulation / SMS sending, protection for <u>unvalidated writes that allow tampering with stored data</u>, impacting system reliability (and protection for other uncontrolled scenarios that stem from XSS) | ✅ | ❌ |
+| Cross-Site Scripting (XSS) Protection | <u>Predictable billing</u>, reliable/authentic website information, <u>user information confidentiality</u>, predictable data manipulation / SMS sending, protection for <u>unvalidated writes that allow tampering with stored data</u>, impacting system reliability, protection for <u>injecting malicious scripts</u> that <u>steal user info</u> or <u>redirect users to phishing sites</u> (and protection for other uncontrolled scenarios that stem from XSS) | ✅ | ❌ |
 | Cloud storage protection | Authorized, allowed, and predictable operations access to storage, <u>predictable billing</u> | ✅ | ✅ |
 | Database integrity | Accuracy, consistency, and <u>reliability</u> of data stored in a database and presented to users | ✅ | ❌ |
 | Database protection | Authorized, allowed, and predictable operations access to the (Firestore) database, <u>predictable billing</u> | ✅ | ❌ |
