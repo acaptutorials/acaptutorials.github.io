@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useTheme } from 'next-themes'
 import { Callout } from 'nextra/components'
+import { Table } from 'nextra/components'
 
 export function FAQBox({ title, children, open = false }) {
   // Copied from /articles/provinces-municipalities.mdx
@@ -61,7 +62,7 @@ ACAP uses other Firebase components aside from the Firebase Storage. ACAP only u
 </FAQBox>
 
 <FAQBox title="What are the notable changes (s) of this announcement?">
-- Firebase will discontinue providing the standard (no-cost) Spark plan for Firebase Storage starting <u><b>October 30, 2024</b></u>
+- Starting <u><b>October 30, 2024</b></u>, Firebase will no longer offer the no-cost Spark plan for Firebase Storage.
 - More information about this announcement is available at https://firebase.google.cn/docs/storage/faqs-storage-changes-announced-sept-2024.
 </FAQBox>
 
@@ -70,7 +71,7 @@ ACAP uses other Firebase components aside from the Firebase Storage. ACAP only u
 Starting on <span className="font-bold text-md text-green-600">October 30, 2024</span>:
 
 - Initializing new Firebase Storage instances <u><b>will require a payment method</b></u>. It will require new Firebase projects subscribed to the Firebase pay-as-you-go Blaze plan by default.
-- Existing ACAP Firebase Storage, <u><b>created before October 30, 2024</b></u>, will continue to work <u><b>until October 2025</b></u>.
+- Existing ACAP Firebase Storage on the no-cost Spark plan, <u><b>created before October 30, 2024</b></u>, will continue to work <u><b>until October 2025</b></u>.
 - ACAP Firebase Storages not subscribed to the Firebase Blaze plan <u><b>after October 2025</b></u> will <u><b>cease to function</b></u> unless they subscribe to the Blaze plan.
 - <u><b>ACAP Video Tutorials</b></u> <sup>[[1]](https://youtu.be/gJESQaT0IBQ?si=fYA19J9OHiZR4V9X&t=127)</sup> regarding the Firebase Storage initialization will not work on Firebase projects subscribed to the standard (no-cost) Firebase plans
 
@@ -105,7 +106,9 @@ _All Firebase components service usage (including those not used by ACAP) will o
 <FAQBox title="What should I know about subscribing to the Firebase Blaze Plan?">
 
 - Subscribing to the Firebase pay-as-you-go Blaze plan requires creating a Google Cloud billing account and electing credit card information for the Firebase project.
-- Billing subscriptions will only incur beyond standard (no-cost) usage/quotas of <u><b>activated</b></u> and <u><b>used</b></u> Firebase components/services <u>enabled by developers</u>. ACAP only expects usage from the **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting** Firebase services.
+- ACAP only expects usage from the **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting** Firebase services.
+- Billing subscriptions will only incur beyond standard (no-cost) usage/quotas of <u><b>activated</b></u> and <u><b>used</b></u> Firebase components/services <u>enabled by developers</u>.
+- If ACAP developers activate Firebase Blaze, <u><b>only the four (4) services mentioned above</b></u> are expected to incur costs unless <u><b>additional Firebase services are manually enabled</b></u>.
 
    <Callout>
    Refer to the Firebase Pricing table for more information about the standard (no-cost) billing and usage quotas at
@@ -130,15 +133,25 @@ _All Firebase components service usage (including those not used by ACAP) will o
 <FAQBox title="Are there security considerations that I should be aware of?">
 <div id="security-considerations" />
 
-Yes. Ensuring **system integrity** and **strong security measures** is critical when handling:
+Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version **introduced security flaws** not present in the initial ([1.0](/changelog/#version-1-acap-10) ) version, which had strictly followed security guidelines and adhered to best practices in web development security, effectively preventing these issues. Based on the following criteria, the new security flaws introduced in version 2.0 resulted in a **60% reduction in the established security from version 1.0**.
+
+| Criteria | Purpose | ACAP [1.0](/changelog/#version-1-acap-10) | ACAP [2.0](/changelog/#version-2-acap-20) |
+| --- | --- | :---: | :---: |
+| User authentication | Authorized, allowed, and predictable operations access to resources | ✅ | ✅  |
+| Cross-Site Scripting (XSS) Protection | <u>Predictable billing</u>, reliable/authentic website information, <u>user information confidentiality</u>, predictable data manipulation / SMS sending, protection for <u>unvalidated writes that allow tampering with stored data</u>, impacting system reliability (and protection for other uncontrolled scenarios that stem from XSS) | ✅ | ❌ |
+| Cloud storage protection | Authorized, allowed, and predictable operations access to storage, <u>predictable billing</u> | ✅ | ✅ |
+| Database integrity | Accuracy, consistency, and <u>reliability</u> of data stored in a database and presented to users | ✅ | ❌ |
+| Database protection | Authorized, allowed, and predictable operations access to the (Firestore) database, <u>predictable billing</u> | ✅ | ❌ |
+
+Ensuring **system integrity** and **strong security measures** is critical when handling:
 
 1. Sensitive user information (e.g., full name and contact numbers)
 2. Paid subscription to external services (e.g., Firebase, Semaphore)
-3. Reliable and predictable information output
+3. Reliable and predictable information output and system performance
 
 ##### Why Security Matters Before Upgrading Firebase
 
-Activating a paid Firebase subscription unlocks advanced features, but security considerations must be addressed first. Unresolved security flaws introduced in the latest major updates for ACAP 2.0+ could lead to <u>data breaches</u>, <u>unauthorized changes</u>, and <u>increased costs</u>.
+Activating a paid Firebase subscription unlocks advanced features, but security considerations must be addressed first. Unresolved security flaws introduced in the latest core deliverables for [ACAP 2.0+](/changelog/#version-2-acap-20) could lead to <u>data breaches</u>, <u>unauthorized changes</u>, and <u>increased costs</u>.
 
 <Callout type="error" emoji="">
 🚫
@@ -170,7 +183,7 @@ Before activating a paid Firebase subscription, consider whether unresolved [ACA
    ```
 
 For more details, see [ACAP Security Technical Debts](/changelog/#acap-2-security-debts).
-If these issues with specific information (available at [[1]](https://github.com/amia-cis/acap-v2/issues/57) and [[2]](https://github.com/amia-cis/acap-v2/issues/34)) remain unaddressed, it may be beneficial to consult the lead ACAP programmer responsible for designing and implementing [ACAP 2.0](/changelog/#version-2-acap-20).
+If these issues with specific information (available at [[1]](https://github.com/amia-cis/acap-v2/issues/57) and [[2]](https://github.com/amia-cis/acap-v2/issues/34)) remain unaddressed, it may be beneficial to consult the lead ACAP programmer responsible for designing and implementing [ACAP 2.0](/changelog/#version-2-acap-20) before activating a paid Firebase subscription.
 
 Key topics to discuss include:
 
@@ -182,7 +195,7 @@ Key topics to discuss include:
 - **Review the Firestore security rules** to restrict direct database writes.
 - **Check for XSS vulnerabilities** in crop recommendations and apply sanitization.
 - **Monitor database writes** for unstructured or excessive storage.
-- **Consult the lead ACAP programmer for [version 2.0+](/changelog/#version-2-acap-20)** for current mitigation strategies and planned fixes.
+- **Consult the lead ACAP programmer responsible for implementing the core [version 2.0+](/changelog/#version-2-acap-20)** deliverables for current mitigation strategies and planned fixes.
 </Callout>
 
 <Callout type="info">
