@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 import { Callout } from 'nextra/components'
 import { Table } from 'nextra/components'
 
-export function FAQBox({ title, children, open = false }) {
+export function FAQBox({ title, children, open = false, color = '' }) {
   // Copied from /articles/provinces-municipalities.mdx
   const [isClient, setIsClient] = useState(false)
   const { theme, resolvedTheme } = useTheme()
@@ -28,7 +28,7 @@ export function FAQBox({ title, children, open = false }) {
         className={detailsBgStyle}
       >
         <summary>
-          <strong className="text-md">{title}</strong>
+          <strong className={`text-md ${color}`}>{title}</strong>
         </summary>
         <div className="nx-p-2">{children}</div>
       </details>
@@ -79,10 +79,11 @@ Starting on <span className="font-bold text-md text-green-600">October 30, 2024<
 
 <FAQBox title="Will the other Firebase components used by ACAP be affected?">
 - No, this announcement only affects the <u>Firebase Storage</u>. Discontinued support of the Firebase standard (no-cost) pricing plan only affects the Firebase Storage.
-- Other Firebase components used by ACAP - the <u>Firestore Database</u>, <u>Firebase Authentication</u>, and <u>Firebase Hosting</u> still retain their standard (no-cost) pricing plans until further announcements or changes by Google Firebase.
+- Other Firebase components used and activated by ACAP - the <u>Firestore Database</u>, <u>Firebase Authentication</u>, and <u>Firebase Hosting</u> still retain their standard (no-cost) pricing plans until further announcements or changes by Google Firebase.
 
 <Callout>
-Subscribing to the Firebase Blaze Plan **will automatically enroll** all Firebase components to the pay-as-you-go Blaze plan, not just the Firebase Storage.
+Subscribing to the Firebase Blaze Plan **will automatically enroll** all Firebase components/services to the pay-as-you-go Blaze plan, not just the Firebase Storage.
+However, billing charges beyond the no-cost usage quotas <u>will only incur</u> on <u><b>manually activated</b></u> Firebase services.
 </Callout>
 </FAQBox>
 
@@ -117,7 +118,7 @@ _All Firebase components service usage (including those not used by ACAP) will o
 
 - Firebase usage analytics are accessible at this URL with or without a subscription to the Firebase Blaze plan:
 
-   ```text
+   ```text copy
    https://console.firebase.google.com/project/<YOUR_FIREBASE_PROJECT>/usage
    ```
 
@@ -126,12 +127,12 @@ _All Firebase components service usage (including those not used by ACAP) will o
    <Callout type="warning">
    ACAP expects usage only from the following Firebase services: **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting**. [ACAP's Security guidelines](/security) only cover these four (4) Firebase components, aside from general web application security practices and know-how, e.g., stressing the need for data validation <sup>[[1]](/security/#database) [[2]](/directories/server)</sup>.
 
-   > Developers can use other Firebase components as deemed necessary when needed. However, since they are not included originally in the ACAP project Firebase components, developers should care about using them responsibly to avoid incurring Security issues and unexpected billing.
+   > Developers can <u><b>use</b></u> and <u><b>activate</b></u> other Firebase components as deemed necessary when needed. However, since they are not included originally in the ACAP project Firebase components, developers should care about using them responsibly to <u>avoid incurring security issues and unexpected billing</u>.
    </Callout>
 </FAQBox>
 
-<FAQBox title="Are there security considerations that I should be aware of?">
 <div id="security-considerations" />
+<FAQBox title="Are there security considerations that I should be aware of?" color="text-red-700 dark:nx-text-red-200">
 
 Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version [**introduced security flaws**](/changelog#acap-2-security-debts) not present in the initial ([1.0](/changelog/#version-1-acap-10)) version, which had strictly followed [security guidelines](/security) and adhered to best practices in web development security, effectively preventing these issues. Based on the following criteria, the new security flaws introduced in version 2.0 resulted in a **60% reduction in the established security from version 1.0**.
 
@@ -205,7 +206,7 @@ Key topics to discuss include:
 <Callout type="info">
 ACAP's [Security measures and practices for Firebase](/security) only cover the Firebase components that it actively uses: **Firestore Database**, **Firebase Storage**, **Authentication**, and **Hosting**.
 
-Developers are encouraged to learn more about responsible Security measures and practices for other Firebase components or services, should they feel the need to use [other Firebase services](https://firebase.google.com/products-build) (e.g., **Firebase ML**, **Cloud Functions**, **Extensions**, etc) for their ACAPs other than **four (4) main Firebase components** used by ACAP.
+Developers are encouraged to learn more about responsible Security measures and practices for other Firebase components or services, should they feel the need to <u>use</u> and <u>activate</u> [other Firebase services](https://firebase.google.com/products-build) (e.g., **Firebase ML**, **Cloud Functions**, **Extensions**, etc) for their ACAPs other than **four (4) main Firebase components** used by ACAP.
 </Callout>
 </FAQBox>
 
