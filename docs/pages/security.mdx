@@ -33,7 +33,7 @@ Please ensure continued compliance with these security standards when extending 
    - (a) ACAP 1.0's Firestore Rules strictly prohibits **Database #1.a** and **Database #1.b** to enforce this.
    - (b) If new requirements allow item **Database #1.a** to "directly" perform **CREATE/EDIT/DELETE** operations in Firestore collections or documents using the [Firestore Web API](https://firebase.google.com/docs/firestore/quickstart) or [Firestore REST APIs](https://firebase.google.com/docs/firestore/use-rest-api), please ensure that _**"new"**_ and robust [Firestore Rules](https://firebase.google.com/docs/firestore/security/get-started) are created and thoroughly tested. These Rules may need to be separate from ACAP <span className="text-xl font-bold text-red-600">1.0</span>, which _"discourages this approach unless Firestore Rules can be properly enforced"_.
 
-3. Ensure proper server-side validation when mutating data through the backend (NodeJS) REST APIs using **validation scripts** in _middleware_ or the _controller_ scripts.
+3. Ensure proper server-side validation when mutating data through the backend (NodeJS) REST APIs using **validation scripts** in [_middleware_](/directories/server/#middleware) or the [_controller_](/directories/server/#controllers) scripts.
 
 4. Firestore database security relies on properly tested Firestore Rules to ensure security, especially if its rules do not disable all **VIEW/CREATE/EDIT/DELETE** operations.
    - Please ensure that "new" and robust Firestore Rules are created and thoroughly tested, in case new database components or requirements need to be added to the ACAP 1.0 Firestore database.
@@ -63,7 +63,8 @@ Manually test and ensure, using the Firebase Storage Web APIs, that:
 
 ## Related
 
-- [Firebase Storage Announcements 2024 - Security Concerns](/announcements/firebase-storage-2024)
+- [Server Notes](/directories/server)
+- [Firebase Storage Announcements 2024 - Security Concerns](/announcements/firebase-storage-2024#security-considerations)
 
 ## References
 
