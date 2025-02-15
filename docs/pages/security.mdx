@@ -47,9 +47,9 @@ ACAP's [Firestore Security Rules](https://firebase.google.com/docs/firestore/sec
 ```
 
 <Callout type="warning">
-[ACAP 2.0](/changelog/#version-2-acap-20) allowed <u><i>"editing"</i></u> the crop recommendations from the UI through insecure, unvalidated Firestore Security Rules, which poses **Cross-Site Scripting (XSS)** concerns since this also allows editing the WYSIWYG form crop recommendations from Postman (or other clients). This update to the **ACAP in its 2.0** version does not align with the secure practices mentioned under the [Database](/security/#database) section.
+[ACAP 2.0](/changelog/#version-2-acap-20) allowed users to <u>edit crop recommendations, a new feature</u> introduced in **version 2.0** through <u>weak Firestore Security Rules</u>, making it vulnerable to **Cross-Site Scripting (XSS)**. This also lets unauthorized clients (e.g., Postman) modify WYSIWYG form data without protection. These security flaws contradict the best practices outlined in the [Database](#database) section.
 
-Detailed information about this known issue is available at the parent **acap-v2** repository's GitHub Issues at [[1]](https://github.com/amia-cis/acap-v2/issues/34)  and [[2]](https://github.com/amia-cis/acap-v2/issues/57) or in the **Firebase Storage Announcements 2024** - [Are there security concerns I should be aware of?](/announcements/firebase-storage-2024#security-considerations) Section for information and reference.
+For more details, refer to GitHub Issues in the parent **acap-v2 repository** ([[1]](https://github.com/amia-cis/acap-v2/issues/34), [[2]](https://github.com/amia-cis/acap-v2/issues/57) or check the **Firebase Storage Announcements 2024** under the [Are there security concerns I should be aware of?](/announcements/firebase-storage-2024#security-considerations) section for more information and reference.
 </Callout>
 
 ## Sensitive data management
