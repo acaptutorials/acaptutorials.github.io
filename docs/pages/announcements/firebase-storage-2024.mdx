@@ -134,14 +134,14 @@ _All Firebase components service usage (including those not used by ACAP) will o
 <div id="security-considerations" />
 <FAQBox title="Are there security considerations that I should be aware of?" color="text-red-700 dark:nx-text-red-200">
 
-Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version [**introduced security flaws**](/changelog#acap-2-security-debts) not present in the initial ([1.0](/changelog/#version-1-acap-10)) version, which had strictly followed [security guidelines](/security) and adhered to best practices in web development security, effectively preventing these issues. Based on the following criteria, the new security flaws introduced in version 2.0 resulted in a **60% reduction in the established security from version 1.0**.
+Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version [**introduced security considerations**](/changelog#acap-2-security-debts) not present in the initial ([1.0](/changelog/#version-1-acap-10)) version, which followed a more rigid [security](/security) model that adhered to best practices in web development security. The security changes in **version 2.0** resulted in a **measured reduction in coverage compared to version 1.0, <u>based on established criteria.</u>**
 
 <Callout>
-> With ACAP 2.0+, a <u><b>new code maintainer and lead programmer</b></u> took over core development and <u>made changes to improve development speed</u>. As part of this effort, they introduced a more flexible Firestore database setup, which streamlined workflows. But it also <u>loosened security rules</u>.
+> With **ACAP 2.0+**, core development transitioned to a <u><b>new lead programmer</b></u> who <u>made changes to improve development speed</u>. As part of this effort, they introduced a <u>more flexible Firestore database setup</u>, which streamlined workflows. While these adjustments optimized workflows, they also <u><b>altered security rules, introducing new considerations that require further refinements</b></u> to align with [best practices](/security).
 >
-> While these adjustments enhanced agility, they also <b>introduced security concerns</b> not present in version 1.0. This <u><b>lead programmer</b></u> is aware of these trade-offs, and <u>since they made these changes, they remain the best point of contact for security updates and fixes.</u>
+> The <u><b>lead programmer</b></u> is aware of these trade-offs, and <u>since they made these changes, they remain the best point of contact for security updates and fixes.</u>
 >
-> For more details on these changes, refer to this GitHub [issue](https://github.com/amia-cis/acap-v2/issues/57) in the parent **acap-v2** repository, where the new lead programmer <u>discusses the upcoming fixes and improvements</u>.
+> For more details on these changes, refer to this GitHub [issue](https://github.com/amia-cis/acap-v2/issues/57) in the parent **acap-v2** repository, which provides a summary of the <b>lead programmer's</b> <u>upcoming fixes and improvements.</u>
 </Callout>
 
 | Criteria | Purpose | ACAP [1.0](/changelog/#version-1-acap-10) | ACAP [2.0](/changelog/#version-2-acap-20) |
