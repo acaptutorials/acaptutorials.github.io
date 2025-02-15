@@ -4,9 +4,9 @@ import AnchorModal from '@/components/AnchorModal'
 
 # Security Guidelines
 
-ACAP adheres to strict security practices and development patterns defined by its technology stack <u>"_while considering the limited options of its (default) standard-pricing tier cloud services_"</u> starting from its initial [1.0](/changelog/#version-1-acap-10) version.
+ACAP adheres to strict security practices and development patterns defined by its technology stack <u>"_while considering compatible options with its limited (default) upgradable standard-pricing cloud services_"</u> starting from its initial [1.0](/changelog/#version-1-acap-10) version.
 
-Please ensure continued compliance with these security standards when extending ACAP to add or enhance new features while actively considering its currently available plans, options, and **features requirements** at hand.
+Please ensure continued compliance with these security standards when extending ACAP to add or enhance new features while actively considering its currently available plans, options, and **feature requirements** at hand.
 
 <Callout type="error" emoji="☠️">
 **NOTE:** Further enhancements and feature updates to the initial [**ACAP 1.0**](/changelog/#version-1-acap-10) version may introduce new requirements to address additional use cases. Please ensure that security measures meet the expectations outlined in these new requirements.
@@ -21,13 +21,13 @@ Please ensure continued compliance with these security standards when extending 
       <AnchorModal
         anchorText="XSS Vulnerability Awareness in ACAP 2.0"
       >
-         A YouTube video detailing steps for exploiting XSS vulnerabilities in the **ACAP 2.0 crop recommendations** at https://www.youtube.com/watch?v=b9UZ6_OCTaY has been set to private permissions to limit exposure. This video is a resource for understanding the security challenges associated with these vulnerabilities and ACAP, which occurred starting on **[ACAP 2.0](/changelog/#version-2-acap-20)** due to new development approaches and priorities.
+         A YouTube video detailing steps for exploiting XSS vulnerabilities in the **ACAP 2.0 Crop Recommendations** at https://www.youtube.com/watch?v=b9UZ6_OCTaY has been set to private permissions to limit exposure. This video is a resource for understanding the security challenges associated with these vulnerabilities and ACAP, which occurred starting on **[ACAP 2.0](/changelog/#version-2-acap-20)** due to new development approaches and priorities.
 
          For ACAP Maintainers or developers interested in exploring the content, please contact the current active ACAP Maintainer(s) for an invitation to access the video. Engaging with this material can provide insights into the security considerations that have been acknowledged and inform future enhancements to the system's security measures.
       </AnchorModal>
       </Callout>
    - (b) Signed-in users cannot **CREATE** new Firestore collections and documents
-   - (c) Public users without sign-in authentication cannot **VIEW** sensitive information such as phonebook contacts and email information
+   - (c) Public users without sign-in authentication cannot **VIEW** sensitive information such as phonebook contacts and email information, by ensuring their Firestore collections are using the correct role/access-based Firestore Security Rules.
 
 2. Ensure that all mutative **"WRITE"** operations in the Firestore database occur only through authenticated HTTPS requests in the backend (NodeJS) REST APIs. _(see also [Server](/directories/server) for more information)._
    - (a) ACAP 1.0's Firestore Rules strictly prohibits **Database #1.a** and **Database #1.b** to enforce this.
@@ -38,11 +38,29 @@ Please ensure continued compliance with these security standards when extending 
 4. Firestore database security relies on properly tested Firestore Rules to ensure security, especially if its rules do not disable all **VIEW/CREATE/EDIT/DELETE** operations.
    - Please ensure that "new" and robust Firestore Rules are created and thoroughly tested, in case new database components or requirements need to be added to the ACAP 1.0 Firestore database.
 
+### Firestore Database Rules
+
+ACAP's [Firestore Security Rules](https://firebase.google.com/docs/firestore/security/get-started), which enforces strict role/access-based security to the Firestore database, should be copied to the Firebase project's <b>Firestore Rules tab</b> in the [Firebase Console](https://console.firebase.google.com/u/0/?pli=1). It is located in this file for reference:
+
+```text copy
+/client/src/firestore.rules
+```
+
+<Callout type="warning">
+[ACAP 2.0](/changelog/#version-2-acap-20) allowed <u><i>"editing"</i></u> the crop recommendations from the UI through insecure, unvalidated Firestore Security Rules, which poses **Cross-Site Scripting (XSS)** concerns since this also allows editing the WYSIWYG form crop recommendations from Postman (or other clients). This update to the **ACAP in its 2.0** version does not align with the secure practices mentioned under the [Database](/security/#database) section.
+
+Detailed information about this known issue is available at the parent **acap-v2** repository's GitHub Issues at [[1]](https://github.com/amia-cis/acap-v2/issues/34)  and [[2]](https://github.com/amia-cis/acap-v2/issues/57) or in the **Firebase Storage Announcements 2024** - [Are there security concerns I should be aware of?](/announcements/firebase-storage-2024#security-considerations) Section for information and reference.
+</Callout>
+
 ## Sensitive data management
 
-1.  Ensure that sensitive data and environment variables are never statically generated and deployed to the GitHub Pages or Firebase Hosting static hosting websites.
+1.  Ensure sensitive data and environment variables are never statically generated and deployed to the GitHub Pages or Firebase Hosting static hosting websites.
 
-2. Sensitive data, secured with Firebase Authentication, Firebase Custom Claims (**User/Admin Accounts #1, #2**) and Firestore Rules (**Database #1.c**) is dynamically fetched from the Firestore Database using the Firestore Web APIs or the secure (NodeJS) REST APIs.
+2. Sensitive data, secured with Firebase Authentication, Firebase Custom Claims (**User/Admin Accounts #1, #2**), and Firestore Rules (**Database #1.c**), is dynamically fetched from the Firestore Database using the Firestore Web APIs or the secure (NodeJS) REST APIs.
+
+   <Callout>
+   Ensure that Firestore collections containing sensitive data (e.g., `"/phonebook/{docId}"`) are using appropriate role/access-based access settings defined in the **Firestore Security Rules**. This comprises a combination of **Firebase Authentication** and **Firebase Custom Claims**.
+   </Callout>
 
 ## File Storage
 
@@ -51,15 +69,27 @@ Manually test and ensure, using the Firebase Storage Web APIs, that:
 1. Public and signed-in users can only "READ" or download the PDF bulletin files.
 2. Public and signed-in users cannot UPLOAD or DELETE files.
 
+### Firebase Storage Security Rules
+
+ACAP's [Firebase Storage Security Rules](https://firebase.google.com/docs/storage/security/) enforce strict security by allowing only authenticated requests in the NodeJS backend to upload (PDF) files to the Firebase Cloud Storage while allowing public data (PDF, images) to download from the frontend. It should be copied to the Firebase project's <b>Storage Rules tab</b> in the [Firebase Console](https://console.firebase.google.com/u/0/?pli=1). It is located in this file for reference:
+
+```text copy
+/client/src/storage.rules
+```
+
 ## Codebase
 
-- Ensure that forked **climate-services-webportal-v1** (ACAP 1.0) or **acap-v2** (ACAP 2.0) monorepo code base or copies remain PRIVATE in GitHub and other public platforms.
+- Ensure that forked **climate-services-webportal-v1** ([ACAP 1.0](/changelog/#version-1-acap-10)) or **acap-v2** ([ACAP 2.0](/changelog/#version-2-acap-20)) monorepo code base or copies remain PRIVATE in GitHub and other public platforms.
 
 ## User/Admin Accounts
 
 1. Ensure that Admin accounts are created by the superadmin in the NodeJS backend using [Firebase Authentication](https://firebase.google.com/docs/auth/) with [Firebase Custom Claims](https://firebase.google.com/docs/auth/admin/custom-claims), leveraging the [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup) to ensure maximum security.
 
-2. More information about ACAP 1.0's Security requirements are available in its Software Requirements Specifications document available in this [link](https://github.com/amia-cis/acap-v2/blob/dev/docs/acap_1.0_software_requirements_specification_v4.0.pdf) (accessible only for developers with access).
+2. More information about ACAP's Security requirements is available in its Software Requirements Specifications document in this [link](https://github.com/amia-cis/acap-v2/blob/dev/docs/acap_1.0_software_requirements_specification_v4.0.pdf) (accessible only for developers with access).
+
+   <Callout type="info">
+   These Security requirements carry over and apply to **ACAP 2.0**, even if the Software documents were written for **ACAP 1.0**. Since no new Software documents are available for the updates made in ACAP 2.0, you may <u>consult the new lead programmer</u> responsible for implementing ACAP 2.0 <u>about detailed upgrades specifics made to the system</u>.
+   </Callout>
 
 ## Related
 
