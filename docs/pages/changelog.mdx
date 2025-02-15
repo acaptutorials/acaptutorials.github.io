@@ -42,7 +42,19 @@ export function FAQBoxError({ title, children, open = false }) {
 
 # ACAP Change Log
 
-This page contains summary of features and enhancements on major ACAP versions and their programming-development timelines.
+This page summarizes the features and enhancements of major ACAP versions, extensions, and their programming-development timelines.
+
+### Glossary of Terms
+
+- [ACAP 1.0](#version-1-acap-10) serves as the base model of the Agro-Climatic Advisory Portal (ACAP). Initially made for the Bicol region, it provides dynamic features setup support for other regional provinces. It served as the active ACAP version until ACAP 2.0.
+- [ACAP 2.0](#version-2-acap-20) and beyond is an extension of the Agro-Climatic Advisory Portal (ACAP), a Climate Information System, <u><i>expanding</i></u>, <u><i>enhancing</i></u>, and <u><i>building upon</i></u> the initial [ACAP 1.0](#version-1-acap-10) version.
+   > ACAP 2.0 builds upon ACAP 1.0 rather than replacing it. It enhances and expands the original system while maintaining its core foundation.
+
+<Callout>
+As of <u>July 2024</u>, **ACAP 2.0,** containing new features and upgrades, is the <u>latest</u> ACAP version and is now collectively referred to simply as **"ACAP"**
+</Callout>
+
+<br />
 
 <Steps>
 
@@ -62,12 +74,12 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 
 <FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts">
 <div id="acap-2-security-debts" />
-1. **Flexible Firestore Database Use:** Version 2.0+ adopted a more flexible approach for handling data management, facilitating faster feature development by performing _<u>WRITE operations to the database directly from the web front end</u>_ coupled with more _<u>lenient Firestore database Rules</u>_. However, this shift also introduced the potential for data to enter the database without the usual front-end controls through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). While this was <u><b><i>not an issue in Version 1.0</i></b></u>, it emerged as part of the effort to enhance development speed and feature delivery starting with Version 2.0.
+1. **Flexible Firestore Database Use:** ACAP version 2.0+ adopted a more flexible approach for handling data management, facilitating faster feature development by performing _<u>WRITE operations to the database directly from the web front end</u>_ coupled with more _<u>lenient Firestore database Rules</u>_. However, this shift also introduced the potential for data to enter the database without the usual front-end controls through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). While this was <u><b><i>not an issue in [Version 1.0](#version-1-acap-10)</i></b></u>, it emerged as part of the effort to enhance development speed and feature delivery <u><b><i>starting with Version 2.0</i></b></u>.
 2. **Cross-Site Scripting (XSS) Vulnerability in Crop Recommendations:** Related to item 1, the new process for editing WYSIWYG HTML-form crop recommendations input may allow unsafe or inaccurate content due to limited validation through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). Risks associated with this were recognized early in the process, but the focus on delivering core features led to a delay in integrating security measures.
    <AnchorModal
      anchorText="XSS Vulnerability Awareness in ACAP 2.0"
    >
-      A YouTube video detailing steps for exploiting XSS vulnerabilities in the **ACAP 2.0 crop recommendations** at https://www.youtube.com/watch?v=b9UZ6_OCTaY has been set to private permissions to limit exposure. This video is a resource for understanding the security challenges associated with these vulnerabilities and ACAP, which occurred starting on **version 2.0** due to new development approaches and priorities.
+      A YouTube video detailing steps for exploiting XSS vulnerabilities in the **ACAP 2.0 crop recommendations** at https://www.youtube.com/watch?v=b9UZ6_OCTaY has been set to private permissions to limit exposure. This video is a resource for understanding the security challenges associated with these vulnerabilities and ACAP, which occurred starting on **[ACAP 2.0](#version-2-acap-20)** due to new development approaches and priorities.
 
      For ACAP Maintainers or developers interested in exploring the content, please contact the current active ACAP Maintainer(s) for an invitation to access the video. Engaging with this material can provide insights into the security considerations that have been acknowledged and inform future enhancements to the system's security measures.
    </AnchorModal>
@@ -111,7 +123,7 @@ Version 2.0 and later versions may have new requirements that will thrive on new
    - Removal of the rainfall condition trigger
 2. Public/admin 10-day recommendations and bulletin PDF generation
    - Removal of the single-date selection trigger within the active PAGASA 10-day date range for determining the crop stage/s
-3. Deprecation of the **uploaders** group of Node Package Manager (NPM) scripts in favor of cropping calendar/recommendations Excel file upload through the UI
+3. Deprecation of the <u>data uploaders</u> group of Node Package Manager **(NPM) scripts** <sup>[[1]](/post-installation/cropping-calendar/calendar-v1/), [[2]](/post-installation/recommendations/recommendations-v1/)</sup> in favor of cropping calendar/recommendations Excel **file upload through the UI** <sup>[[3]](/post-installation/cropping-calendar/calendar-v2/), [[4]](/post-installation/recommendations/recommendations-v2/)</sup>
 4. Allow creating seasonal bulletin PDFs with more than one (1) page.
 5. Text blast recipients by province/municipality instead of individual selection
 
@@ -206,5 +218,9 @@ _June 2023 onwards_
 - Various bug fixes and minor updates with summary in the **climate-services-webportal-v1** (ACAP 1.0 repository) [Releases](https://github.com/amia-cis/climate-services-webportal-v1/releases) page for more information.
 
 </div>
+
+<Callout>
+All ACAP 1.0 features, updates, and follow-up fixes were carried over and inherited by [ACAP 2.0](#version-2-acap-20).
+</Callout>
 
 </Steps>
