@@ -47,7 +47,7 @@ ACAP's [Firestore Security Rules](https://firebase.google.com/docs/firestore/sec
 ```
 
 <Callout type="warning">
-[ACAP 2.0](/changelog/#version-2-acap-20) allowed users to <u>edit crop recommendations, a new feature</u> introduced in **version 2.0** through <u>weak Firestore Security Rules</u>, making it vulnerable to **Cross-Site Scripting (XSS)**. This lets **unauthorized clients** (e.g., Postman) <u><i>modify WYSIWYG-form data without protection</i></u> if accessed from the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). Allowing these in the Firestore Security Rules contradicts the best practices outlined in the [Database](#database) section.
+[ACAP 2.0](/changelog/#version-2-acap-20) allowed users to <u>edit crop recommendations, a new feature</u> introduced in **version 2.0** through <u>weak Firestore Security Rules</u>, making it vulnerable to **Cross-Site Scripting (XSS)**. This lets **unauthorized clients** (e.g., Postman) <u><i>modify WYSIWYG-form data without protection</i></u> if accessed from the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). Allowing these in the Firestore Security Rules contradicts the best practices outlined in the [Database](#database) section, which advocates for data mutation with thorough <u>data validation</u> in the **Node backend**.
 
 For more details, refer to GitHub Issues in the parent **acap-v2 repository** ([[1]](https://github.com/amia-cis/acap-v2/issues/34), [[2]](https://github.com/amia-cis/acap-v2/issues/57)) or check the **Firebase Storage Announcements 2024** under the [Are there security concerns I should be aware of?](/announcements/firebase-storage-2024#security-considerations) section for information and reference.
 </Callout>
@@ -90,6 +90,14 @@ ACAP's [Firebase Storage Security Rules](https://firebase.google.com/docs/storag
    <Callout type="info">
    These Security requirements carry over and apply to **ACAP 2.0**, even if the Software documents were written for **ACAP 1.0**. Since no new Software documents are available for the updates made in ACAP 2.0, you may <u>consult the new lead programmer</u> responsible for implementing ACAP 2.0 <u>about detailed upgrades specifics made to the system</u>.
    </Callout>
+
+## Node Package Libraries (NPM)
+
+ACAP, a web application built with Firebase, Express, React/Next.js, and Node.js, relies on open-source development libraries from the **Node Package Manager (NPM)** for its **client** and **server** applications.
+
+Since ACAP's initial development in 2022, many of these libraries may have become outdated as newer versions are released.
+
+Developers maintaining ACAP are encouraged to <u>monitor and update these dependencies as needed</u> to benefit from performance improvements, security patches, and new features, possibly requiring using <u>newer Node versions</u>.
 
 ## Related
 
