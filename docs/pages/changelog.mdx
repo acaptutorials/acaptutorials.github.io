@@ -72,8 +72,8 @@ ACAP 2.0 is the latest ACAP version. Its latest stable version is Release/Tag ve
 Version 2.0 and later versions may have new requirements that will thrive on new development approaches loosely tied to the recommended [Security](/security) and [Server](/directories/server) guidelines of **ACAP 1.0**, requiring thorough testing and validation.
 </Callout>
 
-<FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts">
 <div id="acap-2-security-debts" />
+<FAQBoxError title="💀 Version 2.0 - 2.1 Security Technical Debts">
 1. **Flexible Firestore Database Use:** ACAP version 2.0+ adopted a more flexible approach for handling data management, facilitating faster feature development by performing _<u>WRITE operations to the database directly from the web front end</u>_ coupled with more _<u>lenient Firestore database Rules</u>_. However, this shift also introduced the potential for data to enter the database without the usual front-end controls through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). While this was <u><b><i>not an issue in [Version 1.0](#version-1-acap-10)</i></b></u>, it emerged as part of the effort to enhance development speed and feature delivery <u><b><i>starting with Version 2.0</i></b></u>.
 2. **Cross-Site Scripting (XSS) Vulnerability in Crop Recommendations:** Related to item 1, the new process for editing WYSIWYG HTML-form crop recommendations input may allow unsafe or inaccurate content due to limited validation through the [Firestore REST APIs](https://cloud.google.com/firestore/docs/reference/rest/). Risks associated with this were recognized early in the process, but the focus on delivering core features led to a delay in integrating security measures.
    <AnchorModal
