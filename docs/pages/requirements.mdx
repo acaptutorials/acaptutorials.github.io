@@ -14,7 +14,7 @@ This post describes the dependencies and requirements needed to run run ACAP 1.0
 #### Main Development
 
 1. Visual Studio Code (VSCode) IDE
-   - version: v1.79.2 (any version that can run NodeJS)
+   - version: v1.79.2 (or versions capable of running NodeJS in its Integrated Terminal)
 2. nvm
    - <Callout>
      **nvm** is optional, if you can install NodeJS LTS version 16.14.2 on **item #3**
@@ -45,12 +45,12 @@ This post describes the dependencies and requirements needed to run run ACAP 1.0
 3. JavaScript
 4. GitHub
 5. Firebase
-   - Firebase for Web
-   - Firebase for NodeJS (Firebase Admin)
-   - Firebase Services (Components)
+   - [Firebase JavaScript SDK (for frontend web clients)](https://firebase.google.com/docs/web/setup)
+   - [Firebase Admin SDK (for backend NodeJS)](https://firebase.google.com/docs/admin/setup)
+   - Firebase Services (Components) - used within the contexts of the **Firestore JavaScript SDK** and the **Firebase Admin SDK**
       - Authentication <sup>[[1]](https://firebase.google.com/docs/auth/)</sup>
-      - Firestore <sup>[[2]](https://firebase.google.com/docs/firestore/)</sup>
-      - Storage <sup>[[3]](https://firebase.google.com/docs/storage/)</sup>
+      - Firestore (Cloud Firestore) <sup>[[2]](https://firebase.google.com/docs/firestore/)</sup>
+      - Storage (Cloud Storage) <sup>[[3]](https://firebase.google.com/docs/storage/)</sup>
       - Hosting <sup>[[4]](https://firebase.google.com/docs/hosting/)</sup> _(Only used with the **development** environment)_
 
 ### Cloud Service Accounts (standard pricing)
