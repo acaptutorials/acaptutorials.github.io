@@ -1,0 +1,36 @@
+# 🔐 ACAP Developer Security Best Practices Checklist
+
+> This checklist, reflecting the needs of the [Security](/security) section and the [ACAP Professional Mindset on Security](https://github.com/acaptutorials/acaptutorials/blob/main/README.md#-acap-professional-mindset-on-security), enumerates the desirable traits and mindsets of programmers, especially for code maintainers or main/primary ACAP lead developers handling ACAP development.
+>
+> ✅ Use this checklist as a guideline along with the [Security](#security) expectations during planning, code reviews, or when designing features that handle user input, authentication, or database operations.
+
+### 1. Mindset and Responsibility
+- [ ] I prioritize **user safety and data protection** over rapid feature delivery.
+- [ ] I integrate **security considerations in every development phase**—from design to deployment.
+- [ ] I recognize that **security is a shared team responsibility**, not a post-incident task.
+
+### 2. Firestore & Backend Practices
+- [ ] I **avoid writing to Firestore directly from the front-end** when the data is sensitive or requires validation.
+- [ ] I implement **strong Firestore security rules** that match the expected schema and use strict access controls.
+- [ ] I **validate all input server-side**, even if it’s also validated on the front-end.
+
+### 3. Input Handling and Content Security
+- [ ] I sanitize **WYSIWYG or HTML-formatted input** to prevent XSS or unsafe content injection.
+- [ ] I use **established libraries and sanitization methods** instead of building ad-hoc solutions for HTML or user input.
+- [ ] I escape user-generated content correctly in all **PDFs, emails, and rendered UI components**.
+
+### 4. Data Structure Integrity
+- [ ] I enforce **tight schema validation** to prevent Firestore document pollution (uncontrolled key-value growth).
+- [ ] I use **Firebase Cloud Functions or middle-layer APIs** to validate and shape incoming data before writing to the database.
+- [ ] I regularly monitor for **unexpected document structures or recursive collections**.
+
+### 5. Security Reports and Technical Debt
+- [ ] I take **security concerns seriously**, especially those that are **clearly reproducible** or reported by team members.
+- [ ] I **do not delay security fixes** unless justified with clear documentation and risk mitigation steps.
+- [ ] I log and track known vulnerabilities as **actionable backlog items**, not as "someday" issues.
+
+### 6. Team Collaboration and Growth
+- [ ] I am **open to feedback** and security advice from peers, even if it challenges my current approach.
+- [ ] I **communicate blockers** early if I need help on a security implementation.
+- [ ] I actively **share security learnings** with the rest of the team (e.g., via code reviews or internal notes).
+
