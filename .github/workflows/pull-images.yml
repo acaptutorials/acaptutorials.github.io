@@ -26,4 +26,4 @@ jobs:
         run: cp docs/.env.example docs/.env
 
       - name: Pull Development Image
-        run: docker compose -f docker-compose.dev.yml pull
+        run: docker compose pull
