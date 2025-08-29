@@ -155,6 +155,7 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 | --- | --- |
 | DOCKERHUB_USERNAME | Docker Hub username |
 | DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
+| FIREBASE_TOKEN | Firebase CI token for deployment to Firebase Hosting |
 
 #### GitHub Variables
 
