@@ -7,5 +7,7 @@
   "acap-rcmas-api": "ACAP-RCMAS REST APIs",
   "opengraph": "Opengraph Settings",
   "google-search": "Google Search Console",
-  "province-codes": "Province Codes"
+  "province-codes": "Province Codes",
+  "git-flow": "Git Flow",
+  "site-search": "Site Search"
 }

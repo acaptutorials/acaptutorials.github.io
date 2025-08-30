@@ -12,50 +12,11 @@ Follow the steps in the **Render Initial Blueprint Instance** section to sync it
 
 ## Git Flow
 
-CI/CD using GitHub Actions deploy code updates to the **development** or **production** environments following this [simplified version of Git Flow](https://youtu.be/cV-9KszXEyw?feature=shared&t=845).
+CI/CD using GitHub Actions deploy code updates to the **development** or **production** environments following this [simplified version of Git Flow](https://youtu.be/cV-9KszXEyw?feature=shared&t=845). Refer to the [Git Flow](/post-installation/git-flow) page for more information about this process.
+
+<br />
 
 <img src="https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2Ffd8YN8jIdC6dikTDYllr_file?alt=media&token=050ea71e-d56c-4844-ad8e-7c796b123b5d" alt="acap-git-flow" style={{ margin: "auto" }} />
-
-
-**(Optional)** Before proceeding, create a GitHub Issue describing the new feature, bug fix or task that you'll develop. This tracks the details of the incoming updates.
-
-<Steps>
-
-### Create a feature branch
-
-- Create a **feature branch** branching out from the **dev branch**
-
-   > If a GitHub Issue describes this feature, name the branch with the GitHub Issue number eg., `feat/acaptutorials-12` (Issue #12)
-
-   ```sh
-   git checkout dev
-   git checkout -b feat/acaptutorials-12
-
-   # Using other branch names
-   # git checkout -b awesome-update
-   ```
-
-- This isolates new work (feature, bug fix, or task) so it doesn't destabilize the shared development branch.
-
-### Merge the feature branch back to dev
-
-- Once the feature is complete and reviewed via a **Pull Request (PR)**, it's merged back into **dev**.
-- Approving a PR to the dev branch (or pushing updates directly to the dev branch) triggers a deployment to the **development** (Firebase Hosting, Render and, [Vercel](/articles/deployment-vercel) (if available)) environment.
-- It allows testing the feature with other in-progress features in an integrated (development) environment.
-- Delete the feature branch afterward to keep the repository clean.
-
-### Promote dev to master
-
-- When the **dev branch** has accumulated stable, tested features, create a Pull Request (PR) to **master**
-- The master branch always reflects the code that's safe to release to production.
-
-### Tag a release
-
-- Tag and version a release from the **master branch** (e.g., v1.0.0).
-- This creates an immutable snapshot of the code that corresponds to a specific release.
-- It also triggers a deployment to the **production** (GitHub Pages, Render and, [Vercel](/articles/deployment-vercel) (if available)) environment.
-
-</Steps>
 
 ## Render Initial Blueprint Instance
 
