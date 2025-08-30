@@ -2,5 +2,9 @@
   "firebase-storage-2024": {
     "title": "Firebase Storage Pricing Plan Changes (2024)",
     "type": "page"
+  },
+  "pagasa-10day-excel": {
+    "title": "PAGASA 10-Day Excel Files Discontinued",
+    "type": "page"
   }
 }
