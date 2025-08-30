@@ -51,6 +51,11 @@ _Note: PAGASA has not announced plans to archive past Excel files._
 <details>
 <summary>Click to view the attached screenshot of PAGASA's announcement for more information.</summary>
 ![PAGASA 10-Day Excel files discontinuation announcement](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FNOZHqk2E8F8RoVvZuVVv_file?alt=media&token=88bd0b49-b7ee-45f8-843e-11bd0b9dcfe6)
+
+<sup>
+[alternate screenshot](https://private-user-images.githubusercontent.com/30580083/481051514-2d333f63-8fc4-4d81-a8da-d0ff48698c5e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTY1MzczNTAsIm5iZiI6MTc1NjUzNzA1MCwicGF0aCI6Ii8zMDU4MDA4My80ODEwNTE1MTQtMmQzMzNmNjMtOGZjNC00ZDgxLWE4ZGEtZDBmZjQ4Njk4YzVlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODMwVDA2NTczMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVkNDUzZmI0NjVhMTQxOWZhMmUxZDU4YmQ5ZTc1N2EzOGUwMWE1N2VlNWFhNGI3ODA4MTNkZDVmZDg5MjEwYzEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.cUM-tiJyihJq5r8zyiTXW_h3_Astl3obI-XvymTy684)
+</sup>
+
 </details>
 
 ## FAQs
@@ -79,14 +84,14 @@ PAGASA is modernizing data sharing by moving from Excel files to REST APIs, redu
 The new [PAGASA TenDay API](https://tenday.pagasa.dost.gov.ph/docs) (launched July 2025) covers both **10-Day** and **Seasonal weather forecasts**.
 
 <Callout type="info">
-It is not yet known whether PAGASA will also discontinue the **Seasonal Weather Forecast Excel files**.
+It is not yet known whether PAGASA will also discontinue the [**Seasonal Weather Forecast Excel files**](/post-installation/weather-forecasts/seasonal-forecast/#pagasa-seasonal-weather-forecast-excel-file).
 </Callout>
 </FAQBox>
 
 <FAQBox title="What you should do">
 
 <Callout type="info">
-There are currently no news or directives for syncing the parent **acap-v2** code repository to the **PAGASA TenDay API**. Projects using it as base template (including ACAP Bicol) are advised to sync their ACAPs to the API.
+There are currently no news or directives for syncing the parent **acap-v2** code repository to the **PAGASA TenDay API**. Projects using it as base template (including ACAP Bicol) are advised to sync their ACAPs to the API until futher notice.
 </Callout>
 
 Here are the recommended migration steps for syncing ACAP to the PAGASA TenDay API. However, <u><i>feel free to adjust and customize as deemed necessary</i></u>.
@@ -94,7 +99,7 @@ Here are the recommended migration steps for syncing ACAP to the PAGASA TenDay A
 1. Review the [PAGASA TenDay API documentation](https://tenday.pagasa.dost.gov.ph/docs).
 2. Request an **API key** from PAGASA.
 3. **Regional location data:** Build the provinces and municipalities list from the PAGASA TenDay API, possibly from its **Validation - Location** endpoint at `"https://tenday.pagasa.dost.gov.ph/api/v1/location"`.
-4. **Data source:** Replace the **10-Day weather forecast data** Excel fetch/parse logic with **TenDay API REST responses**.
+4. **Data source:** Replace the **10-Day weather forecast Excel file** fetch/parse logic with **TenDay API REST responses**.
 5. Update scripts — Excel downloads will stop after August 31, 2025.
 
 <Callout>
