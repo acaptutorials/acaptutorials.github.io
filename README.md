@@ -70,13 +70,13 @@ The app depends these libraries and frameworks.
 2. (Optional) Run the app for local development using Docker. Navigate to the project's root directory then run:<br>
    ```
    # 2.1. Build the client and server containers for localhost development.
-   docker compose -f docker-compose.dev.yml build
+   docker compose build
 
    # 2.2. Create and start the development client and server containers
-   docker compose -f docker-compose.dev.yml up
+   docker compose up
 
    # 2.3. Stop and remove the development containers, networks, images and volumes
-   docker compose -f docker-compose.dev.yml down
+   docker compose down
    ```
 
 3. Add or edit MDX files in the `/pages` directory, or add React components in the `/components` directory.
@@ -111,13 +111,13 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 
 1. Pull the development Docker image from Docker Hub using one of the options.<br>
    - `docker pull acaptutorials/acaptutorials.github.io:latest`
-   - `docker compose -f docker-compose.dev.yml pull` (using Docker compose from the root project directory)
+   - `docker compose pull` (using Docker compose from the root project directory)
 
 2. Navigate to the project directory using the command line. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
    - See [Usage](#usage) - **step # 2** for more information.
 
 3. Run the development Docker image.<br>
-`docker compose -f docker-compose.dev.yml up`
+`docker compose up`
 
 4. (Optional) Run the development Docker image (from other directories).<br>
 `docker run -it --rm -p 3000:3000 acaptutorials/acaptutorials.github.io:latest`
@@ -125,13 +125,13 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 ### Build the Development Docker Image
 
 1. Build the development Docker image on your machine.<br>
-`docker compose -f docker-compose.dev.yml build`
+`docker compose build`
 
 2. Navigate to the project directory using the command line. Create a `.env` file inside the **/docs** directory with reference to the `.env.example` file.
    - See [Usage](#usage) - **step # 2** for more information.
 
 3. Run the development Docker image.<br>
-`docker compose -f docker-compose.dev.yml up`
+`docker compose up`
 
 ## Usage with GitHub Actions
 
@@ -155,6 +155,7 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 | --- | --- |
 | DOCKERHUB_USERNAME | Docker Hub username |
 | DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
+| FIREBASE_TOKEN | Firebase CI token for deployment to Firebase Hosting |
 
 #### GitHub Variables
 

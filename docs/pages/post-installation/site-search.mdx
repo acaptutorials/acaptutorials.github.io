@@ -1,0 +1,136 @@
+import { Callout, Steps } from 'nextra/components'
+
+# Search Bar: Site Search
+
+![search bar keywords](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FlE08vZGvNmHuOT870iFR_file?alt=media&token=cc3d3bec-739e-4f0d-8a63-8b6b3f0f2891)
+
+## Introduction
+
+This guide shows how to make **new public pages** searchable via the site's **Search Bar** by updating `data.js` and **running a keyword indexer script**. ACAP configures this feature via a script in`/server/src/scripts/page_indexer/`.
+
+<Callout>
+**`npm run build:page_index`** indexes keywords from live public pages defined in `data.js` and saves them to the database. It runs automatically after deployment, but you can also run it locally for testing.
+</Callout>
+
+<Callout type="info">
+**Optional:** Only needed when adding **new public pages** or updating existing ones for search indexing.
+
+> **INFO:** The search method and keyword extraction process are expected to extract keywords only from simple static pages. Pages with longer or complex content may require a different approach.
+</Callout>
+
+## Add a Page to Search
+
+(Quick summary)
+
+1. Add `id` attributes to text containers in your page.
+2. Update `data.js` with path, name, info, and selectors.
+3. Run `npm run build:page_index` locally to test.
+4. Commit and push changes.
+5. Deploy and verify search results.
+
+## Detailed Steps
+
+<Steps>
+
+### Prepare the new public page for indexing
+
+- Add unique HTML `id` attributes to the container `<div>` of target elements with text content that you'd like to extract keywords from.
+- For example, if there is a new **About Us** page:
+
+```jsx copy
+return (
+  <Box id="about-us-content">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...
+  </Box>
+)
+```
+
+### Inspect the public pages file definition
+
+- Open the `"/server/src/scripts/page_indexer/data.js"` file.
+- Observe the Object structure of the elements in the `sites[]` array, eg., the entry for the public "Weather Services" page,
+
+   ```js copy
+   const sites = [
+     {
+       path: 'weather-services',
+       name: 'ACAP Services',
+       info: 'Seasonal and 10-Day Weather Forecasts, and Special Weather Advisory',
+       selectors: [
+        '#contents-seasonal-forecast',
+        '#contents-tenday-forecast',
+        '#contents-special-weather-forecast'
+       ]
+     },
+     ...
+   ]
+   ```
+
+   <details>
+   <summary>👉 Click to view the **`sites[]` Object key definitions**</summary>
+
+   | Key | Definition |
+   | --- | --- |
+   | path | Frontend (NextJS) route to the target page |
+   | name | Page title |
+   | info | Short summary or description about the page |
+   | selectors | Array of HTML `id` attributes in the page in which to extract keywords from. Each element starts with a `#` |
+
+   </details>
+
+   <Callout type="warning">
+   - Failing to add appropriate `"selectors"` will skip indexing the search keywords.
+   - Ensure all public pages load correctly. There will be errors in indexing if a page is inaccessible or has loading errors.
+   </Callout>
+
+### Add a new page file entry
+
+- Create a new entry in the `"/server/src/scripts/page_indexer/data.js"` file under the `sites[]` array corresponding to a newly-created public page.
+- For example, to add the **About Us** page from **step #1**:
+
+   ```js copy
+   const sites = [
+     {
+       path: 'about-us',
+       name: 'About Us',
+       info: 'Information and details about our company',
+       selectors: ['#about-us-content']
+     },
+     ...
+   ]
+
+### Test extracting keywords
+
+- Set `LIVE_ORIGIN=http://localhost:3000` in the server `.env`
+- Run the local website
+   ```sh copy
+   npm run dev
+   ```
+
+- Open `http://localhost:3000` to verify the site is running.
+
+- Run the server NPM script
+   ```sh copy
+   npm run build:page_index
+   ```
+
+   Fix errors that may occur during this step.
+
+- If there are no errors in the previous step, type keyword(s) from the sample **About Us** page in the **Search Bar**, eg.,
+   ```text copy
+   lorem ipsum
+   ```
+
+   The **About Us** page should display in the search results.
+
+   ![site search success](https://firebasestorage.googleapis.com/v0/b/assets-cms.appspot.com/o/users%2FAwryJ0MU8zdxQFh9y0L0x2sSt8z1%2FUg972YCHQreS1jQVGmif_file?alt=media&token=55f400fa-cb64-4870-9ee0-5daceb702019)
+
+### Commit the `data.js` file
+
+If there are no errors in the previous steps and the search keyword(s) appear in **step #4**, proceed to commit and push the updated `data.js` file.
+
+### Deploy
+
+When you push changes, GitHub Actions will automatically run `npm run build:page_index` during deployment. Verify that the new keywords appear in the live Search Bar.
+
+</Steps>
