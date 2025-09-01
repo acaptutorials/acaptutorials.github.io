@@ -4,6 +4,7 @@ ACAP Bicol (ACAP 2.0) development documentation.
 
 Built with [Nextra](https://nextra.site/), a modern static site generation framework running on NextJS.
 
+> [!IMPORTANT]
 > This project uses Nextra [version 2](https://nextra-v2-oe0zrpzjp-shud.vercel.app/).
 
 ### Requirements
@@ -32,6 +33,8 @@ The app depends these libraries and frameworks.
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+   - [General Usage](#general-usage)
+   - [Uploading and Referencing Images from /assets](#uploading-and-referencing-images-from-assets)
 - [Available Scripts](#available-scripts)
 - [Usage with Docker](#usage-with-docker)
    - [Use Pre-Built Development Docker Image](#use-pre-Built-development-docker-image)
@@ -62,6 +65,8 @@ The app depends these libraries and frameworks.
 
 ## Usage
 
+### General Usage
+
 1. Run the app for local dedvelopment with:<br>
    ```
    cd docs
@@ -81,6 +86,35 @@ The app depends these libraries and frameworks.
 
 3. Add or edit MDX files in the `/pages` directory, or add React components in the `/components` directory.
    - View the [**nextra**](https://nextra.site/docs) (docs-theme) documentation for more information on using nextra to add content.
+
+### Uploading and Referencing Images from `/assets`
+
+#### To display a new image:
+
+1. Upload the image to the `/assets` branch, ([Issue #102](https://github.com/acaptutorials/acaptutorials.github.io/issues/102))
+   - Commit the file under the appropriate directory (e.g., `/images/`, `/docs/`, etc.).
+   - Use **unique, versioned file names** (e.g., `feature-v2.png`) to prevent caching issues.
+
+      > ⚠️ **NOTE:** Overwriting an existing file with a new version will **not** immediately update in browsers due to GitHub's CDN caching.
+
+2. Get the raw URL:
+   - Open the file in GitHub, click **View Raw**, and copy the URL.
+   - The URL will look like this:<br>
+     `https://raw.githubusercontent.com/acaptutorials/acaptutorials.github.io/assets/<path-to-file>`
+
+3. Use the raw URL in Markdown or HTML:
+
+   **Markdown**<br>
+   `![New Picture](https://raw.githubusercontent.com/acaptutorials/acaptutorials.github.io/assets/images/example.png)`
+
+   **HTML**<br>
+   `<img src="https://raw.githubusercontent.com/acaptutorials/acaptutorials.github.io/assets/images/example.png" alt="New Picture" />`
+
+#### Best Practices
+
+- Use **descriptive file names** and organize assets into logical folders.
+- Compress or optimize images before upload to keep repository size manageable.
+- Always try to update references when renaming or versioning files.
 
 
 ## Available Scripts
@@ -165,6 +199,6 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 
 @acaptutorials<br>
 20240806<br>
-20250601
+20250901
 
 
