@@ -8,7 +8,7 @@ For more information, see [Issue #102](https://github.com/acaptutorials/acaptuto
 
 1. Serve as a **permanent, centralized reference** for all media assets used in this repository.
 2. Provide **stable online hosting** using GitHub's raw URLs (see below)
-3. Decouple heavy media assets from dev and main branches to:
+3. Decouple heavy media assets from `dev` and `main` branches to:
    - Avoid repository size bloat.
    - Keep `git clone` operations fast.
    - Achieve better separation of concerns between code and assets.
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/acaptutorials/acaptutorials.github.io/assets/<
 
 - This branch is for storage only. Application code should remain in `dev` or `main`
 - Future heavy assets (>100 MB) may require Git LFS or other large-file storage solutions or hosting providers
-- The /assets branch is an intentional separation to ensure scalability and cost efficiency
+- The `/assets` branch is an intentional separation to ensure scalability and cost efficiency
 - Media assets were migrated here in response to Firebase Storage changes in October 2025 ([Issue #102](https://github.com/acaptutorials/acaptutorials.github.io/issues/102))
 
 @acaptutorials<br>
