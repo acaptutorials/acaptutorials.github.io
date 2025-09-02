@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-text {
+  line-height: 1;
+}
+
+@media (max-width: 888px) {
+  .logo-text {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-text {
+    display: unset;
+  }
+}
