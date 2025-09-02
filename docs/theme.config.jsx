@@ -12,10 +12,16 @@ export default {
       <span className="logo-text">ACAP Development Docs</span>
     </>
   ),
+
+  // Code repository URL
   project: {
     link: 'https://github.com/acaptutorials/acaptutorials.github.io'
   },
+
+  // Nextra docs base URL within the repository
   docsRepositoryBase: 'https://github.com/acaptutorials/acaptutorials.github.io/tree/dev/docs',
+
+  // Use SEO settings (eg., page title)
   useNextSeoProps: () => {
     return {
       titleTemplate: 'ACAP Tutorials - %s'
@@ -36,6 +42,8 @@ export default {
       </span>
     )
   },
+
+  // HTML head customizations
   head: function Head () {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
@@ -72,19 +80,27 @@ export default {
       </>
     )
   },
+
+  // Top banner content
   banner: {
     key: process.env.RELEASE_VERSION ?? 'v10.1.0-alpha.6-release',
     text: <BannerText />
   },
+
+  // Right-most icon in the navbar
   chat: {
     link: 'https://deepwiki.com/acaptutorials/acaptutorials.github.io',
     icon: (
       <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" />
     )
   },
+
+  // Side bar settings
   sidebar: {
     defaultMenuCollapseLevel: 1
   },
+
+  // Custom footer contet
   footer: {
     text: (
       <Footer />
