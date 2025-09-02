@@ -9,7 +9,7 @@ export default {
   logo: (
     <>
       <Image src="/images/logos/logo-acaptutorials.png" width="24" height="24" alt="logo" />&nbsp;
-      <span>ACAP Development Docs</span>
+      <span className="logo-text">ACAP Development Docs</span>
     </>
   ),
   project: {
@@ -20,6 +20,21 @@ export default {
     return {
       titleTemplate: 'ACAP Tutorials - %s'
     }
+  },
+
+  // Displays the last-edited date on each page (from git)
+  gitTimestamp: ({ timestamp }) => {
+    const formatted = timestamp.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+
+    return (
+      <span className="text-xs text-gray-500">
+        Last updated on {formatted}
+      </span>
+    )
   },
   head: function Head () {
     const { asPath, defaultLocale, locale } = useRouter()
@@ -60,6 +75,12 @@ export default {
   banner: {
     key: process.env.RELEASE_VERSION ?? 'v10.1.0-alpha.6-release',
     text: <BannerText />
+  },
+  chat: {
+    link: 'https://deepwiki.com/acaptutorials/acaptutorials.github.io',
+    icon: (
+      <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" />
+    )
   },
   sidebar: {
     defaultMenuCollapseLevel: 1
