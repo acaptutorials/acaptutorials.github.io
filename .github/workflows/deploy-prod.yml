@@ -19,9 +19,10 @@ jobs:
       OPENGRAPH_IMAGE_URL: ${{ secrets.OPENGRAPH_IMAGE_URL }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.release.tag_name }}
+          fetch-depth: 0
       - name: Use NodeJS v20.15.0
         uses: actions/setup-node@v3
         with:
@@ -82,7 +83,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.release.tag_name }}
 
