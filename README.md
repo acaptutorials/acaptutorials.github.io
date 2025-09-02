@@ -94,7 +94,7 @@ The app depends these libraries and frameworks.
 
 #### To display a new image:
 
-1. Upload the image to the `/assets` branch, ([Issue #102](https://github.com/acaptutorials/acaptutorials.github.io/issues/102))
+1. Upload the image to the [`/assets`](https://github.com/acaptutorials/acaptutorials.github.io/tree/assets) branch, ([Issue #102](https://github.com/acaptutorials/acaptutorials.github.io/issues/102))
    - Commit the file under the appropriate directory (e.g., `/images/`, `/docs/`, etc.).
    - Use **unique, versioned file names** (e.g., `feature-v2.png`) to prevent caching issues.
 
