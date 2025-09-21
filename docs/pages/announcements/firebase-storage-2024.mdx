@@ -136,12 +136,10 @@ _All Firebase components service usage (including those not used by ACAP) will o
 
 Yes. <u>Some of the latest core deliverables</u> implemented for ACAP in its [2.0](/changelog/#version-2-acap-20) version [**introduced security considerations**](/changelog#acap-2-security-debts) not present in the initial ([1.0](/changelog/#version-1-acap-10)) version, which followed a more rigid [security model](/security) that adhered to best practices in web development security. The security changes in **version 2.0** resulted in a **measured reduction in coverage compared to version 1.0, <u>based on established criteria.</u>** (see table below)
 
-<Callout>
-> With **ACAP 2.0+**, core development transitioned to a <u><b>new lead programmer</b></u> who <u>made changes to improve development speed</u>. As part of this effort, they introduced a <u>more flexible Firestore database setup</u>, which streamlined workflows. While these adjustments optimized workflows, they also <u><b>altered security rules, introducing new considerations that require further refinements</b></u> to align with [best practices](/security).
->
-> The <u><b>lead programmer</b></u> is aware of these trade-offs, and <u>since the lead programmer made these changes, they remain the best point of contact for security updates and fixes.</u>
->
-> For more details on these changes, refer to this GitHub [issue](https://github.com/amia-cis/acap-v2/issues/57) in the parent **acap-v2** repository, which provides a summary of the <b>lead programmer's</b> <u>upcoming fixes and improvements.</u>
+<Callout type="warning">
+_The development strategy for [**ACAP 2.0 - 2.1**](/changelog/#version-2-acap-20) prioritized <i>rapid feature delivery</i>. To achieve this, it <u><i>adopted a more flexible Firestore database management setup that [altered security rules](/security/#firestore-database-rules)</i></u>. While these adjustments streamlined workflows, they also <i><b>introduced new security considerations that require further refinements</b></i> to align with [best practices](/security)._
+
+_These known issues, including potential <u>XSS vulnerabilities</u> and the need for <u>stricter data validation</u>, are being tracked and are slated for future refinement. For a detailed technical breakdown and status, please see [**Issue #57**](https://github.com/amia-cis/acap-v2/issues/57) in the (private) [**acap-v2**](https://github.com/amia-cis/acap-v2) parent repository._
 </Callout>
 
 ##### ACAP Security Criteria
@@ -200,19 +198,21 @@ Before activating a paid Firebase subscription, consider whether unresolved [ACA
    ```
 
 For more details, see [ACAP Security Technical Debts](/changelog/#acap-2-security-debts).
-If these issues with specific information (available at the (private) parent **acap-v2** GitHub Repository Issues list [[1]](https://github.com/amia-cis/acap-v2/issues/57) and [[2]](https://github.com/amia-cis/acap-v2/issues/34)) remain unaddressed, it may be beneficial to consult the <u><b>new ACAP Maintainer</b></u> who is also the <u><b>lead ACAP programmer</b></u> responsible for designing and implementing [ACAP 2.0](/changelog/#version-2-acap-20) before activating a paid Firebase subscription.
 
-Key topics to discuss include:
+The [ACAP 2.0 codebase](https://github.com/amia-cis/acap-v2) contains known security vulnerabilities, including lenient Firestore rules and a potential for Cross-Site Scripting (XSS) attacks. Activating a paid Firebase subscription before these issues are resolved could lead to data breaches and unexpected costs. Please review the **mitigation plan** in [**Issue #57**](https://github.com/amia-cis/acap-v2/issues/57) before proceeding.
 
-- How security concerns introduced in ACAP 2.0+ are being addressed
-- Plans for improving security and risk mitigation before enabling Firebase
+#### Next Steps for Developers Before Activating Paid Plans:
 
-#### Next Steps for Developers
-
+- **Consult the <u>new ACAP Maintainer/Lead programmer</u>** who led the **ACAP 2.0 <u>major</u> features development** for current mitigation strategies and planned fixes of the security concerns introduced in ACAP 2.0.
+   > Please review their **security mitigation plan** in [**Issue #57 - 2024 ACAP Updates Summary**](https://github.com/amia-cis/acap-v2/issues/57) (private GitHub repository - access available upon request) before proceeding.
+   > Key topics to discuss include:
+   >   - How security concerns, GitHub Issues [[#34]](https://github.com/amia-cis/acap-v2/issues/34)[[#57]](https://github.com/amia-cis/acap-v2/issues/57) introduced in ACAP 2.0+ (available at the private parent [**acap-v2**](https://github.com/amia-cis/acap-v2/issues/57) GitHub Repository) are being addressed, including ongoing items.
+   >   - Plans for improving security and risk mitigation before enabling Firebase
 - **Review the Firestore security rules** to restrict direct database writes.
 - **Check for XSS vulnerabilities** in crop recommendations and apply sanitization.
 - **Monitor database writes** for unstructured or excessive storage.
-- **Consult the <u>new ACAP Maintainer</u> who is also the <u>lead ACAP programmer</u> responsible for implementing the core [version 2.0+](/changelog/#version-2-acap-20)** deliverables for current mitigation strategies and planned fixes.
+- 👉 **Be mindful of ACAP's [Security Guidelines](/security) and [Security Best Practices](http://localhost:3000/articles/security-bestpractices/)** when <u>developing new features</u>.
+
 </Callout>
 
 <Callout type="info">
