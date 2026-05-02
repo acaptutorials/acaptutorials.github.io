@@ -49,7 +49,7 @@ This page summarizes the features and enhancements of major ACAP versions, exten
 
 ### Glossary of Terms
 
-- [ACAP 1.0](#version-1-acap-10) serves as the base model of the Agro-Climatic Advisory Portal (ACAP). Initially made for the Bicol region, it provides dynamic features setup support for other regional provinces. It served as the active ACAP version until ACAP 2.0.
+- [ACAP 1.0](#version-1-acap-10) serves as the base model of the Agro-Climatic Advisory Portal (ACAP). Initially made for the Bicol region, it also provides dynamic features setup support for other regional provinces. It served as the active ACAP version until ACAP 2.0.
 - [ACAP 2.0](#version-2-acap-20) and beyond is an extension of the Agro-Climatic Advisory Portal (ACAP), a Climate Information System, <u><i>expanding</i></u>, <u><i>enhancing</i></u>, and <u><i>building upon</i></u> the initial [ACAP 1.0](#version-1-acap-10) version.
    > ACAP 2.0 builds upon ACAP 1.0 rather than replacing it. It enhances and expands the original system while maintaining its core foundation.
 
@@ -63,7 +63,7 @@ As of <u>July 2024</u>, **ACAP 2.0**, which includes new features and upgrades, 
 
 ### Version 2 (ACAP 2.0)
 
-_June 2024 - December 2024_
+_October 2023 - December 2024_
 
 Versions from 2.0+ highlight improvements and newly added features, expanding and enhancing the initial [ACAP](#version-1-acap-10) version.
 
@@ -137,21 +137,21 @@ Version 2.0 and later versions may have new requirements that will thrive on new
 
 ### Version 1 (ACAP 1.0)
 
+_March - December 2022_
+
 <Callout type="info" emoji="ℹ️">
 ACAP 1.0's last stable version is Release/Tag version [**v9.5.6**](https://github.com/amia-cis/climate-services-webportal-v1/releases/tag/v9.5.6), accessible in the **climate-services-webportal-v1** and **acap-v2** code repositories.
 </Callout>
 
-Version 1.0 marks the initial ACAP Bicol release used as a base model and template for subsequent developer training and sharing with other regions in the succeeding years starting on [**July 2023**](https://uplbfi.org/?p=2097).
+Version 1.0 marks the initial ACAP Bicol release, serving as a base model and template for subsequent developer training and regional adoption in the years following [**July 2023**](https://uplbfi.org/?p=2097).
 
-Developed with a Security-first approach, ACAP 1.0 especially notes common Firestore security pitfalls and keeps a watchful eye on Cross-Site Scripting (XSS) attacks since it uses What-You-See-Is-What-You-Get (WYSIWYG) HTML input for crop recommendations and PDF generation.
+Developed with a security-first approach, ACAP 1.0 emphasizes common Firestore security pitfalls and includes safeguards against Cross-Site Scripting (XSS) vulnerabilities, particularly in modules that use WYSIWYG-based HTML input for crop recommendations and PDF generation. Originally built for ACAP Bicol, the system was designed with a flexible and modular backend to support potential cross-regional expansion.
 
 It has the following features, strictly following and is tested compatible with the recommended [Security](/security) and [Server](/directories/server) guidelines:
 
 <div className="text-semibold text-sm text-slate-500 no-underline">
 
 #### Added
-
-_March - December 2022_
 
 1. Login and User Authentication
 2. User (Admin) Accounts Management
