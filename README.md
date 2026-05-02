@@ -1,6 +1,9 @@
 ## acaptutorials.github.io
 
-ACAP Bicol (ACAP 2.0) development documentation.
+Agro-Climatic Advisory Portal (ACAP) <br>
+ACAP 2.0 development documentation.
+
+> Previously known as ACAP Bicol (ACAP 1.0)
 
 Built with [Nextra](https://nextra.site/), a modern static site generation framework running on NextJS.
 
