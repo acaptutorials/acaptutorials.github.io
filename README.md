@@ -192,7 +192,7 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 | --- | --- |
 | DOCKERHUB_USERNAME | Docker Hub username |
 | DOCKERHUB_TOKEN | Deploy token for the Docker Hub account |
-| FIREBASE_TOKEN | Firebase CI token for deployment to Firebase Hosting |
+| GCP_SA_KEY | **base64 encoded** Firebase project service account key with only the **Firebase Hosting Admin** role enabled for deploying Hosting files. |
 
 #### GitHub Variables
 
@@ -203,5 +203,3 @@ https://hub.docker.com/r/acaptutorials/acaptutorials.github.io
 @acaptutorials<br>
 20240806<br>
 20250901
-
-
